@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Design tokens — the explicit design system.
+   Palette: "worn-in crate at a basement record store" — aged linen, deep warm
+   ink, forest green accent, amber chips, rich kraft trim. Grounded, organic. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-paper: #ede7d8; /* Paper — aged linen, like an old record sleeve */
+  --color-ink: #1a1510; /* Ink — deep warm near-black */
+  --color-ink-soft: #5c4f3d; /* Soft Ink — earthy warm secondary text */
+  --color-cobalt: #2d5c42; /* Forest Green — organic primary accent */
+  --color-hype: #c47b1e; /* Amber — sticker chips only, never large fields */
+  --color-kraft: #8a6638; /* Kraft — hairlines and trim, never text */
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Designed focus state: cobalt ring, offset like a misregistered print pass */
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Keep keyboard-focused targets clear of the sticky nav when scrolled to */
+a,
+button,
+h1,
+h2,
+h3 {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: var(--color-hype);
+  color: var(--color-ink);
+}
+
+/* ——— Motion ———————————————————————————————————————————— */
+
+/* Record pull: the shared-element morph between crate art and case study hero.
+   Weighty but quick — like sliding a record out of its sleeve. */
+::view-transition-group(.morph) {
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0.18, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-duration: 480ms;
+}
+
+/* The crate dig: each record pins like the front sleeve in a bin while the
+   next one rises over it. Pure CSS positioning (native scroll, no hijack);
+   the recede transforms are added by CrateRecord on top of this. Desktop +
+   motion-allowed only — everywhere else the crate is a plain vertical stack. */
+.crate-segment + .crate-segment {
+  margin-top: 5rem;
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  /* Each segment pins at the same line and stays pinned while every later
+     record rises over it — a deck, not a list. The margin between segments
+     is the scroll runway each record holds focus for before the next flip. */
+  .crate-segment {
+    position: sticky;
+    top: 4.5rem;
+  }
+  .crate-segment + .crate-segment {
+    margin-top: 26vh;
+  }
+  .crate-card {
+    min-height: calc(100vh - 4.5rem);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Load sequence: records settle into the crate, once per session.
+   `html.entering` is set by an inline script before first paint (and only on
+   the homepage); pure CSS animation, so it needs no hydration and never runs
+   without JS — the no-JS render is the settled state. */
+html.entering [data-crate-item] {
+  animation: crate-settle 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+html.entering [data-crate-item]:nth-child(2) {
+  animation-delay: 110ms;
+}
+html.entering [data-crate-item]:nth-child(3) {
+  animation-delay: 220ms;
+}
+html.entering [data-crate-item]:nth-child(n + 4) {
+  animation-delay: 320ms;
+}
+
+@keyframes crate-settle {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+/* Reduced motion: kill every animation this site defines, including morphs.
+   (The inline script also skips the load sequence; this is the backstop.) */
+@media (prefers-reduced-motion: reduce) {
+  html.entering [data-crate-item] {
+    animation: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
