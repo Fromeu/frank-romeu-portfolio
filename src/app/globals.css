@@ -4,7 +4,7 @@
    Palette: "worn-in crate at a basement record store" — aged linen, deep warm
    ink, forest green accent, amber chips, rich kraft trim. Grounded, organic. */
 @theme inline {
-  --color-paper: #ede7d8; /* Paper — aged linen, like an old record sleeve */
+  --color-paper: #f8f5ec; /* Paper — aged linen, like an old record sleeve */
   --color-ink: #1a1510; /* Ink — deep warm near-black */
   --color-ink-soft: #5c4f3d; /* Soft Ink — earthy warm secondary text */
   --color-cobalt: #2d5c42; /* Forest Green — organic primary accent */
