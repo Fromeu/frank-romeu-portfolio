@@ -10,5 +10,5 @@ export const site = {
   url: "https://frankromeu.com", // PLACEHOLDER — used for canonical URLs and OG images
   email: "hello@frankromeu.com", // PLACEHOLDER
   linkedin: "https://www.linkedin.com/in/frankromeu", // PLACEHOLDER
-  resumePath: "/resume.pdf",
+  resumePath: `${process.env.GITHUB_PAGES === "true" ? "/Crates-portfolio" : ""}/resume.pdf`,
 } as const;
