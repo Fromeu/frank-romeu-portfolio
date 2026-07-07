@@ -14,12 +14,48 @@
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
+
+  /* Fluid type scale — one system for every heading level site-wide, instead
+     of the old mix of two clamp() h1s and a dozen static Tailwind steps. */
+  --step-display: clamp(2.75rem, 5vw + 1.5rem, 5.5rem);
+  --step-hero: clamp(2.25rem, 3.5vw + 1.25rem, 3.75rem);
+  --step-h2: clamp(1.5rem, 1.2vw + 1.2rem, 2rem);
+  --step-h3: clamp(1.15rem, 0.6vw + 1rem, 1.4rem);
+  --step-lede: clamp(1.125rem, 0.6vw + 1rem, 1.375rem);
+  --step-meta: 0.75rem;
 }
 
 body {
+  position: relative;
+  z-index: 0;
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Paper grain: subtle tactility for the "aged linen record sleeve" surface.
+   Inlined SVG turbulence (no network asset — keeps GitHub Pages basePath
+   simple), fixed behind all content via negative z-index within body's own
+   stacking context (established by `position: relative; z-index: 0` above). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Expressive Fraunces treatments — reserved for a small number of signature
+   moments (homepage name, pull-quotes, the About lede), never headings or
+   body copy that need to stay scannable. */
+.font-display-soft {
+  font-variation-settings: "SOFT" 40, "WONK" 0;
+}
+.font-display-wonk {
+  font-variation-settings: "SOFT" 60, "WONK" 1;
 }
 
 /* Designed focus state: cobalt ring, offset like a misregistered print pass */

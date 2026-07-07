@@ -7,6 +7,8 @@ import RecordCard from "@/components/RecordCard";
 import { catalogNumber } from "@/lib/catalog";
 import Sticker from "@/components/Sticker";
 import { mdxComponents } from "@/components/mdx";
+import CaseStudyToc from "@/components/CaseStudyToc";
+import { extractToc, estimateReadMinutes } from "@/lib/reading";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -46,6 +48,8 @@ export default async function CaseStudyPage({
   if (!cs) notFound();
 
   const others = getAllCaseStudies().filter((other) => other.slug !== cs.slug);
+  const toc = extractToc(cs.body);
+  const readMinutes = estimateReadMinutes(cs.body);
 
   return (
     <article className="overflow-x-clip px-4 py-10 sm:px-6 md:py-14">
@@ -80,9 +84,9 @@ export default async function CaseStudyPage({
           </div>
 
           <p className="mt-10 font-mono text-xs uppercase tracking-wider text-ink-soft">
-            {catalogNumber(cs.order)} · {cs.company}
+            {catalogNumber(cs.order)} · {cs.company} · {readMinutes} min read
           </p>
-          <h1 className="mt-3 font-display text-[clamp(2.25rem,5vw,3.5rem)] font-semibold leading-[1.08] tracking-tight">
+          <h1 className="mt-3 text-[length:var(--step-hero)] font-display font-semibold leading-[1.08] tracking-tight">
             {cs.title}
           </h1>
           <p className="mt-4 text-xl leading-relaxed text-ink-soft">{cs.subtitle}</p>
@@ -119,10 +123,17 @@ export default async function CaseStudyPage({
             </dl>
           )}
         </header>
+      </div>
 
-        {/* Body */}
-        <div className="mt-12">
+      {/* Body + table of contents: wider than the header column so the TOC
+          has room to sit alongside on desktop, without widening the prose
+          column itself past a comfortable reading measure. */}
+      <div className="mx-auto mt-12 max-w-[52rem] lg:grid lg:grid-cols-[1fr_14rem] lg:items-start lg:gap-12">
+        <div className="max-w-2xl">
           <MDXRemote source={cs.body} components={mdxComponents} />
+        </div>
+        <div className="mt-8 lg:mt-1">
+          <CaseStudyToc entries={toc} />
         </div>
       </div>
 
@@ -133,8 +144,8 @@ export default async function CaseStudyPage({
             Other case studies
           </h2>
           <div className="mt-6 grid gap-10 sm:grid-cols-2">
-            {others.map((other) => (
-              <RecordCard key={other.slug} caseStudy={other} />
+            {others.map((other, i) => (
+              <RecordCard key={other.slug} caseStudy={other} index={i} />
             ))}
           </div>
         </footer>

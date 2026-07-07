@@ -4,8 +4,6 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import {
-  LazyMotion,
-  domAnimation,
   m,
   useInView,
   useReducedMotion,
@@ -112,11 +110,8 @@ export default function CrateRecord({
   const desktop = mode === "desktop";
 
   return (
-    // LazyMotion + m.* ships only the DOM-animation feature set (~half the
-    // bundle of the full `motion` import) — this is the only motion entrypoint.
-    <LazyMotion features={domAnimation} strict>
-      <div ref={segmentRef} data-crate-item className="crate-segment">
-        <m.div
+    <div ref={segmentRef} data-crate-item className="crate-segment">
+      <m.div
         className="crate-card border-t border-kraft/50 bg-paper pt-5 md:flex md:flex-col md:justify-center md:pt-6"
         style={
           desktop && hasNext
@@ -170,7 +165,7 @@ export default function CrateRecord({
               <p className="font-mono text-xs uppercase tracking-wider text-ink-soft">
                 {catalogNumber(cs.order)} · {cs.company}
               </p>
-              <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight group-hover:text-cobalt md:text-4xl">
+              <h2 className="mt-2 text-[length:var(--step-h2)] font-display font-semibold tracking-tight group-hover:text-cobalt">
                 {cs.title}
               </h2>
               <p className="mt-3 max-w-prose text-lg leading-relaxed text-ink-soft">
@@ -182,8 +177,7 @@ export default function CrateRecord({
             </m.div>
           </div>
         </Link>
-        </m.div>
-      </div>
-    </LazyMotion>
+      </m.div>
+    </div>
   );
 }

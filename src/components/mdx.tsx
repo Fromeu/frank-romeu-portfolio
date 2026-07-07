@@ -1,8 +1,20 @@
 import type { ReactNode } from "react";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
+import { slugify } from "@/lib/reading";
 
 // Components available inside case study MDX bodies, plus element mappings
 // that give the body its editorial typography.
+
+/** Flattens heading children to plain text so the rendered `id` matches the
+ * id CaseStudyToc/extractToc derive from the same raw heading line. */
+function textContent(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textContent).join("");
+  if (node && typeof node === "object" && "props" in node) {
+    return textContent((node as { props: { children?: ReactNode } }).props.children);
+  }
+  return "";
+}
 
 type FigureProps = {
   src: string;
@@ -52,7 +64,7 @@ export function PullQuote({
   return (
     <blockquote className="my-12 border-l-2 border-cobalt pl-6">
       {/* no <p> wrapper: MDX already paragraph-wraps the quote text */}
-      <div className="font-display text-2xl font-medium leading-snug tracking-tight md:text-3xl">
+      <div className="font-display font-display-soft text-2xl italic font-medium leading-snug tracking-tight md:text-3xl">
         {children}
       </div>
       {attribution && (
@@ -84,12 +96,17 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   Callout,
   h2: (props) => (
     <h2
-      className="mt-14 font-display text-2xl font-semibold tracking-tight md:text-3xl"
+      id={slugify(textContent(props.children))}
+      className="mt-14 text-[length:var(--step-h2)] font-display font-semibold tracking-tight"
       {...props}
     />
   ),
   h3: (props) => (
-    <h3 className="mt-10 font-display text-xl font-semibold tracking-tight" {...props} />
+    <h3
+      id={slugify(textContent(props.children))}
+      className="mt-10 text-[length:var(--step-h3)] font-display font-semibold tracking-tight"
+      {...props}
+    />
   ),
   p: (props) => <p className="mt-5 leading-relaxed" {...props} />,
   ul: (props) => <ul className="mt-5 list-disc space-y-2 pl-5" {...props} />,
