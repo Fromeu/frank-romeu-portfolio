@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Fraunces, Geist_Mono } from "next/font/google";
+import { LazyMotion, domAnimation } from "framer-motion";
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -8,10 +10,13 @@ import "./globals.css";
 // + Archivo (grotesque body sans) + Geist Mono (catalog numbers, meta, captions).
 // Only Archivo (the LCP-critical body face) is preloaded; the display serif
 // and mono swap in when ready so they don't contend for first-paint bandwidth.
+// SOFT/WONK/italic are exposed for the handful of reserved expressive
+// moments (homepage name, pull-quotes, About lede) — see globals.css.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  axes: ["opsz"],
+  axes: ["opsz", "SOFT", "WONK"],
+  style: ["normal", "italic"],
   preload: false,
 });
 
@@ -65,10 +70,13 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Nav />
-        <main id="main" className="flex-1">
-          {children}
-        </main>
+        <LazyMotion features={domAnimation} strict>
+          <Nav />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </LazyMotion>
       </body>
     </html>
   );

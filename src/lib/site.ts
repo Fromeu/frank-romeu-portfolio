@@ -4,11 +4,10 @@
 export const site = {
   name: "Frank Romeu",
   title: "Senior Product Designer II",
-  // The one-sentence positioning line shown on the crate. PLACEHOLDER — confirm before Phase 2.
   positioning:
-    "I design enterprise software that feels less like enterprise software — currently at HubSpot.",
-  url: "https://frankromeu.com", // PLACEHOLDER — used for canonical URLs and OG images
-  email: "hello@frankromeu.com", // PLACEHOLDER
-  linkedin: "https://www.linkedin.com/in/frankromeu", // PLACEHOLDER
+    "I design the reasoning surfaces of HubSpot's CRM — the records, views, and visualizations millions of go-to-market teams use to see and act on their business.",
+  url: "https://fromeu.github.io/Crates-portfolio/",
+  email: "frank.j.romeu@gmail.com",
+  linkedin: "https://www.linkedin.com/in/frankromeu",
   resumePath: `${process.env.GITHUB_PAGES === "true" ? "/Crates-portfolio" : ""}/resume.pdf`,
 } as const;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { preload } from "react-dom";
 import CrateRecord from "@/components/CrateRecord";
+import RecordCount from "@/components/RecordCount";
 import { catalogNumber } from "@/lib/catalog";
 import { getAllCaseStudies } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -26,7 +27,7 @@ export default function Home() {
         <p className="font-mono text-xs uppercase tracking-wider text-ink-soft">
           {site.title}
         </p>
-        <h1 className="mt-3 font-display text-[clamp(2.75rem,7vw,5rem)] font-semibold leading-[1.05] tracking-tight">
+        <h1 className="font-display font-display-wonk mt-3 text-[length:var(--step-display)] italic font-semibold leading-[1.05] tracking-tight">
           {site.name}
         </h1>
         <p className="mt-5 max-w-[36ch] text-xl leading-relaxed text-ink-soft md:text-2xl">
@@ -37,7 +38,7 @@ export default function Home() {
       {/* The crate: every case study, one click away, all info visible */}
       <section aria-label="Case studies">
         <p className="mb-10 border-t border-kraft/50 pt-4 font-mono text-xs uppercase tracking-wider text-ink-soft">
-          In the crate — {caseStudies.length} records
+          In the crate — <RecordCount count={caseStudies.length} /> records
         </p>
         <div>
           {caseStudies.map((cs, i) => (
