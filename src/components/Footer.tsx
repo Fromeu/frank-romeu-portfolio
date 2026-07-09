@@ -2,10 +2,10 @@ import { site } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 
 // Site-wide close, extending the established meta-text/hairline language
-// (catalog numbers, kraft dividers) rather than inventing a new device.
+// rather than inventing a new device.
 export default function Footer() {
   return (
-    <footer className="border-t border-kraft/50">
+    <footer className="border-t border-line/50">
       <Reveal className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -20,7 +20,7 @@ export default function Footer() {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="text-cobalt underline underline-offset-4"
+                className="text-green underline underline-offset-4"
               >
                 Email
               </a>
@@ -28,7 +28,7 @@ export default function Footer() {
             <li>
               <a
                 href={site.linkedin}
-                className="text-cobalt underline underline-offset-4"
+                className="text-green underline underline-offset-4"
                 rel="me noopener"
               >
                 LinkedIn
@@ -38,7 +38,7 @@ export default function Footer() {
               <a
                 href={site.resumePath}
                 download
-                className="text-cobalt underline underline-offset-4"
+                className="text-green underline underline-offset-4"
               >
                 Resume
               </a>
@@ -46,7 +46,7 @@ export default function Footer() {
           </ul>
         </div>
         <p className="mt-8 font-mono text-[length:var(--step-meta)] uppercase tracking-wider text-ink-soft/70">
-          FRA · Orlando, FL
+          Orlando, FL
         </p>
       </Reveal>
     </footer>

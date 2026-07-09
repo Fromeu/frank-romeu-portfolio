@@ -23,6 +23,8 @@ export type CaseStudyFrontmatter = {
   heroAlt: string;
   ogImage?: string;
   metrics?: Metric[];
+  /** Defaults to "shipped" when omitted — set "in-progress" for unlaunched work so cards show honest status instead of a fabricated metric. */
+  status?: "shipped" | "in-progress";
   draft?: boolean;
 };
 
@@ -69,7 +71,7 @@ function loadCaseStudy(dirName: string): CaseStudy | null {
   return { ...fm, ogImage: fm.ogImage || fm.heroImage, body: content };
 }
 
-/** All published case studies, sorted by their position in the crate. */
+/** All published case studies, sorted by `order`. */
 export function getAllCaseStudies(): CaseStudy[] {
   if (!fs.existsSync(WORK_DIR)) return [];
   return fs

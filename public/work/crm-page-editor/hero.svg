@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
-  <rect width="1200" height="1200" fill="#2B4C3F"/>
-  <circle cx="600" cy="600" r="340" fill="none" stroke="#E8DCC8" stroke-width="3" opacity="0.5"/>
-  <circle cx="600" cy="600" r="60" fill="#E8DCC8" opacity="0.9"/>
-  <text x="80" y="140" font-family="Helvetica, Arial, sans-serif" font-size="60" font-weight="bold" fill="#E8DCC8">One Builder, Not Seven</text>
-  <text x="80" y="1120" font-family="Helvetica, Arial, sans-serif" font-size="36" fill="#E8DCC8" opacity="0.7">PLACEHOLDER RECORD ART — replace me</text>
+  <rect width="1200" height="1200" fill="#14140f"/>
+  <rect x="60" y="60" width="1080" height="1080" fill="none" stroke="#3a392f" stroke-width="1"/>
+  <rect x="100" y="220" width="180" height="6" fill="#d3560f"/>
+  <text x="100" y="180" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600" font-size="56" fill="#ffffff">One Builder,</text>
+  <text x="100" y="250" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600" font-size="56" fill="#ffffff">Not Seven</text>
+  <text x="100" y="1100" font-family="Helvetica, Arial, sans-serif" font-size="22" letter-spacing="2" fill="#ffffff" opacity="0.55">PLACEHOLDER COVER — REPLACE WITH REAL SCREENSHOT</text>
 </svg>

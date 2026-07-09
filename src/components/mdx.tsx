@@ -34,7 +34,12 @@ export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
       }
     >
       {/* Plain <img>: static export has no image optimizer; srcset variants come in Phase 4 */}
-      <img src={src} alt={alt} loading="lazy" className="w-full border border-ink/10" />
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className={`w-full border border-ink/10 ${fullBleed ? "" : "rounded-2xl"}`}
+      />
       {caption && (
         <figcaption
           className={`mt-3 font-mono text-xs uppercase tracking-wider text-ink-soft ${
@@ -62,7 +67,7 @@ export function PullQuote({
   attribution?: string;
 }) {
   return (
-    <blockquote className="my-12 border-l-2 border-cobalt pl-6">
+    <blockquote className="my-12 border-l-2 border-green pl-6">
       {/* no <p> wrapper: MDX already paragraph-wraps the quote text */}
       <div className="font-display font-display-soft text-2xl italic font-medium leading-snug tracking-tight md:text-3xl">
         {children}
@@ -78,9 +83,9 @@ export function PullQuote({
 
 export function Callout({ title, children }: { title?: string; children: ReactNode }) {
   return (
-    <aside className="my-10 border border-ink/15 border-l-2 border-l-cobalt p-5">
+    <aside className="my-10 rounded-xl border border-ink/15 border-l-2 border-l-green p-5">
       {title && (
-        <p className="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-cobalt">
+        <p className="mb-2 font-mono text-xs font-medium uppercase tracking-wider text-green">
           {title}
         </p>
       )}
@@ -112,14 +117,14 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   ul: (props) => <ul className="mt-5 list-disc space-y-2 pl-5" {...props} />,
   ol: (props) => <ol className="mt-5 list-decimal space-y-2 pl-5" {...props} />,
   a: (props) => (
-    <a className="text-cobalt underline underline-offset-4" {...props} />
+    <a className="text-green underline underline-offset-4" {...props} />
   ),
   // Plain markdown `>` quotes (e.g. the placeholder notices)
   blockquote: (props) => (
     <blockquote
-      className="mt-5 border-l-2 border-kraft pl-4 text-ink-soft [&_p]:mt-2 first:[&_p]:mt-0"
+      className="mt-5 border-l-2 border-line pl-4 text-ink-soft [&_p]:mt-2 first:[&_p]:mt-0"
       {...props}
     />
   ),
-  hr: (props) => <hr className="my-12 border-kraft/50" {...props} />,
+  hr: (props) => <hr className="my-12 border-line/50" {...props} />,
 };

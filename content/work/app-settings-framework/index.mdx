@@ -1,0 +1,303 @@
+---
+title: "One Framework, 1,500 Apps"
+subtitle: "Replaced inconsistent settings across HubSpot's marketplace app ecosystem with a single framework — driving average NPS of 87 across adopting apps."
+slug: "app-settings-framework"
+company: "HubSpot"
+role: "Product Designer"
+year: "2020–2022"
+duration: "2 phases across ~2 years"
+domain: "Developer Platform / Enterprise SaaS"
+order: 1
+heroImage: "/work/app-settings-framework/hero.svg"
+heroAlt: "Placeholder cover art for the App Settings Framework case study"
+metrics:
+  - label: "Average NPS across adopting apps (target: 25+)"
+    value: "87"
+  - label: "Native apps on framework"
+    value: "15"
+draft: false
+---
+
+Every app in HubSpot's ecosystem had its own idea of what a settings page
+should look like — and most of them were wrong in different ways.
+HubSpot-built integrations were wildly inconsistent; externally-built apps
+had no settings pages at all. Twenty-seven percent of integration support
+calls were driven by settings confusion alone. I led the design of a
+framework to fix that — not just for our own apps, but eventually for every
+developer building on the platform.
+
+## My role
+
+I was the sole product designer on this project across both phases
+(2020–2022), embedded in HubSpot's Developer Product Group. I owned the
+end-to-end design: research planning and facilitation, information
+architecture, UI design from wireframes through high-fidelity, usability
+testing, and the design of the UI Builder tool that made the framework
+publicly available. I also facilitated a card sort study and partner
+research interviews, and drove the pitch to return to the project after a
+year away.
+
+I partnered closely with a product manager, two tech leads (front-end and
+back-end), a content designer, and a product analyst. Six engineers built
+it.
+
+## The problem
+
+### User problem
+
+Administrators managing HubSpot integrations were spending disproportionate
+time on configuration tasks that should have been straightforward. Settings
+pages across native apps had no structural consistency — Salesforce settings
+looked nothing like QuickBooks, which looked nothing like Shopify. The
+cognitive load of relearning each app's layout compounded across the
+nine-plus integrations a typical admin might touch. Twenty-seven percent of
+integration support calls were specifically about settings. Fifty-seven
+percent of total integration support volume was driven by the Salesforce app
+alone — the oldest and largest integration in the ecosystem.
+
+<PullQuote attribution="Customer feedback">
+I primarily live in Salesforce and so does my data. It's increasingly
+painful to use HubSpot because the process of syncing my SF-data is
+absolutely horrendous. I shouldn't have to spend hours in HubSpot just to
+understand my syncs.
+</PullQuote>
+
+### Business problem
+
+HubSpot's Developer Product Group existed to give external developers the
+same ability to create quality experiences as internal teams. Settings was a
+clear failure of that promise: HubSpot-built integrations had inconsistent
+but existing settings; externally-built apps had none. This wasn't just a UX
+problem — it undermined the platform's credibility with the App Partner
+ecosystem and limited the quality ceiling for the entire marketplace. The
+inconsistency also created a growing support cost that scaled with every new
+integration added.
+
+## Context and constraints
+
+App settings were owned by individual app teams, not a centralized platform
+team. Each team had extended the settings experience to fit their specific
+needs, which meant the framework had to accommodate genuine variation
+without enabling further fragmentation. I was designing a standard for teams
+I didn't manage.
+
+Phase 1 shipped in mid-2020, then the project paused to collect metrics and
+the team moved to other priorities. When I pitched Phase 2 a year later, the
+framework had been adopted — and modified — by teams building Operations
+Hub, Zoom, MS Teams, and Slack integrations, all without centralized design
+coordination. I returned to a framework that had drifted.
+
+The "Data sync" portion of the framework was omitted from the public release
+due to technical complexity — a real constraint that limited what external
+developers could build, meaning the public framework was a subset of what
+native apps used.
+
+This was effectively a mini component library for a specific surface, not
+backed by a broader design system team. Managing it across multiple
+designers and teams over time was my responsibility alongside the feature
+design work.
+
+## Process
+
+The inconsistency of app settings was something the team acknowledged
+informally, but I wanted quantitative grounding before committing to a
+solution direction. I partnered with a product analyst to pull data from our
+analytics and support-ticket systems. The numbers confirmed what we
+suspected: 27% of integration support calls revolved around settings, 63%
+around data syncs and related tasks, and a single integration — Salesforce —
+drove 57% of total support volume. These weren't edge cases; settings
+confusion was a systemic problem scaling with the ecosystem.
+
+With the problem validated, I audited settings functionality across nine
+native integrations: QuickBooks Online, Salesforce, Sansan, Shopify, Zoom,
+Slack, GoToWebinar, Microsoft Teams, and Google Contacts. The audit surfaced
+a consistent set of user needs beneath the surface-level inconsistency:
+managing connected accounts, toggling syncs per object type, adjusting
+create/update/delete rules, mapping properties between systems, and learning
+about app features. These became the structural pillars of the framework —
+an information architecture organized around four segments: Account
+details, Sync health, Object sync, and Getting started.
+
+I moved from low-fidelity wireframes to high-fidelity mockups, running
+moderated and unmoderated usability tests with HubSpot customers before
+shipping. The framework launched in July 2020 for five native integrations.
+We set success targets — cumulative NPS of 25+, a 15% reduction in
+Salesforce support volume, 50% of native apps on the framework — then paused
+to let the data accumulate.
+
+A year later, I pitched returning to the framework. The landscape had
+shifted: it had become the foundation for settings across 100+ data sync
+apps in Operations Hub, and other teams had extended it with new apps, each
+pulling it in a slightly different direction. Before I could design the
+public version, I had to take stock of what the framework had become and
+reconcile the divergent implementations.
+
+A product manager and I conducted 12 exploratory interviews with App
+Partners — external developers building apps for the HubSpot Marketplace.
+She handled outreach and scheduling; I drove the research plan and
+facilitated the calls. Two primary needs emerged: the ability to trigger
+actions in external systems from HubSpot, and better onboarding to help
+users get value from newly installed apps.
+
+I ran an open card sort with 24 HubSpot customers to understand how they
+spatially organized the feature set — deliberately open-ended, no pre-set
+categories, for unbiased signal on their actual mental models. The results
+informed a revised information architecture: four top-level tabs (Account
+settings, General settings, Data sync, Feature discovery) with consistency
+at the top level and room for customization in sub-tabs beneath.
+
+Making the framework available to external developers required a
+configuration tool. I coordinated with both tech leads to scope what became
+the App Settings UI Builder — accessible from HubSpot Developer accounts,
+letting App Partners configure settings pages through three component
+types: an Account component, Control components (buttons, toggles,
+dropdowns), and Feature cards. It included a live preview, manual and
+auto-save, template settings, and version history.
+
+I conducted research calls with 8 App Partners using an assembled prototype
+to validate the updated framework and assess UI Builder usability. The
+calls confirmed our direction and surfaced refinements: an improved preview
+window, template settings, dropdown support in control components, version
+history, and a guided onboarding flow.
+
+## Key decisions
+
+### 1. Pitching Phase 2 after a year away
+
+**What was decided:** Advocate for returning to the project once the
+team's roadmap had moved on, rather than letting the framework remain
+internal-only.
+
+**Alternatives considered:** Leave the framework as an internal-only tool
+and let the distributed drift continue unchecked.
+
+**Why this direction:** The framework had hit its Phase 1 goals, but the
+original vision — available to every developer — was incomplete. Leaving it
+internal-only would have left the platform promise unfulfilled.
+
+**What it cost:** Real re-scoping work. A year of organic growth had
+changed what "the framework" actually meant, and I had to reconcile that
+before designing forward.
+
+### 2. Open card sort over closed
+
+**What was decided:** Run the Phase 2 information-architecture research as
+an open card sort — no pre-set categories.
+
+**Alternatives considered:** A closed card sort, faster to analyze and more
+directly actionable.
+
+**Why this direction:** A closed sort would have anchored customers to our
+existing structure. The open format revealed how customers naturally
+grouped features, which didn't always match our internal model.
+
+**What it cost:** A messier synthesis process — but the signal was more
+honest.
+
+### 3. Omitting Data Sync from the public framework
+
+**What was decided:** Scope the public framework to exclude the Data Sync
+component, due to technical complexity.
+
+**Alternatives considered:** A longer timeline to ship the full framework
+publicly, Data Sync included.
+
+**Why this direction:** Shipping what was ready let external developers
+build account management, controls, and feature discovery immediately,
+while native apps retained the full feature set.
+
+**What it cost:** A real capability gap between first-party and
+third-party apps, which partially undercut the framework's "level playing
+field" premise.
+
+### 4. Revised IA with flexible sub-tabs
+
+**What was decided:** Consistent top-level tabs with customizable sub-tabs
+beneath them, replacing a more rigid original structure.
+
+**Alternatives considered:** Enforcing a single, identical structure for
+every app.
+
+**Why this direction:** The flexible approach accommodated genuine
+variation across apps while maintaining the structural coherence admins
+needed to move between them.
+
+**What it cost:** More complexity for developers configuring their
+settings — more choices to make, more ways to make them poorly.
+
+## The solution
+
+The shipped product has two faces. For HubSpot admins: a standardized
+settings experience across native integrations, organized around account
+management, general controls, per-object data sync configuration, and
+feature discovery — consistent navigation and structure regardless of which
+app they're configuring.
+
+<Figure
+  src="/work/app-settings-framework/solution-1.svg"
+  alt="Placeholder image of the standardized settings page"
+  caption="Standardized settings, side by side across two native integrations (placeholder)."
+/>
+
+For App Partners: the App Settings UI Builder, accessible from Developer
+accounts, letting external developers configure settings pages for their
+apps using the same component types — with a live preview, version history,
+and template starting points.
+
+<Figure
+  src="/work/app-settings-framework/solution-2.svg"
+  alt="Placeholder image of the UI Builder"
+  caption="The UI Builder: configuration panel and live preview, side by side (placeholder)."
+/>
+
+The framework launched in public beta, available to every App Partner
+building on HubSpot.
+
+## Outcomes
+
+Fifteen native apps adopted the framework, with an average NPS of 87 across
+them — well past the original target of 25+. Support volume from the
+Salesforce integration dropped, though the exact figure in the underlying
+data is inconsistent enough that I'd want to verify it precisely before
+citing it — the honest version is that it moved in the right direction,
+short of the 15% target we'd originally set.
+
+The framework became the default settings foundation for Operations Hub's
+100+ data sync apps — adoption well beyond the original scope. Multiple
+design teams across HubSpot adopted the framework independently, which
+validated the structural model but also revealed the distributed-ownership
+problem Phase 2 had to address.
+
+What's still unknown: long-term support-volume trends since Phase 2, how
+NPS trends for third-party apps built on the still-beta UI Builder, and
+whether omitting Data Sync from the public version creates meaningful
+friction for App Partners over time.
+
+## Reflection
+
+The framework worked. The structure held across native apps, earned strong
+NPS scores, and scaled beyond its original scope into Operations Hub. The
+UI Builder gave external developers a real path to building settings pages
+that didn't exist before.
+
+What worked specifically: the open card sort in Phase 2. Running it
+open-ended rather than closed revealed that customers didn't organize
+features the way we expected, which led to a better IA. The App Partner
+research was also critical — their needs (action triggers, onboarding) were
+different from what I'd assumed based on internal usage patterns.
+
+What didn't work: the start/stop cadence. Pausing for a year was justified
+— we needed the data — but the distributed ownership model meant other
+teams extended the framework without coordinated design guidance in the
+meantime. When I returned, I spent real time reconciling divergent
+implementations before I could design forward, which wasn't in the original
+plan and compressed the Phase 2 timeline.
+
+If I had a clean slate, I'd build lightweight governance into the framework
+from the start — design guidelines, review touchpoints, a shared library
+with guardrails — so distributed teams extending it would stay within
+bounds even without centralized oversight. The technical framework was
+sound; the organizational framework around it was what drifted. That's a
+distinction I now think about on every systems-level project: a feature
+serves users directly, but a framework serves the teams who serve users,
+and its design constraints are organizational as much as functional.

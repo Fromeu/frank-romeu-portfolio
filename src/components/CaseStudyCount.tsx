@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-// Tied to the existing crate-settle load-sequence gate (html.entering, set by
-// the inline script in layout.tsx) rather than inventing a new animation
-// trigger — only counts up on a fresh-session homepage landing. That script
-// already skips adding "entering" under prefers-reduced-motion, so checking
-// for the class is sufficient here.
-export default function RecordCount({ count }: { count: number }) {
+// Tied to the existing load-sequence gate (html.entering, set by the inline
+// script in layout.tsx) rather than inventing a new animation trigger — only
+// counts up on a fresh-session homepage landing. That script already skips
+// adding "entering" under prefers-reduced-motion, so checking for the class
+// is sufficient here.
+export default function CaseStudyCount({ count }: { count: number }) {
   const [display, setDisplay] = useState(count);
 
   useEffect(() => {
