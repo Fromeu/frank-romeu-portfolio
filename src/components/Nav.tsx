@@ -12,7 +12,7 @@ const LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-// Global nav: always present, quiet, high contrast, never inside the metaphor.
+// Global nav: always present, quiet, high contrast.
 export default function Nav() {
   const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion();
@@ -49,13 +49,6 @@ export default function Nav() {
     return href === "/" ? pathname === "/" : pathname.startsWith(href);
   }
 
-  const linkClass = (href: string) =>
-    `px-2 py-3 sm:px-3 border-b-2 transition-colors ${
-      isActive(href)
-        ? "border-cobalt text-cobalt"
-        : "border-transparent hover:border-ink/30"
-    }`;
-
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/90 backdrop-blur">
       <nav
@@ -66,17 +59,32 @@ export default function Nav() {
           {site.name}
         </Link>
 
-        {/* Desktop: inline links, always visible */}
+        {/* Desktop: inline links with an animated draw-in underline */}
         <div className="hidden items-center gap-1 text-sm sm:flex sm:gap-2">
-          {LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={linkClass(link.href)}>
-              {link.label}
-            </Link>
-          ))}
+          {LINKS.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`group relative px-2 py-3 transition-colors sm:px-3 ${
+                  active ? "text-green" : "hover:text-green"
+                }`}
+              >
+                {link.label}
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-2 -bottom-0.5 h-0.5 origin-left rounded-full bg-green transition-transform duration-300 ease-out motion-reduce:transition-none sm:inset-x-3 ${
+                    active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </Link>
+            );
+          })}
           <a
             href={site.resumePath}
             download
-            className="ml-2 whitespace-nowrap rounded-sm bg-ink px-3 py-3 text-paper transition-colors hover:bg-cobalt"
+            className="ml-2 whitespace-nowrap rounded-full bg-green px-4 py-3 text-paper transition-colors hover:bg-ink"
           >
             Download resume
           </a>
@@ -116,7 +124,7 @@ export default function Nav() {
         {open && (
           <m.div
             id={drawerId}
-            className="overflow-hidden border-t border-ink/10 sm:hidden"
+            className="overflow-hidden rounded-b-2xl border-t border-ink/10 sm:hidden"
             initial={prefersReducedMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={prefersReducedMotion ? undefined : { height: 0, opacity: 0 }}
@@ -128,7 +136,7 @@ export default function Nav() {
                   key={link.href}
                   ref={i === 0 ? firstLinkRef : undefined}
                   href={link.href}
-                  className={`py-3 text-base ${isActive(link.href) ? "text-cobalt" : ""}`}
+                  className={`py-3 text-base ${isActive(link.href) ? "text-green" : ""}`}
                 >
                   {link.label}
                 </Link>
@@ -136,7 +144,7 @@ export default function Nav() {
               <a
                 href={site.resumePath}
                 download
-                className="my-2 rounded-sm bg-ink px-3 py-3 text-center text-paper transition-colors hover:bg-cobalt"
+                className="my-2 rounded-full bg-green px-3 py-3 text-center text-paper transition-colors hover:bg-ink"
               >
                 Download resume
               </a>

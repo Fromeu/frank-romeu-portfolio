@@ -7,11 +7,11 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 // Type pairing: Fraunces (characterful display serif, used with restraint)
-// + Archivo (grotesque body sans) + Geist Mono (catalog numbers, meta, captions).
+// + Archivo (grotesque body sans) + Geist Mono (meta, captions).
 // Only Archivo (the LCP-critical body face) is preloaded; the display serif
 // and mono swap in when ready so they don't contend for first-paint bandwidth.
 // SOFT/WONK/italic are exposed for the handful of reserved expressive
-// moments (homepage name, pull-quotes, About lede) — see globals.css.
+// moments (homepage headline, pull-quotes, About lede) — see globals.css.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -57,11 +57,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {/* Load sequence gate: runs before paint. Adds .entering only on a
             fresh-session homepage landing, without reduced motion. The class
-            is removed after the animation so client-side returns to the crate
-            don't replay it. No JS at all = no class = settled state. */}
+            is removed after the animation so client-side returns to the
+            homepage don't replay it. No JS at all = no class = settled state. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{if(location.pathname==="/"&&!sessionStorage.getItem("crate-entered")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("entering");setTimeout(function(){document.documentElement.classList.remove("entering")},1100)}sessionStorage.setItem("crate-entered","1")}catch(e){}`,
+            __html: `try{if(location.pathname==="/"&&!sessionStorage.getItem("site-entered")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("entering");setTimeout(function(){document.documentElement.classList.remove("entering")},1100)}sessionStorage.setItem("site-entered","1")}catch(e){}`,
           }}
         />
         <a

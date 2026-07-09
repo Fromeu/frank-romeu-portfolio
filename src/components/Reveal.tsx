@@ -4,9 +4,8 @@ import { useRef } from "react";
 import { m, useInView, useReducedMotion } from "framer-motion";
 
 // Shared reveal-on-scroll wrapper: fade + rise in, once, respecting reduced
-// motion. Reuses the same margin/easing CrateRecord's mobile path already
-// established, so entrance motion reads as one language across the site
-// instead of a pattern invented per-component.
+// motion. The single entrance primitive for the whole site, so motion reads
+// as one considered language instead of a pattern invented per-component.
 export default function Reveal({
   children,
   delay = 0,

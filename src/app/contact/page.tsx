@@ -28,7 +28,7 @@ export default function ContactPage() {
             </span>
             <a
               href={`mailto:${site.email}`}
-              className="text-cobalt underline underline-offset-4"
+              className="text-green underline underline-offset-4"
             >
               {site.email}
             </a>
@@ -39,7 +39,7 @@ export default function ContactPage() {
             </span>
             <a
               href={site.linkedin}
-              className="text-cobalt underline underline-offset-4"
+              className="text-green underline underline-offset-4"
               rel="me noopener"
             >
               {site.linkedin.replace("https://www.", "")}
@@ -52,7 +52,7 @@ export default function ContactPage() {
             <a
               href={site.resumePath}
               download
-              className="text-cobalt underline underline-offset-4"
+              className="text-green underline underline-offset-4"
             >
               Download (PDF)
             </a>

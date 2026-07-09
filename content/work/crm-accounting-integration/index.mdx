@@ -1,0 +1,329 @@
+---
+title: "Two Audiences, One Integration"
+subtitle: "Built HubSpot's first accounting integration as a framework other tools would build on — 10,000+ installs and $17M in invoiced revenue."
+slug: "crm-accounting-integration"
+company: "HubSpot"
+role: "Product Designer"
+year: "2019–2021"
+duration: "Year-and-a-half development"
+domain: "CRM Platform / Fintech Integration"
+order: 4
+heroImage: "/work/crm-accounting-integration/hero.svg"
+heroAlt: "Placeholder cover art for the CRM + Accounting case study"
+metrics:
+  - label: "QuickBooks Online installs"
+    value: "550+"
+  - label: "Total installs across accounting-API tools"
+    value: "10,000+"
+  - label: "Revenue on invoices in platform"
+    value: "$17M"
+draft: false
+---
+
+{/* NEEDS CONFIRMATION FROM FRANK: exact start year not stated in source
+    material — "2019–2021" is an estimate derived from "first project at
+    HubSpot" + "seven years at HubSpot" (per the About page, written ~2026)
+    + the source doc's own "year-and-a-half development" note. Please
+    confirm/correct before this goes live. */}
+
+After a deal closed in HubSpot's CRM, sales reps hit a wall. They'd wait for
+the finance team to create invoices, with zero visibility on status unless
+they directly asked. Finance teams wanted to help reps move faster but
+didn't trust them to operate in accounting tools. And for everyone
+involved, creating invoices meant re-entering data that already existed in
+the CRM — customer details, product information, payment terms — into a
+separate system. This was my first project at HubSpot, and every decision I
+made on the QuickBooks Online integration would template the framework for
+every accounting tool that followed.
+
+## My role
+
+I was the sole product designer, responsible for end-to-end design:
+research planning and facilitation, problem definition, information
+architecture, user flows, wireframes through high-fidelity designs,
+prototyping, usability testing, and ongoing iteration based on continuous
+customer feedback. I facilitated collaborative workshops with the team to
+drive alignment on problems and solutions, and maintained a regular
+advisory group of customers throughout development.
+
+The team: one product manager, two tech leads (front-end and back-end),
+six software engineers, one content designer, and one product analyst.
+
+## The problem
+
+### User problem
+
+Once a deal closed in HubSpot, sales reps hit a wall. They'd wait for the
+finance team to create invoices, with zero visibility on status unless they
+directly asked. Finance teams wanted to help reps move faster but didn't
+trust them to operate in accounting tools. And for everyone involved,
+creating invoices meant re-entering data that already existed in the CRM —
+customer details, product information, payment terms — into a separate
+system.
+
+<PullQuote attribution="Customer feedback">
+The complaint is always, always spending so much time putting in the same
+information over and over again. Shipping address, billing address, then
+mailing address...
+</PullQuote>
+
+The problem wasn't a single broken step. It was a fractured handoff between
+two systems that created delay, redundant work, and an information
+asymmetry between the people closing deals and the people processing
+payments.
+
+### Business problem
+
+HubSpot positions its CRM as the system of record for customer
+relationships. But a CRM that can't tell you whether a customer has paid is
+incomplete in a way that matters. Accounting data — invoice status, payment
+history, revenue tied to specific deals — is the signal that closes the
+loop between sales activity and business outcomes. Without it, HubSpot's
+CRM was strong on the front office and blind to the back office.
+
+This project was strategic in a second sense: the QuickBooks Online
+integration would serve as the model for an accounting API that external
+tools (Xero, NetSuite, FreshBooks, Nubox) could build on. The design
+decisions weren't just for one integration — they were for a category.
+
+## Context and constraints
+
+This was my first project at HubSpot. I was new to the company, the SaaS
+industry, and the quote-to-cash process, which meant the research phase was
+doing double duty as onboarding. That was a constraint and an advantage: I
+had no inherited assumptions about how HubSpot "should" handle accounting
+data.
+
+The QuickBooks Online integration was the implementation, but the real
+deliverable was a reusable framework. Every design decision had to account
+for generalized use: what worked for QBO also needed to work for Xero,
+NetSuite, and tools that didn't exist yet. I couldn't optimize for any
+single accounting tool's quirks without considering the abstraction layer
+underneath.
+
+This was also a net-new product category for HubSpot — no existing
+integration, no baseline metrics, no historical data to measure improvement
+against. We couldn't say "reduce time-to-invoice by X%" because nobody had
+measured time-to-invoice in HubSpot before. Success metrics had to be
+defined from scratch around adoption signals rather than improvement
+metrics.
+
+Invoices involve customer details, product details, and payment details —
+all of which needed to match between HubSpot and the accounting tool. Tax
+codes for non-US customers, currency conversions, and differing sources of
+truth between systems created design challenges that couldn't be
+simplified away.
+
+## Process
+
+Before committing to any feature direction, the PM and I split research
+responsibilities. She sourced, recruited, and scheduled 15 interviews with
+business owners, accountants, and sales reps across the quote-to-cash
+chain. I developed the research plan and facilitated the discussions,
+asking how customers currently measured growth in the CRM, where the
+greatest friction in their quote-to-cash process was, who felt that
+friction most acutely, and where the process broke down.
+
+While interviews were running, I built an iterative diagram mapping the
+invoice lifecycle — plotting touchpoints and handoffs between sales reps,
+customers, and finance teams. This diagram became a working artifact that
+evolved throughout the project, serving as both a sense-making tool for me
+and an alignment artifact for the team.
+
+Synthesis laid customer quotes against our research questions, identified
+themes, and plotted friction points against the lifecycle diagram. The core
+problems that emerged: sales reps waiting on finance to create invoices,
+zero visibility on invoice status without bothering finance, finance
+wanting to help reps but not trusting them in accounting tools,
+time-consuming redundant data entry, and no way to track completion from
+closed deal to paid invoice.
+
+I facilitated collaborative workshops with the full team: summarize
+research findings, align on the problems we'd solve, review the primary
+persona (sales rep — the clearest beneficiary from the research), generate
+approaches, and plot ideas on an effort-versus-impact matrix for
+prioritization. The workshops produced a set of user requirements: the
+ability to create invoices from a deal record, match customers and
+products between systems, send invoices to the external tool, monitor
+invoice status from a deal record, and create automated workflows based on
+invoice data.
+
+I broke down the categories of information that flow through an invoice —
+customer details, product details, payment details — which informed the
+data-matching requirements between HubSpot and QuickBooks, then diagrammed
+user flows for invoice creation, including matching logic for products and
+customers, matching HubSpot quotes to invoice drafts, and the various
+creation paths between systems.
+
+Solution design moved through multiple rounds of sketching, wireframing,
+and high-fidelity work — but it didn't follow a clean handoff from design
+to build. We maintained regular communication with a customer advisory
+group throughout development, which let us iterate while the product was
+being built, not just before. That recurring feedback loop produced
+significant changes over time: reworking the side-panel invoice creation
+into a full-screen experience, adding the ability to import existing
+invoices, enabling invoice creation directly from quote data, adding
+contact and invoice syncing, and building features for a QuickBooks Online
+Advanced premium partnership.
+
+Several problems resisted clean solutions. Tax code selection for non-US
+customers was complex because tax structures vary dramatically across
+jurisdictions and accounting tools handle them differently. Currency
+conversions raised source-of-truth questions — when HubSpot and the
+accounting tool disagreed on exchange rates, which one won? Matching unique
+quote data to invoice drafts required careful mapping logic. Import speeds
+from some accounting tools were painfully slow, requiring loading-state
+design that acknowledged the wait rather than hiding it. These weren't
+edge cases — they were the daily reality for businesses operating across
+borders or with complex product catalogs, and the design had to handle
+them without overwhelming users who had simpler setups.
+
+## Key decisions
+
+### 1. Full-screen experience over side panel
+
+**What was decided:** Rework the original side-panel invoice creation flow
+into a full-screen experience.
+
+**Alternatives considered:** Keep the side panel and simplify the invoice
+creation flow instead — fewer fields, fewer options.
+
+**Why this direction:** Customer feedback during iterative testing made it
+clear that creating an invoice isn't a lightweight action — it involves
+matching customers, selecting products, configuring tax codes, and
+reviewing payment terms. The side panel cramped the content and made the
+task feel like a quick edit when it was actually a structured workflow.
+
+**What it cost:** Breaking the pattern of side-panel actions on deal
+records, which required alignment with other design teams across HubSpot.
+
+### 2. Quote-to-invoice pre-fill
+
+**What was decided:** Let invoice drafts pre-fill from existing HubSpot
+quote data, editable before sending.
+
+**Alternatives considered:** Treat quotes and invoices as fully
+independent objects — simpler technically, more robust against data drift
+between the two.
+
+**Why this direction:** Reps were already entering deal and product
+information into HubSpot quotes. Asking them to re-enter the same data for
+an invoice was the exact redundancy customers complained about most.
+
+**What it cost:** A new dependency between the quoting and invoicing
+systems that needs ongoing maintenance as both evolve — but the user value
+was immediate and addressed the top complaint from research directly.
+
+### 3. Framework-first design discipline
+
+**What was decided:** Design the QBO integration knowing every decision
+would become a template for external accounting tools building on the API
+— resisting QBO-specific optimizations that wouldn't generalize.
+
+**Alternatives considered:** Optimize fully for QBO first (the largest,
+most important integration) and abstract later.
+
+**Why this direction:** Retrofitting abstraction is harder than building
+it in from the start, and the accounting extension's credibility depended
+on external tools being able to replicate the native experience.
+
+**What it cost:** A longer design process, and some compromises on
+QBO-specific polish along the way.
+
+## The solution
+
+The accounting extension gives sales reps the ability to create, monitor,
+and manage invoices directly from HubSpot deal records, with data synced to
+connected accounting tools.
+
+<Figure
+  src="/work/crm-accounting-integration/solution-1.svg"
+  alt="Placeholder image of the invoice creation flow"
+  caption="Full-screen invoice creation, pre-filled from a deal record, with product matching visible (placeholder)."
+/>
+
+Invoice creation is a full-screen experience accessible from deal records,
+pre-filling customer and product data from HubSpot and from quotes when
+available, and handling customer/product matching between systems with the
+ability to create new records in either system when matches don't exist.
+
+<Figure
+  src="/work/crm-accounting-integration/solution-2.svg"
+  alt="Placeholder image of invoice status on a deal record"
+  caption="Invoice status — draft, sent, paid — visible directly on the deal record (placeholder)."
+/>
+
+Invoice status is visible directly on deal records, giving reps visibility
+on the payment lifecycle without leaving HubSpot or asking finance.
+Existing invoices can be imported from accounting tools, and contact/
+invoice data syncs between systems to keep both up to date.
+
+The QuickBooks Online integration shipped first, with the underlying
+accounting API available for external tools — Xero, NetSuite, FreshBooks,
+Nubox — to build equivalent integrations.
+
+## Outcomes
+
+550+ QuickBooks Online installs, 10,000+ total installs across all tools
+built on the accounting API, 19,000 invoices created or imported to
+HubSpot, and $17M in total revenue on invoices in the platform. These are
+adoption metrics, not improvement metrics — we had no baseline to measure
+against, a known limitation from the start. They demonstrate that the
+product found real usage, but they don't directly measure whether the
+quote-to-cash process got faster or whether reps spend less time on
+invoice administration.
+
+<PullQuote attribution="NPS respondent, business development coach">
+I rarely endorse any CRM because I stay vendor-neutral with my clients, but
+this integration is perfect for my small business clients.
+</PullQuote>
+
+The integration was featured at HubSpot's annual INBOUND product showcase.
+The accounting API enabled external tools to build integrations
+replicating the native experience, validating the framework approach. The
+customer advisory group stayed engaged throughout the year-and-a-half
+development process, providing consistent signal that kept the design
+aligned with real usage.
+
+What's still unknown: time from deal-close to paid invoice — the metric we
+most wanted but couldn't benchmark — long-term adoption curves per
+accounting tool, whether the framework approach produced quality parity
+across external integrations or whether QBO maintained an advantage, and
+the impact of the premium QBO Advanced partnership features on overall
+adoption.
+
+## Reflection
+
+This was my first project at HubSpot, and it shaped how I approach design
+work at the company. The biggest lesson was about the dual nature of
+framework design: every UX decision had two audiences — the sales rep
+using the QBO integration today, and the developer building the Xero
+integration next quarter. That tension forced a discipline I wouldn't have
+developed on a single-product project.
+
+What worked: the continuous feedback loop with the customer advisory
+group. Instead of a research-then-build sequence, we ran research alongside
+development, which meant changes like the side-panel-to-full-screen shift
+happened while there was still room to make them, not after the pattern
+had calcified. The workshop-driven alignment process also worked well for
+a cross-functional team that needed to converge on scope quickly.
+
+What didn't work: the measurement story. We set adoption metrics because
+we had to measure something, but the metrics we actually cared about —
+time-to-invoice, completion rate from closed deal to paid invoice —
+weren't measurable because there was no baseline. I'd push harder at the
+outset to instrument the existing process, even a rough manual measurement
+of how long the deal-to-invoice handoff took, so we'd have something to
+compare against post-launch.
+
+The cross-system complexity — tax codes, currencies, matching logic — was
+also harder than I initially estimated. I treated those as edge cases
+early in the design process, and they turned out to be core flows for a
+meaningful portion of users. If I were starting over, I'd front-load the
+international and multi-currency scenarios in research rather than
+discovering their complexity during iteration.
+
+What I took forward: the instinct to design for the framework, not just
+the feature. This project was my introduction to systems-level thinking at
+HubSpot, and it directly informed how I've approached every multi-surface
+design problem since.

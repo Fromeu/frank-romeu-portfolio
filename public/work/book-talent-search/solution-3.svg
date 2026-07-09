@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#ffffff"/>
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#e4e2dc" stroke-width="1"/>
+  <rect x="80" y="120" width="120" height="5" fill="#d3560f"/>
+  <text x="80" y="100" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600" font-size="32" fill="#14140f">Search for Images, Filter for Talent</text>
+  <text x="80" y="165" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#57564d">Solution 3 — Saved Talent Page, comparing candidates</text>
+  <text x="80" y="750" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="1.5" fill="#57564d">PLACEHOLDER — REPLACE WITH REAL PRODUCT SCREENSHOT</text>
+</svg>

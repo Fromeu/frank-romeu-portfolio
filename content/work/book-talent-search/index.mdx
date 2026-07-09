@@ -1,0 +1,316 @@
+---
+title: "Search for Images, Filter for Talent"
+subtitle: "Designed Aquent's first ML-powered talent search platform from scratch — $7.4M in placed revenue and 98.7% retention within 3 months of launch."
+slug: "book-talent-search"
+company: "Aquent"
+role: "Product Designer"
+year: "2019"
+duration: "~1 year"
+domain: "ML Product / Talent Marketplace"
+order: 2
+heroImage: "/work/book-talent-search/hero.svg"
+heroAlt: "Placeholder cover art for the Aquent BOOK case study"
+metrics:
+  - label: "Revenue from roles placed via BOOK"
+    value: "$7.4M"
+  - label: "Retention rate, 3 months post-launch"
+    value: "98.7%"
+draft: false
+---
+
+Staffing agents at Aquent were evaluating creative talent the same way
+they'd evaluate anyone else: resumes, keyword searches, and gut instinct.
+Portfolios — the single most valuable signal for creative roles, with 92% of
+agents rating them more valuable than resumes — were reviewed in under 15
+seconds and couldn't be searched at all. I led the design of a platform that
+used machine learning to classify and index portfolio images, turning
+visual work into a searchable, filterable recruitment tool. The harder
+design problem wasn't the search. It was making individual portfolio images
+tell enough of a story to be useful — which forced a fundamental shift in
+what this product was trying to be.
+
+## My role
+
+I was the sole designer on Aquent's BOOK, responsible for the full product
+design from research through release — the first time I designed an
+application from the ground up. I owned UX research (survey design,
+interview facilitation, persona creation), information architecture,
+interaction design, visual design, prototyping, and usability testing. I
+also collaborated with engineering on the machine learning search model,
+helping curate and structure the image classification labels that powered
+the search experience.
+
+The team: one product manager, one agile development manager, five
+developers, one data scientist, and two QA specialists. I was the only
+designer.
+
+## The problem
+
+### User problem
+
+Aquent's staffing agents had no visual search tool. When sourcing creative
+talent, they relied on the same text-based tools and processes used for
+non-creative roles — keyword searches through a database that couldn't
+understand what a portfolio actually showed. Agents were reviewing
+portfolios manually, spending 15 to 60 seconds per candidate, and they
+could only get to a portfolio after already identifying a candidate through
+other means. There was no way to start from the work itself and discover
+talent through it.
+
+Forty-two percent of respondents in my own research reported using external
+visual search tools like Behance and Dribbble to supplement Aquent's own
+systems. The sourcing workflow was split across tools that didn't talk to
+each other, and the richest signal — the portfolio — was the hardest to
+access at scale.
+
+### Business problem
+
+BOOK was one of Aquent's top strategic initiatives. The staffing industry
+competes on speed and fit — the agency that surfaces the right candidate
+fastest wins the placement. Aquent had a competitive asset (a database of
+creative portfolios with years of accumulated work) but no way to
+operationalize it. The platform was funded as a differentiator: proof that
+Aquent was using technology to evolve creative sourcing beyond what
+competitors could offer. Success would be measured in revenue from
+placements, fill rate, and time to fill.
+
+## Context and constraints
+
+This was my first time designing a full application, not a feature within
+an existing product. Every structural decision — information architecture,
+interaction patterns, visual language — was mine to make without an
+existing system to build on or reference. That freedom was also the
+constraint: there were no guardrails.
+
+A senior engineer had already built a machine learning proof of concept
+that classified portfolio images before I joined. The POC secured funding
+and set the technical foundation, but it also anchored the team's mental
+model around "image search" as the core product concept — a framing my
+research would eventually challenge.
+
+The machine learning model operated on three pillars: image classification
+labels (roughly 100 categories built from 1,000+ curated training images
+each), object detection labels (3,000+ labels via Amazon's Rekognition
+API), and natural language processing on resume and portfolio text. The
+search experience had to be designed around what the model could reliably
+classify, not around the ideal search vocabulary agents might want.
+
+During interviews, agents struggled to articulate what search terms they'd
+use for a visual search tool — not a failure of research, but a genuine
+gap. Agents had never had this capability, so they couldn't easily
+conceptualize it. The design had to bridge that gap rather than rely on
+familiar search patterns.
+
+## Process
+
+The product's significance to Aquent's strategy earned proper research and
+discovery time. I structured it in two phases: an internal phase
+(stakeholder and engineering interviews on business operations, technical
+considerations, and the state of the portfolio database), and a
+domain-specific phase (auditing existing search tools, reviewing legacy
+feedback, and studying design patterns from leading search platforms).
+
+I designed and distributed a survey to 252 Aquent agents, recruiters, and
+managers; 147 responded. The data confirmed the opportunity: 92% rated
+portfolios as more valuable than resumes for assessing creative talent, 42%
+were already using external visual tools, and 22% reviewed portfolios in
+less than 15 seconds. Portfolios were the most valued signal and the least
+supported by existing tools.
+
+A product manager and I conducted 21 interviews with agents — she handled
+logistics, I developed the script and facilitated. Key insights: agents
+spent 15–60 seconds on a portfolio, portfolios were the first thing
+reviewed once a candidate was identified, search terms were hard for agents
+to conceptualize, clients articulated needs in relation to specific
+projects or comparable talent rather than abstract skills, and singular
+images rarely told the full story of a talent's fit. That last insight
+would prove critical — it meant a results page full of individual images
+wouldn't be enough; agents needed to see work in context.
+
+I created a persona representing the staffing-agent audience and used it in
+every brainstorming session. The research pointed to three core
+experiences: a Search Results Page for searching and filtering, a Saved
+Talent Page for refining selections and taking action, and a Project Detail
+screen for viewing portfolio projects in context — accessible from both
+other screens, because wherever an agent was in their workflow, they'd
+eventually need to see the work in context.
+
+I started with paper sketches, moved to mid-fidelity wireframes, then
+assembled prototypes for testing. The initial direction drew heavily from
+search-engine patterns — the research had started there, and the proof of
+concept reinforced that mental model. But feedback revealed an opportunity
+to differentiate: rather than building another search tool, we could
+combine search capability with portfolio showcasing inspired by
+creative-discovery platforms. The product's job shifted from "find images
+by keyword" to "discover talent through their work." This wasn't a pivot
+born of failure — it was recognizing that the most interesting thing about
+BOOK wasn't the search, it was that the search gave you access to work you
+could actually evaluate in context.
+
+A few interaction decisions mattered more than the rest. A horizontal
+masonry layout for search results, respecting the mostly-landscape
+orientation of the portfolio images in the database. The mental model
+"search for images, filter for talent" — search targeted the work, filters
+targeted the person (location, pay rate, last active date) — validated
+directly with users. And a full-screen Project View, grouping related
+images and text into project views so agents could follow a portfolio's
+actual narrative instead of evaluating a single disconnected image.
+
+<PullQuote attribution="Research finding">
+Singular images rarely tell the full story of a talent's fit.
+</PullQuote>
+
+Availability was the hardest filter to get right. Previous internal tools
+had tried to standardize "availability" with varying degrees of success,
+creating confusion and distrust in the data. Agents told me they trusted
+calculated or implied data over self-reported data, and that they'd
+ultimately verify availability through direct communication anyway. Instead
+of designing around arbitrary availability dates, I built around concrete
+activity dates: a binary toggle for working/non-working talent, filterable
+statuses automated from reliable data sources, prioritized contact
+information, and visible activity history — reframing the filter from "is
+this person available?" (unreliable) to "when was this person last active?"
+(verifiable).
+
+## Key decisions
+
+### 1. Pivoting from search-engine patterns to creative discovery
+
+**What was decided:** Shift the product's core framing from a search tool
+to a creative-discovery platform that happened to be searchable.
+
+**Alternatives considered:** Stay with a more conventional search-engine
+model, which would have been faster to build and easier to explain.
+
+**Why this direction:** A conventional search tool would have competed
+with existing platforms like Behance and Dribbble on their own terms,
+without their network effects. Research and stakeholder feedback both
+pointed to portfolio showcasing — not search mechanics — as the real
+differentiator.
+
+**What it cost:** Redesigning significant portions of the interaction
+model mid-project, and resetting stakeholder expectations around what the
+product would look and feel like.
+
+### 2. Activity-based filtering over availability dates
+
+**What was decided:** Replace a self-reported "availability" concept with
+a filter built on verifiable, system-derived activity dates.
+
+**Alternatives considered:** Another attempt at a reliable self-reported
+availability signal.
+
+**Why this direction:** Previous tools had tried this and failed — agents
+didn't trust the data. Reframing around "last active" dates derived from
+real system data was honest about what the system could actually know.
+
+**What it cost:** Agents still had to contact talent directly to confirm
+true availability. But they were doing that anyway; the design acknowledged
+reality instead of trying to engineer around it.
+
+### 3. Full-screen project view over inline image detail
+
+**What was decided:** Replace an inline portfolio preview with a
+full-screen Project View.
+
+**Alternatives considered:** Enrich the inline preview with more data
+while keeping it lightweight.
+
+**Why this direction:** Research showed individual images weren't enough
+to evaluate fit — agents needed the narrative context of a full project:
+multiple images, sequencing, and text together.
+
+**What it cost:** A more interruptive flow when browsing results — each
+click became a bigger commitment. But the quality of information at that
+point was dramatically higher.
+
+## The solution
+
+BOOK gives staffing agents visual-first search and discovery, organized
+around three core experiences.
+
+<Figure
+  src="/work/book-talent-search/solution-1.svg"
+  alt="Placeholder image of the search results page"
+  caption="Search results: horizontal masonry layout, search bar, and filter panel (placeholder)."
+/>
+
+A Search Results Page with a horizontal masonry layout of portfolio images,
+searchable by classification labels and keywords, filterable by talent
+attributes. Search targets the work; filters target the person.
+
+<Figure
+  src="/work/book-talent-search/solution-2.svg"
+  alt="Placeholder image of the project detail view"
+  caption="Project Detail: a talent's portfolio project in full-screen, with the Talent Pane alongside (placeholder)."
+/>
+
+A Project Detail view with a Talent Pane — full-screen, showing grouped
+images and text that preserve the narrative structure of the work,
+alongside contact info, availability status, activity history, and links
+to external portfolios.
+
+<Figure
+  src="/work/book-talent-search/solution-3.svg"
+  alt="Placeholder image of the saved talent page"
+  caption="Saved Talent Page: comparing shortlisted candidates side by side (placeholder)."
+/>
+
+A Saved Talent Page as a workspace for agents to manage shortlisted
+candidates — select, compare portfolios side by side, and submit to open
+assignments.
+
+## Outcomes
+
+Three months post-release (September 2019): $7.4M in revenue from roles
+placed through BOOK, an 8% improvement in fill rate, a 12% reduction in
+average time to fill, and 98.7% retention for roles placed through the
+platform. Attribution is direct — these are roles placed specifically
+through BOOK — but three months is a short window for a platform still
+being adopted internally.
+
+Agents had, for the first time, a visual-first entry point to their
+sourcing process. The platform was featured in Aquent's sales conversations
+with clients as a differentiator. The ML model's classification accuracy
+was sufficient for useful search results, though the curated label set —
+roughly 100 categories — represented only a fraction of how agents might
+naturally describe creative work.
+
+What's still unknown: how fill rate and time-to-fill held up as adoption
+matured, how the classification model would need to evolve to match the
+full vocabulary agents actually use, and whether the platform reduced
+reliance on external tools like Behance and Dribbble or simply added
+another tool to the stack.
+
+## Reflection
+
+This project taught me more about product design than anything I'd done
+before it — not because of the machine learning component, but because
+designing from scratch forced me to own every structural decision without
+the scaffolding of an existing product.
+
+What worked: the research investment. The survey and 21 interviews gave us
+signal that directly shaped the product — the activity-over-availability
+insight, the "singular images don't tell the story" finding, the "search
+for images, filter for talent" mental model. None of that came from
+competitive analysis or assumption; it came from agents describing their
+actual work.
+
+What didn't work as well: the initial direction. Starting from
+search-engine patterns was the obvious move, but it anchored the team — and
+me — on a paradigm that didn't serve the product's real opportunity. We
+corrected course, but the pivot cost time and required resetting
+expectations. If I'd spent more of the early research phase asking "what
+makes this different from Behance?" instead of "how do search engines
+work?", we might have arrived at the creative-discovery framing sooner.
+
+The availability problem also stayed messier than I wanted. The
+activity-based reframe was honest — it acknowledged that availability data
+is inherently unreliable — but agents still had to pick up the phone. I
+don't know if that's fully solvable with data, and I left it as an open
+question rather than pretending the design resolved it.
+
+If I had a clean slate, I'd push harder on the Project View concept
+earlier. It ended up being the most differentiated part of the product —
+the thing that made BOOK more than "Dribbble but internal." Getting there
+faster would have given us more time to refine it.
