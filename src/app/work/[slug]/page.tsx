@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import RecordCard from "@/components/RecordCard";
 import { catalogNumber } from "@/lib/catalog";
 import Sticker from "@/components/Sticker";
+import VinylPeek from "@/components/VinylPeek";
 import { mdxComponents } from "@/components/mdx";
 import CaseStudyToc from "@/components/CaseStudyToc";
 import { extractToc, estimateReadMinutes } from "@/lib/reading";
@@ -65,14 +66,17 @@ export default async function CaseStudyPage({
         {/* Hero: this image is the shared element that morphs from the crate in Phase 3 */}
         <header className="mt-8">
           <div className="relative">
-            {/* Same ViewTransition name as the crate card: this is the morph target */}
-            <ViewTransition name={`record-${cs.slug}`} share="morph">
-              <img
-                src={cs.heroImage}
-                alt={cs.heroAlt}
-                className="aspect-square w-full border border-ink/10 object-cover shadow-[0_2px_12px_rgba(24,22,17,0.10)]"
-              />
-            </ViewTransition>
+            <div className="relative aspect-square w-full overflow-hidden">
+              <VinylPeek />
+              {/* Same ViewTransition name as the crate card: this is the morph target */}
+              <ViewTransition name={`record-${cs.slug}`} share="morph">
+                <img
+                  src={cs.heroImage}
+                  alt={cs.heroAlt}
+                  className="absolute inset-0 h-full w-full border border-ink/10 object-cover shadow-[0_2px_12px_rgba(24,22,17,0.10)] transition-transform duration-300 ease-out -translate-x-[6%] motion-reduce:transition-none"
+                />
+              </ViewTransition>
+            </div>
             <div className="absolute -top-2.5 right-3 flex flex-col items-end gap-1.5">
               <Sticker tone="hype" tilt={-4}>
                 {cs.year}

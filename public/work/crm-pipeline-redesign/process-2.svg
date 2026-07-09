@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
-  <rect width="1600" height="1000" fill="#1E3A5F" opacity="0.25"/>
-  <rect x="40" y="40" width="1520" height="920" fill="none" stroke="#1E3A5F" stroke-width="4" stroke-dasharray="16 12"/>
-  <text x="800" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="56" font-weight="bold" fill="#1E3A5F">Pipeline, Reimagined</text>
-  <text x="800" y="560" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="40" fill="#1E3A5F" opacity="0.8">Placeholder process image 2</text>
-</svg>

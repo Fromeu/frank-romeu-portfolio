@@ -1,6 +1,7 @@
 import { ViewTransition } from "react";
 import Link from "next/link";
 import Sticker from "@/components/Sticker";
+import VinylPeek from "@/components/VinylPeek";
 import Reveal from "@/components/Reveal";
 import { catalogNumber } from "@/lib/catalog";
 import type { CaseStudy } from "@/lib/content";
@@ -22,14 +23,17 @@ export default function RecordCard({
     <Reveal delay={index * 0.08}>
       <Link href={`/work/${cs.slug}`} className="group block" data-record={cs.slug}>
         <div className="relative">
-          <ViewTransition name={`record-${cs.slug}`} share="morph">
-            <img
-              src={cs.heroImage}
-              alt={cs.heroAlt}
-              loading="lazy"
-              className="aspect-square w-full border border-ink/10 object-cover shadow-[0_2px_12px_rgba(24,22,17,0.10)] transition-[transform,box-shadow] duration-300 ease-out group-hover:-translate-y-1.5 group-hover:shadow-[0_14px_28px_rgba(24,22,17,0.16)] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
-            />
-          </ViewTransition>
+          <div className="relative aspect-square w-full overflow-hidden">
+            <VinylPeek />
+            <ViewTransition name={`record-${cs.slug}`} share="morph">
+              <img
+                src={cs.heroImage}
+                alt={cs.heroAlt}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full border border-ink/10 object-cover shadow-[0_2px_12px_rgba(24,22,17,0.10)] transition-[transform,box-shadow] duration-300 ease-out -translate-x-[6%] group-hover:-translate-x-[38%] group-hover:-translate-y-1.5 group-hover:shadow-[0_14px_28px_rgba(24,22,17,0.16)] motion-reduce:transition-none motion-reduce:group-hover:-translate-x-[6%] motion-reduce:group-hover:translate-y-0"
+              />
+            </ViewTransition>
+          </div>
           <div className="absolute -top-2.5 right-3">
             <Sticker tone="hype" tilt={-4}>
               {cs.year}
