@@ -54,7 +54,7 @@ export default function Home() {
           </span>
         </div>
         <p className="inline-block rounded-full bg-ink px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-paper">
-          {site.name} · {site.title}
+          {site.title}
         </p>
         <h1 className="font-display mt-5 max-w-[18ch] text-[length:var(--step-display)] font-semibold leading-[1.05] tracking-tight">
           {words.map((word, i) => (
