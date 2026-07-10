@@ -133,7 +133,7 @@ export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
       </button>
       {caption && (
         <figcaption
-          className={`mt-3 font-mono text-xs uppercase tracking-wider text-ink-soft ${
+          className={`mt-3 font-mono text-[11px] uppercase tracking-wider text-ink-soft ${
             fullBleed ? "mx-auto max-w-2xl px-4 lg:mx-0 lg:max-w-none lg:px-0" : ""
           }`}
         >
@@ -442,7 +442,7 @@ export function Carousel({ children, caption }: { children: ReactNode; caption?:
         </button>
       </div>
       {caption && (
-        <p className="mt-3 px-4 font-mono text-xs uppercase tracking-wider text-ink-soft sm:px-[max(1.5rem,calc((100vw-52rem)/2))] lg:px-0">
+        <p className="mt-3 px-4 font-mono text-[11px] uppercase tracking-wider text-ink-soft sm:px-[max(1.5rem,calc((100vw-52rem)/2))] lg:px-0">
           {caption}
         </p>
       )}

@@ -75,7 +75,7 @@ export default async function CaseStudyPage({
             </HeroParallax>
           </div>
 
-          <p className="mt-10 font-mono text-xs uppercase tracking-wider text-ink-soft">
+          <p className="mt-14 font-mono text-xs uppercase tracking-wider text-ink-soft">
             {cs.company} · {readMinutes} min read
           </p>
           <h1 className="mt-3 text-[length:var(--step-hero)] font-display font-semibold leading-[1.08] tracking-tight">

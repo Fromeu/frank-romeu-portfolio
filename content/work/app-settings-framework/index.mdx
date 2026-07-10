@@ -1,6 +1,6 @@
 ---
-title: "One Framework, 1,500 Apps"
-subtitle: "Replaced inconsistent settings across HubSpot's marketplace app ecosystem with a single framework — driving average NPS of 87 across adopting apps."
+title: "One Framework, 2,000 Apps"
+subtitle: "Replaced inconsistent settings across HubSpot's marketplace app ecosystem with a single framework — 115 native apps adopted it at an average NPS of 87."
 slug: "app-settings-framework"
 company: "HubSpot"
 role: "Product Designer"
@@ -8,13 +8,13 @@ year: "2020–2022"
 duration: "2 phases across ~2 years"
 domain: "Developer Platform / Enterprise SaaS"
 order: 4
-heroImage: "/work/app-settings-framework/hero.svg"
-heroAlt: "Placeholder cover art for the App Settings Framework case study"
+heroImage: "/work/app-settings-framework/hero.png"
+heroAlt: "Angled collage of HubSpot app settings screens across many integrations, showing the pre-framework inconsistency"
 metrics:
   - label: "Average NPS across adopting apps (target: 25+)"
     value: "87"
-  - label: "Native apps on framework"
-    value: "15"
+  - label: "Native apps on framework (67%)"
+    value: "115"
 draft: false
 ---
 
@@ -28,14 +28,17 @@ developer building on the platform.
 
 ## My role
 
-I was the sole product designer on this project across both phases
+I was the lead product designer on this project across both phases
 (2020–2022), embedded in HubSpot's Developer Product Group. I owned the
 end-to-end design: research planning and facilitation, information
 architecture, UI design from wireframes through high-fidelity, usability
 testing, and the design of the UI Builder tool that made the framework
 publicly available. I also facilitated a card sort study and partner
-research interviews, and drove the pitch to return to the project after a
-year away.
+research interviews, drove the pitch to return to the project after a
+year away, and managed design alignment across the multiple app teams
+whose work had diverged from the original framework — holding monthly
+check-ins with UXers to stay current on app requirements and preserve
+consistency across teams.
 
 I partnered closely with a product manager, two tech leads (front-end and
 back-end), a content designer, and a product analyst. Six engineers built
@@ -62,6 +65,12 @@ absolutely horrendous. I shouldn't have to spend hours in HubSpot just to
 understand my syncs.
 </PullQuote>
 
+<Figure
+  src="/work/app-settings-framework/admin-persona.png"
+  alt="Administrator persona profile: bio, goals, pain points, challenges, and learning styles"
+  caption="The Administrator: the persona most affected by settings inconsistency across integrations."
+/>
+
 ### Business problem
 
 HubSpot's Developer Product Group existed to give external developers the
@@ -80,6 +89,12 @@ team. Each team had extended the settings experience to fit their specific
 needs, which meant the framework had to accommodate genuine variation
 without enabling further fragmentation. I was designing a standard for teams
 I didn't manage.
+
+<Figure
+  src="/work/app-settings-framework/distributed-ownership.png"
+  alt="Diagram showing the App Settings framework at the center of a hub-and-spoke network of independently-owned app teams — QuickBooks, Slack, Teams, Shopify, Zoom"
+  caption="Distributed ownership: the framework sat at the center of a network of app teams it didn't manage."
+/>
 
 Phase 1 shipped in mid-2020, then the project paused to collect metrics and
 the team moved to other priorities. When I pitched Phase 2 a year later, the
@@ -101,8 +116,8 @@ design work.
 
 The inconsistency of app settings was something the team acknowledged
 informally, but I wanted quantitative grounding before committing to a
-solution direction. I partnered with a product analyst to pull data from our
-analytics and support-ticket systems. The numbers confirmed what we
+solution direction. I partnered with a product analyst to pull data from
+Looker, Zorse, Amplitude, and JIRA. The numbers confirmed what we
 suspected: 27% of integration support calls revolved around settings, 63%
 around data syncs and related tasks, and a single integration — Salesforce —
 drove 57% of total support volume. These weren't edge cases; settings
@@ -114,13 +129,51 @@ Slack, GoToWebinar, Microsoft Teams, and Google Contacts. The audit surfaced
 a consistent set of user needs beneath the surface-level inconsistency:
 managing connected accounts, toggling syncs per object type, adjusting
 create/update/delete rules, mapping properties between systems, and learning
-about app features. These became the structural pillars of the framework —
-an information architecture organized around four segments: Account
-details, Sync health, Object sync, and Getting started.
+about app features. These became the structural pillars of the framework.
+
+<Figure
+  src="/work/app-settings-framework/property-mapping-specs.png"
+  alt="Property mapping design specs for the Sansan integration, including edit states, warnings, and error messaging"
+  caption="Property mapping designs surfaced by the audit — one of the structural pillars users needed across every integration."
+/>
+
+I translated the audit into an information architecture organized around
+four segments: Account details, Sync health, Object sync (with sub-tabs per
+CRM object type), and Getting started. The goal was consistent top-level
+structure with enough flexibility for app-specific features underneath.
+
+<Figure
+  src="/work/app-settings-framework/information-architecture.png"
+  alt="Information architecture diagrams for the settings framework across QuickBooks Online, Shopify, Zoom, and Microsoft Teams"
+  caption="The four-segment IA, adapted across QuickBooks Online, Shopify, Zoom, and Microsoft Teams."
+/>
 
 I moved from low-fidelity wireframes to high-fidelity mockups, running
 moderated and unmoderated usability tests with HubSpot customers before
-shipping. The framework launched in July 2020 for five native integrations.
+shipping.
+
+<ImageGrid>
+  <Figure
+    src="/work/app-settings-framework/wireframes.png"
+    alt="Low-fidelity wireframes for the QuickBooks Online settings pages: sync health, sync settings, property mappings, and how it works"
+    caption="Low-fidelity wireframes for QuickBooks Online, covering all four IA segments."
+  />
+  <Figure
+    src="/work/app-settings-framework/wireframe-feedback.png"
+    alt="Wireframes annotated with sticky-note feedback from usability testing and team review"
+    caption="Wireframes annotated through rounds of usability testing and team feedback."
+  />
+</ImageGrid>
+
+The framework launched in July 2020 for five native integrations: Salesforce,
+QuickBooks Online, NetSuite, Shopify, and Google Contacts.
+
+<Figure
+  src="/work/app-settings-framework/launch-announcement.png"
+  alt="In-product announcement modal: 'Contact sync is here for QuickBooks', offering a tour of the new feature"
+  caption="The framework's July 2020 launch, announced in-product to customers."
+/>
+
 We set success targets — cumulative NPS of 25+, a 15% reduction in
 Salesforce support volume, 50% of native apps on the framework — then paused
 to let the data accumulate.
@@ -128,9 +181,31 @@ to let the data accumulate.
 A year later, I pitched returning to the framework. The landscape had
 shifted: it had become the foundation for settings across 100+ data sync
 apps in Operations Hub, and other teams had extended it with new apps, each
-pulling it in a slightly different direction. Before I could design the
-public version, I had to take stock of what the framework had become and
-reconcile the divergent implementations.
+pulling it in a slightly different direction.
+
+<Carousel caption="The framework a year later: settings pages across the apps and teams that had extended it independently.">
+  <img src="/work/app-settings-framework/drifted-framework-mockup-1.jpg" alt="Drifted framework mockup 1: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-2.jpg" alt="Drifted framework mockup 2: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-3.jpg" alt="Drifted framework mockup 3: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-4.jpg" alt="Drifted framework mockup 4: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-5.jpg" alt="Drifted framework mockup 5: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-6.jpg" alt="Drifted framework mockup 6: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-7.jpg" alt="Drifted framework mockup 7: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-8.jpg" alt="Drifted framework mockup 8: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-9.jpg" alt="Drifted framework mockup 9: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-10.jpg" alt="Drifted framework mockup 10: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-11.jpg" alt="Drifted framework mockup 11: settings pages across multiple apps that extended the original framework" />
+  <img src="/work/app-settings-framework/drifted-framework-mockup-12.jpg" alt="Drifted framework mockup 12: settings pages across multiple apps that extended the original framework" />
+</Carousel>
+
+Before I could design the public version, I had to take stock of what the
+framework had become and reconcile the divergent implementations.
+
+<Figure
+  src="/work/app-settings-framework/settings-audit.png"
+  alt="Settings audit comparing QuickBooks Online, Shopify, and proposed Zoom and Microsoft Teams settings pages against the original framework"
+  caption="Re-auditing the framework across native and newly-added apps before reconciling the divergence."
+/>
 
 A product manager and I conducted 12 exploratory interviews with App
 Partners — external developers building apps for the HubSpot Marketplace.
@@ -139,12 +214,33 @@ facilitated the calls. Two primary needs emerged: the ability to trigger
 actions in external systems from HubSpot, and better onboarding to help
 users get value from newly installed apps.
 
-I ran an open card sort with 24 HubSpot customers to understand how they
-spatially organized the feature set — deliberately open-ended, no pre-set
-categories, for unbiased signal on their actual mental models. The results
-informed a revised information architecture: four top-level tabs (Account
-settings, General settings, Data sync, Feature discovery) with consistency
-at the top level and room for customization in sub-tabs beneath.
+<Figure
+  src="/work/app-settings-framework/onboarding-and-toggles.png"
+  alt="Research synthesis slides on 'Getting started' onboarding and toggles/switches needs from App Partner interviews"
+  caption="The two needs that emerged most consistently: flexible onboarding, and toggles for basic on/off controls."
+/>
+
+I ran an open card sort with 24 HubSpot customers using LucidChart to
+understand how they spatially organized the feature set — deliberately
+open-ended, no pre-set categories, for unbiased signal on their actual
+mental models.
+
+<Figure
+  src="/work/app-settings-framework/card-sort.png"
+  alt="Open card sort board with feature cards grouped into account management, onboarding, sync settings, and 'don't know' categories"
+  caption="The open card sort: 24 customers grouping the feature set with no pre-set categories."
+/>
+
+The results informed a revised information architecture: four top-level tabs
+(Account settings, General settings, Data sync, Feature discovery) with
+consistency at the top level and room for customization in sub-tabs
+beneath.
+
+<Figure
+  src="/work/app-settings-framework/updated-ia.png"
+  alt="Revised information architecture diagram: four top-level tabs with sub-tabs and feature cards beneath"
+  caption="The revised IA: consistent top-level tabs, customizable sub-tabs beneath."
+/>
 
 Making the framework available to external developers required a
 configuration tool. I coordinated with both tech leads to scope what became
@@ -153,6 +249,16 @@ letting App Partners configure settings pages through three component
 types: an Account component, Control components (buttons, toggles,
 dropdowns), and Feature cards. It included a live preview, manual and
 auto-save, template settings, and version history.
+
+<Carousel caption="UI Builder design specs: the account, control, and feature-card components App Partners could configure.">
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-1.jpg" alt="UI Builder spec: happy path flow through the configuration tool" />
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-2.jpg" alt="UI Builder spec: Account component configuration" />
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-3.jpg" alt="UI Builder spec: Control component configuration" />
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-4.jpg" alt="UI Builder spec: Controls detail, including buttons, toggles, and dropdowns" />
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-5.jpg" alt="UI Builder spec: control tooltips" />
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-6.jpg" alt="UI Builder spec: Feature card component configuration" />
+  <img src="/work/app-settings-framework/ui-builder-spec-mockup-7.jpg" alt="UI Builder spec: component delete state" />
+</Carousel>
 
 I conducted research calls with 8 App Partners using an assembled prototype
 to validate the updated framework and assess UI Builder usability. The
@@ -233,40 +339,45 @@ management, general controls, per-object data sync configuration, and
 feature discovery — consistent navigation and structure regardless of which
 app they're configuring.
 
-<Figure
-  src="/work/app-settings-framework/solution-1.svg"
-  alt="Placeholder image of the standardized settings page"
-  caption="Standardized settings, side by side across two native integrations (placeholder)."
-/>
+<Carousel caption="The standardized settings experience, shipped across MS Teams, QuickBooks Online, Shopify, Slack, and Zoom.">
+  <img src="/work/app-settings-framework/updated-settings-mockup-1.jpg" alt="Standardized settings page for the Microsoft Teams integration" />
+  <img src="/work/app-settings-framework/updated-settings-mockup-2.jpg" alt="Standardized settings page for the QuickBooks Online integration" />
+  <img src="/work/app-settings-framework/updated-settings-mockup-3.jpg" alt="Standardized settings page for the Shopify integration" />
+  <img src="/work/app-settings-framework/updated-settings-mockup-4.jpg" alt="Standardized settings page for the Slack integration" />
+  <img src="/work/app-settings-framework/updated-settings-mockup-5.jpg" alt="Standardized settings page for the Zoom integration" />
+</Carousel>
 
 For App Partners: the App Settings UI Builder, accessible from Developer
 accounts, letting external developers configure settings pages for their
 apps using the same component types — with a live preview, version history,
 and template starting points.
 
-<Figure
-  src="/work/app-settings-framework/solution-2.svg"
-  alt="Placeholder image of the UI Builder"
-  caption="The UI Builder: configuration panel and live preview, side by side (placeholder)."
-/>
+<Carousel caption="The shipped App Settings UI Builder: adding components, live preview, code view, and Feature discovery in preview mode.">
+  <img src="/work/app-settings-framework/ui-builder-mockup-1.jpg" alt="App Settings UI Builder: empty live preview before any components are added" />
+  <img src="/work/app-settings-framework/ui-builder-mockup-2.jpg" alt="App Settings UI Builder: Account component added, showing the connected user's account in the live preview" />
+  <img src="/work/app-settings-framework/ui-builder-mockup-3.jpg" alt="App Settings UI Builder: View code tab showing the generated settings-page JSON" />
+  <img src="/work/app-settings-framework/ui-builder-mockup-4.jpg" alt="App Settings UI Builder: Control component added, showing a toggle in the General settings preview" />
+  <img src="/work/app-settings-framework/ui-builder-mockup-5.jpg" alt="App Settings UI Builder: full app settings preview with Feature discovery tab and version history" />
+</Carousel>
 
 The framework launched in public beta, available to every App Partner
 building on HubSpot.
 
 ## Outcomes
 
-Fifteen native apps adopted the framework, with an average NPS of 87 across
-them — well past the original target of 25+. Support volume from the
-Salesforce integration dropped, though the exact figure in the underlying
-data is inconsistent enough that I'd want to verify it precisely before
-citing it — the honest version is that it moved in the right direction,
-short of the 15% target we'd originally set.
+115 native apps (67%) adopted the framework, with an average NPS of 87
+across them — well past the original target of 25+. Support volume from
+the Salesforce integration dropped 9%, short of the 15% target but a real
+improvement in the right direction.
 
 The framework became the default settings foundation for Operations Hub's
-100+ data sync apps — adoption well beyond the original scope. Multiple
-design teams across HubSpot adopted the framework independently, which
-validated the structural model but also revealed the distributed-ownership
-problem Phase 2 had to address.
+100+ data sync apps — adoption well beyond the original scope. As of March
+2026, roughly 2,000 marketplace apps (including HubSpot-built ones) had
+published settings pages with at least one install, and another ~3,100 had
+draft settings-page JSON in progress as of January 2025 — a large pipeline
+still working toward publication. Multiple design teams across HubSpot
+adopted the framework independently, which validated the structural model
+but also revealed the distributed-ownership problem Phase 2 had to address.
 
 What's still unknown: long-term support-volume trends since Phase 2, how
 NPS trends for third-party apps built on the still-beta UI Builder, and
@@ -294,10 +405,12 @@ implementations before I could design forward, which wasn't in the original
 plan and compressed the Phase 2 timeline.
 
 If I had a clean slate, I'd build lightweight governance into the framework
-from the start — design guidelines, review touchpoints, a shared library
-with guardrails — so distributed teams extending it would stay within
-bounds even without centralized oversight. The technical framework was
-sound; the organizational framework around it was what drifted. That's a
-distinction I now think about on every systems-level project: a feature
+from the start — design guidelines, review touchpoints, a shared Figma
+library with guardrails — so distributed teams extending it would stay
+within bounds even without centralized oversight. The technical framework
+was sound; the organizational framework around it was what drifted. That's
+a distinction I now think about on every systems-level project: a feature
 serves users directly, but a framework serves the teams who serve users,
-and its design constraints are organizational as much as functional.
+and its design constraints are organizational as much as functional — a
+lesson that directly shaped how I approached my later work on HubSpot's
+CRM Platform teams.
