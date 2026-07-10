@@ -26,7 +26,7 @@ export default function CaseStudyRow({
       <Link
         href={`/work/${cs.slug}`}
         data-case-study={cs.slug}
-        className="group grid items-center gap-6 sm:grid-cols-2 sm:gap-10"
+        className="grid items-center gap-6 sm:grid-cols-2 sm:gap-10"
       >
         <div className={imageFirst ? "sm:order-1" : "sm:order-2"}>
           <ViewTransition name={`case-study-${cs.slug}`} share="morph">
@@ -34,7 +34,7 @@ export default function CaseStudyRow({
               src={cs.heroImage}
               alt={cs.heroAlt}
               loading="lazy"
-              className="aspect-[4/3] w-full rounded-2xl border border-line object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              className="aspect-[4/3] w-full rounded-2xl border border-line object-cover transition-transform duration-300 ease-out hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
             />
           </ViewTransition>
         </div>
@@ -42,7 +42,7 @@ export default function CaseStudyRow({
           <p className="font-mono text-xs uppercase tracking-wider text-ink-soft">
             {cs.year}
           </p>
-          <h3 className="mt-2 text-[length:var(--step-h2)] font-display font-semibold tracking-tight transition-colors duration-300 group-hover:font-display-wonk group-hover:italic group-hover:text-green">
+          <h3 className="mt-2 text-[length:var(--step-h2)] font-display font-semibold tracking-tight transition-colors duration-300 hover:text-green">
             {cs.title}
           </h3>
           <p className="mt-2 max-w-prose text-ink-soft">{cs.subtitle}</p>

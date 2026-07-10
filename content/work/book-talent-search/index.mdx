@@ -7,9 +7,9 @@ role: "Product Designer"
 year: "2019"
 duration: "~1 year"
 domain: "ML Product / Talent Marketplace"
-order: 2
-heroImage: "/work/book-talent-search/hero.svg"
-heroAlt: "Placeholder cover art for the Aquent BOOK case study"
+order: 6
+heroImage: "/work/book-talent-search/hero.png"
+heroAlt: "BOOK search results page showing a horizontal masonry grid of creative portfolio images"
 metrics:
   - label: "Revenue from roles placed via BOOK"
     value: "$7.4M"
@@ -88,12 +88,24 @@ and set the technical foundation, but it also anchored the team's mental
 model around "image search" as the core product concept — a framing my
 research would eventually challenge.
 
+<Figure
+  src="/work/book-talent-search/poc.png"
+  alt="Diagram of the engineering proof of concept for portfolio image classification"
+  caption="The engineering POC that secured funding and anchored early framing around 'image search.'"
+/>
+
 The machine learning model operated on three pillars: image classification
 labels (roughly 100 categories built from 1,000+ curated training images
 each), object detection labels (3,000+ labels via Amazon's Rekognition
 API), and natural language processing on resume and portfolio text. The
 search experience had to be designed around what the model could reliably
 classify, not around the ideal search vocabulary agents might want.
+
+<Figure
+  src="/work/book-talent-search/ml-pillars.png"
+  alt="Diagram of the three pillars of the machine learning model: image classification labels, object detection labels, and NLP on resume and portfolio text"
+  caption="The model's three pillars: classification labels, object detection, and text NLP."
+/>
 
 During interviews, agents struggled to articulate what search terms they'd
 use for a visual search tool — not a failure of research, but a genuine
@@ -110,12 +122,24 @@ considerations, and the state of the portfolio database), and a
 domain-specific phase (auditing existing search tools, reviewing legacy
 feedback, and studying design patterns from leading search platforms).
 
+<Figure
+  src="/work/book-talent-search/research-discovery.png"
+  alt="Research discovery notes auditing existing search tools and design patterns"
+  caption="Domain-specific discovery: auditing existing tools and legacy search feedback."
+/>
+
 I designed and distributed a survey to 252 Aquent agents, recruiters, and
 managers; 147 responded. The data confirmed the opportunity: 92% rated
 portfolios as more valuable than resumes for assessing creative talent, 42%
 were already using external visual tools, and 22% reviewed portfolios in
 less than 15 seconds. Portfolios were the most valued signal and the least
 supported by existing tools.
+
+<Figure
+  src="/work/book-talent-search/survey-results.png"
+  alt="Survey results dashboard showing agent responses on portfolio value and search tool usage"
+  caption="Survey data from 147 respondents: portfolios as the most valued, least supported signal."
+/>
 
 A product manager and I conducted 21 interviews with agents — she handled
 logistics, I developed the script and facilitated. Key insights: agents
@@ -135,6 +159,19 @@ screen for viewing portfolio projects in context — accessible from both
 other screens, because wherever an agent was in their workflow, they'd
 eventually need to see the work in context.
 
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/persona.png"
+    alt="Staffing agent persona capturing the tension between speed and depth in portfolio review"
+    caption="The staffing-agent persona used across every brainstorming session."
+  />
+  <Figure
+    src="/work/book-talent-search/information-architecture.png"
+    alt="Information architecture diagram linking Search Results, Saved Talent, and Project Detail screens"
+    caption="IA: three core experiences, with Project Detail reachable from either."
+  />
+</ImageGrid>
+
 I started with paper sketches, moved to mid-fidelity wireframes, then
 assembled prototypes for testing. The initial direction drew heavily from
 search-engine patterns — the research had started there, and the proof of
@@ -146,6 +183,19 @@ by keyword" to "discover talent through their work." This wasn't a pivot
 born of failure — it was recognizing that the most interesting thing about
 BOOK wasn't the search, it was that the search gave you access to work you
 could actually evaluate in context.
+
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/paper-sketches.png"
+    alt="Early paper sketches exploring search input, filter chips, and image grid layouts"
+    caption="Early paper sketches, before the pivot away from search-engine patterns."
+  />
+  <Figure
+    src="/work/book-talent-search/wireframes.png"
+    alt="Mid-fidelity Sketch wireframes assembled into InVision prototypes for testing"
+    caption="Mid-fidelity wireframes, assembled into prototypes for testing."
+  />
+</ImageGrid>
 
 A few interaction decisions mattered more than the rest. A horizontal
 masonry layout for search results, respecting the mostly-landscape
@@ -172,6 +222,26 @@ information, and visible activity history — reframing the filter from "is
 this person available?" (unreliable) to "when was this person last active?"
 (verifiable).
 
+Visual design worked within a color system Aquent's Product and Design team
+had established in 2018 — balanced and brand-agnostic across subdivisions.
+For BOOK, I used blue as the primary accent for talent-related components
+(neutral, professional, calming) and green for action-commitment features
+("green means go"). Typography was Roboto, chosen to echo the familiarity
+of the Google Workspace tools the organization used universally.
+
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/visual-design-color.png"
+    alt="BOOK color system: blue for talent components, green for action-commitment features"
+    caption="Blue for talent components, green for action ('green means go')."
+  />
+  <Figure
+    src="/work/book-talent-search/visual-design-type.png"
+    alt="BOOK typography system built on Roboto"
+    caption="Roboto, echoing the Google Workspace tools agents already trusted."
+  />
+</ImageGrid>
+
 ## Key decisions
 
 ### 1. Pivoting from search-engine patterns to creative discovery
@@ -192,6 +262,13 @@ differentiator.
 model mid-project, and resetting stakeholder expectations around what the
 product would look and feel like.
 
+<Figure
+  src="/work/book-talent-search/strategic-pivot.png"
+  alt="Diagram of the strategic pivot from search-engine patterns to creative-discovery platform"
+  fullBleed
+  caption="The pivot: from 'find images by keyword' to 'discover talent through their work.'"
+/>
+
 ### 2. Activity-based filtering over availability dates
 
 **What was decided:** Replace a self-reported "availability" concept with
@@ -207,6 +284,19 @@ real system data was honest about what the system could actually know.
 **What it cost:** Agents still had to contact talent directly to confirm
 true availability. But they were doing that anyway; the design acknowledged
 reality instead of trying to engineer around it.
+
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/availability-filter.png"
+    alt="Availability filter UI with a binary toggle for working and non-working talent"
+    caption="The activity-based availability filter."
+  />
+  <Figure
+    src="/work/book-talent-search/availability-solution.png"
+    alt="Diagram of the availability solution reframed around verifiable activity dates"
+    caption="Reframing 'is this person available?' as 'when were they last active?'"
+  />
+</ImageGrid>
 
 ### 3. Full-screen project view over inline image detail
 
@@ -224,41 +314,101 @@ multiple images, sequencing, and text together.
 click became a bigger commitment. But the quality of information at that
 point was dramatically higher.
 
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/talent-showcase.png"
+    alt="Talent Showcase full-screen view with a Talent Pane showing contact info and availability"
+    caption="Talent Showcase: full-screen project view paired with a Talent Pane."
+  />
+  <Figure
+    src="/work/book-talent-search/talent-showcase.gif"
+    alt="Animated demo of navigating the Talent Showcase view"
+    caption="Cycling through talent from within the showcase view."
+  />
+</ImageGrid>
+
 ## The solution
 
-BOOK gives staffing agents visual-first search and discovery, organized
+<Figure
+  src="/work/book-talent-search/logo.png"
+  alt="The BOOK product mark"
+  fullBleed
+  caption="BOOK: Aquent's ML-powered talent search and discovery platform."
+/>
+
+<a href="https://aquent.com/news/aquents-book-revolutionizes-the-way-brands-discover-creative-talent" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4 transition-colors duration-300 hover:text-green">Aquent's BOOK</a> gives staffing agents visual-first search and discovery, organized
 around three core experiences.
 
-<Figure
-  src="/work/book-talent-search/solution-1.svg"
-  alt="Placeholder image of the search results page"
-  caption="Search results: horizontal masonry layout, search bar, and filter panel (placeholder)."
-/>
+### Search Results Page
 
-A Search Results Page with a horizontal masonry layout of portfolio images,
-searchable by classification labels and keywords, filterable by talent
-attributes. Search targets the work; filters target the person.
+A horizontal masonry layout of portfolio images, searchable by
+classification labels and keywords, filterable by talent attributes.
+Search targets the work; filters target the person.
 
-<Figure
-  src="/work/book-talent-search/solution-2.svg"
-  alt="Placeholder image of the project detail view"
-  caption="Project Detail: a talent's portfolio project in full-screen, with the Talent Pane alongside (placeholder)."
-/>
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/masonry-layout.png"
+    alt="Search Results Page with a horizontal masonry layout of portfolio images"
+    caption="Search Results: horizontal masonry layout, edge-to-edge."
+  />
+  <Figure
+    src="/work/book-talent-search/search-filters.png"
+    alt="Search Results Page filter panel for talent attributes"
+    caption="Search targets the work; filters target the person."
+  />
+</ImageGrid>
 
-A Project Detail view with a Talent Pane — full-screen, showing grouped
-images and text that preserve the narrative structure of the work,
-alongside contact info, availability status, activity history, and links
-to external portfolios.
+### Project Detail view with a Talent Pane
 
-<Figure
-  src="/work/book-talent-search/solution-3.svg"
-  alt="Placeholder image of the saved talent page"
-  caption="Saved Talent Page: comparing shortlisted candidates side by side (placeholder)."
-/>
+Full-screen, showing grouped images and text that preserve the narrative
+structure of the work, alongside contact info, availability status,
+activity history, and links to external portfolios.
 
-A Saved Talent Page as a workspace for agents to manage shortlisted
-candidates — select, compare portfolios side by side, and submit to open
-assignments.
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/project-view.png"
+    alt="Project Detail view showing a talent's portfolio project in full-screen with the Talent Pane alongside"
+    caption="Project Detail: full-screen, with the Talent Pane alongside."
+  />
+  <Figure
+    src="/work/book-talent-search/project-view.gif"
+    alt="Animated demo of browsing a portfolio project in the full-screen Project View"
+    caption="Following a portfolio's narrative across grouped images and text."
+  />
+</ImageGrid>
+
+### Saved Talent Page
+
+A workspace for agents to manage shortlisted candidates — select, compare
+portfolios side by side, and submit to open assignments.
+
+<ImageGrid>
+  <Figure
+    src="/work/book-talent-search/saved-talent.png"
+    alt="Saved Talent Page comparing shortlisted candidates side by side"
+    caption="Saved Talent Page: shortlisted candidates, side by side."
+  />
+  <Figure
+    src="/work/book-talent-search/saved-talent.gif"
+    alt="Animated demo of selecting and managing candidates on the Saved Talent Page"
+    caption="Selecting, comparing, and submitting candidates to open assignments."
+  />
+</ImageGrid>
+
+### Final mockups
+
+A closing pass across the platform's core screens, from first sketch to shipped UI.
+
+<Carousel>
+  <img src="/work/book-talent-search/mockup-1.jpg" alt="BOOK final mockup 1" />
+  <img src="/work/book-talent-search/mockup-2.jpg" alt="BOOK final mockup 2" />
+  <img src="/work/book-talent-search/mockup-3.jpg" alt="BOOK final mockup 3" />
+  <img src="/work/book-talent-search/mockup-4.jpg" alt="BOOK final mockup 4" />
+  <img src="/work/book-talent-search/mockup-5.jpg" alt="BOOK final mockup 5" />
+  <img src="/work/book-talent-search/mockup-6.jpg" alt="BOOK final mockup 6" />
+  <img src="/work/book-talent-search/mockup-7.jpg" alt="BOOK final mockup 7" />
+  <img src="/work/book-talent-search/mockup-8.jpg" alt="BOOK final mockup 8" />
+</Carousel>
 
 ## Outcomes
 

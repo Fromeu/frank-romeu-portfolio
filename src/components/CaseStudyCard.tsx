@@ -1,6 +1,5 @@
 import { ViewTransition } from "react";
 import Link from "next/link";
-import Tag from "@/components/Tag";
 import Reveal from "@/components/Reveal";
 import type { CaseStudy } from "@/lib/content";
 
@@ -24,14 +23,17 @@ export default function CaseStudyCard({
   const cs = caseStudy;
   const metric = cs.metrics?.[0];
   const tinted = index % 2 === 1;
-  const tilt = index % 2 === 0 ? "group-hover:-rotate-1" : "group-hover:rotate-1";
+  // Tilt/scale/color are keyed off :has() so they only fire when the cursor
+  // is actually over the image or title, not anywhere in the card's hit area.
+  const tilt =
+    index % 2 === 0 ? "has-[:is(img,h2):hover]:-rotate-1" : "has-[:is(img,h2):hover]:rotate-1";
 
   return (
     <Reveal delay={index * 0.08}>
       <Link
         href={`/work/${cs.slug}`}
         data-case-study={cs.slug}
-        className={`group block rounded-2xl transition-transform duration-300 ease-out ${tilt} motion-reduce:transition-none motion-reduce:group-hover:rotate-0 ${
+        className={`block rounded-2xl transition-transform duration-300 ease-out ${tilt} motion-reduce:transition-none motion-reduce:has-[:is(img,h2):hover]:rotate-0 ${
           tinted ? "bg-paper-dim p-4" : ""
         }`}
       >
@@ -40,17 +42,15 @@ export default function CaseStudyCard({
             src={cs.heroImage}
             alt={cs.heroAlt}
             loading={priority ? "eager" : "lazy"}
-            className="aspect-square w-full rounded-2xl border border-line object-cover transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            className="aspect-square w-full rounded-2xl border border-line object-cover transition-transform duration-300 ease-out hover:scale-[1.02] motion-reduce:transition-none motion-reduce:hover:scale-100"
           />
         </ViewTransition>
         <div className="mt-4 flex items-center gap-2">
           <span className="font-mono text-xs font-semibold text-line" aria-hidden="true">
             {String(cs.order).padStart(2, "0")}
           </span>
-          <Tag>{cs.year}</Tag>
-          <Tag>{cs.domain}</Tag>
         </div>
-        <h2 className="mt-3 text-[length:var(--step-h3)] font-display font-semibold tracking-tight transition-colors duration-300 group-hover:font-display-wonk group-hover:italic group-hover:text-green">
+        <h2 className="mt-3 text-[length:var(--step-h3)] font-display font-semibold tracking-tight transition-colors duration-300 hover:text-green">
           {cs.title}
         </h2>
         <p className="mt-2 max-w-prose text-ink-soft">{cs.subtitle}</p>

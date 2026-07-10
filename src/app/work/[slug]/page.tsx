@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import Tag from "@/components/Tag";
 import HeroParallax from "@/components/HeroParallax";
 import { mdxComponents } from "@/components/mdx";
 import CaseStudyToc from "@/components/CaseStudyToc";
@@ -61,21 +60,19 @@ export default async function CaseStudyPage({
         </Link>
 
         <header className="mt-8">
-          <div className="relative">
+          {/* Full-bleed: only the hero image breaks out to the viewport edge —
+              everything else in the header stays within the max-w-2xl column. */}
+          <div className="relative left-1/2 w-screen max-w-none -translate-x-1/2">
             {/* Shared-element morph target — same ViewTransition name as the card's cover art */}
             <HeroParallax>
               <ViewTransition name={`case-study-${cs.slug}`} share="morph">
                 <img
                   src={cs.heroImage}
                   alt={cs.heroAlt}
-                  className="aspect-square w-full rounded-2xl border border-line object-cover"
+                  className="aspect-square w-full border border-line object-cover"
                 />
               </ViewTransition>
             </HeroParallax>
-            <div className="absolute -top-2.5 right-3 flex flex-col items-end gap-1.5">
-              <Tag>{cs.year}</Tag>
-              <Tag>{cs.domain}</Tag>
-            </div>
           </div>
 
           <p className="mt-10 font-mono text-xs uppercase tracking-wider text-ink-soft">
@@ -109,7 +106,7 @@ export default async function CaseStudyPage({
             <dl className="mt-6 flex flex-wrap gap-4">
               {cs.metrics.map((m) => (
                 <div key={m.label} className="rounded-2xl bg-paper-dim px-5 py-4">
-                  <dd className="font-display font-display-wonk text-[length:var(--step-hero)] italic font-semibold leading-none tracking-tight text-orange">
+                  <dd className="font-display font-display-wonk text-[length:var(--step-hero)] font-semibold leading-none tracking-tight text-orange">
                     {m.value}
                   </dd>
                   <dt className="mt-2 text-sm text-ink-soft">{m.label}</dt>

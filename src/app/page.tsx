@@ -56,7 +56,7 @@ export default function Home() {
         <p className="inline-block rounded-full bg-ink px-4 py-1.5 font-mono text-xs uppercase tracking-wider text-paper">
           {site.name} · {site.title}
         </p>
-        <h1 className="font-display font-display-wonk mt-5 max-w-[18ch] text-[length:var(--step-display)] italic font-semibold leading-[1.05] tracking-tight">
+        <h1 className="font-display mt-5 max-w-[18ch] text-[length:var(--step-display)] font-semibold leading-[1.05] tracking-tight">
           {words.map((word, i) => (
             <span key={i}>
               <span

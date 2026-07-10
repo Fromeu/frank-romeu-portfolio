@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import { slugify } from "@/lib/reading";
+import { Figure, Carousel } from "@/components/mdx-media";
 
 // Components available inside case study MDX bodies, plus element mappings
 // that give the body its editorial typography.
@@ -16,42 +17,7 @@ function textContent(node: ReactNode): string {
   return "";
 }
 
-type FigureProps = {
-  src: string;
-  alt: string;
-  caption?: string;
-  /** Full-bleed singles break out of the text column to the viewport edge. */
-  fullBleed?: boolean;
-};
-
-export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
-  return (
-    <figure
-      className={
-        fullBleed
-          ? "relative left-1/2 my-12 w-screen max-w-none -translate-x-1/2"
-          : "my-10"
-      }
-    >
-      {/* Plain <img>: static export has no image optimizer; srcset variants come in Phase 4 */}
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className={`w-full border border-ink/10 ${fullBleed ? "" : "rounded-2xl"}`}
-      />
-      {caption && (
-        <figcaption
-          className={`mt-3 font-mono text-xs uppercase tracking-wider text-ink-soft ${
-            fullBleed ? "mx-auto max-w-2xl px-4" : ""
-          }`}
-        >
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
-}
+export { Figure, Carousel };
 
 export function ImageGrid({ children }: { children: ReactNode }) {
   return (
@@ -97,6 +63,7 @@ export function Callout({ title, children }: { title?: string; children: ReactNo
 export const mdxComponents: MDXRemoteProps["components"] = {
   Figure,
   ImageGrid,
+  Carousel,
   PullQuote,
   Callout,
   h2: (props) => (

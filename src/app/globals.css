@@ -13,7 +13,7 @@
   --color-green: #1f6f4a; /* Green — primary accent: links, focus, active states */
   --color-orange: #d3560f; /* Orange — secondary accent: metrics, sparing emphasis */
 
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-playfair-display);
   --font-sans: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
 
@@ -33,14 +33,17 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Expressive Fraunces treatments — reserved for a small number of signature
-   moments (homepage h1, pull-quotes, the About lede), never headings or
-   body copy that need to stay scannable. */
+/* Expressive Playfair Display treatments — reserved for a small number of
+   signature moments (homepage h1, pull-quotes, the About lede), never
+   headings or body copy that need to stay scannable. Playfair Display has no
+   Fraunces-style SOFT/WONK axes, so these drive escalating drama through
+   weight instead — layered here (outside @layer utilities) so they win over
+   whatever Tailwind font-weight utility is co-applied at each call site. */
 .font-display-soft {
-  font-variation-settings: "SOFT" 40, "WONK" 0;
+  font-weight: 500;
 }
 .font-display-wonk {
-  font-variation-settings: "SOFT" 60, "WONK" 1;
+  font-weight: 800;
 }
 
 /* Designed focus state */
@@ -61,7 +64,7 @@ h3 {
 
 ::selection {
   background: var(--color-orange);
-  color: var(--color-ink);
+  color: var(--color-paper);
 }
 
 /* ——— Motion ———————————————————————————————————————————— */

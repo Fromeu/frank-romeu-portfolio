@@ -4,10 +4,10 @@ Frank Romeu's portfolio site: case studies, About, and Contact.
 
 Built with Next.js (App Router, static export), Tailwind CSS v4, Framer
 Motion, and MDX. Design language is editorial — white/near-black base with
-two deliberate accents (green, orange), an expressive serif (Fraunces) paired
-with a modern grotesque (Archivo) and monospace meta text (Geist Mono) — no
-illustrated concept to maintain, personality comes from type, color, and
-motion.
+two deliberate accents (green, orange), a high-contrast display serif
+(Playfair Display) paired with a modern grotesque (Archivo) and monospace
+meta text (Geist Mono) — no illustrated concept to maintain, personality
+comes from type, color, and motion.
 
 ## Local development
 
@@ -109,8 +109,8 @@ everywhere (nav, footer, contact page, metadata, canonical URLs, OG tags).
 
 ## Design tokens & motion
 
-- Colors and the type stack (Fraunces display / Archivo body / Geist Mono
-  meta) are defined as tokens in `src/app/globals.css` under `@theme inline`
+- Colors and the type stack (Playfair Display display / Archivo body / Geist
+  Mono meta) are defined as tokens in `src/app/globals.css` under `@theme inline`
   — change them there, everything follows. A fluid `clamp()`-based type scale
   (`--step-display` through `--step-meta`) covers every heading site-wide.
 - `CaseStudyCard.tsx` is the one card component, reused on the homepage grid
