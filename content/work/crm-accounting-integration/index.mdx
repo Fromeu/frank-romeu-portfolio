@@ -1,30 +1,24 @@
 ---
 title: "Two Audiences, One Integration"
-subtitle: "Built HubSpot's first accounting integration as a framework other tools would build on — 10,000+ installs and $17M in invoiced revenue."
+subtitle: "Built HubSpot's first accounting integration as a framework other tools would build on — 14,765 QuickBooks Online installs, up 93% in 19 months."
 slug: "crm-accounting-integration"
 company: "HubSpot"
 role: "Product Designer"
-year: "2019–2021"
+year: "2020"
 duration: "Year-and-a-half development"
 domain: "CRM Platform / Fintech Integration"
 order: 5
-heroImage: "/work/crm-accounting-integration/hero.svg"
-heroAlt: "Placeholder cover art for the CRM + Accounting case study"
+heroImage: "/work/crm-accounting-integration/hero.png"
+heroAlt: "Grid of laptop mockups showing the HubSpot QuickBooks Online invoicing integration on a green background"
 metrics:
   - label: "QuickBooks Online installs"
-    value: "550+"
-  - label: "Total installs across accounting-API tools"
-    value: "10,000+"
-  - label: "Revenue on invoices in platform"
-    value: "$17M"
+    value: "14,765"
+  - label: "Total installed portals across accounting API"
+    value: "25,127"
+  - label: "QBO monthly active usage (MAU/EOM)"
+    value: "48.9%"
 draft: false
 ---
-
-{/* NEEDS CONFIRMATION FROM FRANK: exact start year not stated in source
-    material — "2019–2021" is an estimate derived from "first project at
-    HubSpot" + "seven years at HubSpot" (per the About page, written ~2026)
-    + the source doc's own "year-and-a-half development" note. Please
-    confirm/correct before this goes live. */}
 
 After a deal closed in HubSpot's CRM, sales reps hit a wall. They'd wait for
 the finance team to create invoices, with zero visibility on status unless
@@ -38,7 +32,7 @@ every accounting tool that followed.
 
 ## My role
 
-I was the sole product designer, responsible for end-to-end design:
+I was the lead product designer, responsible for end-to-end design:
 research planning and facilitation, problem definition, information
 architecture, user flows, wireframes through high-fidelity designs,
 prototyping, usability testing, and ongoing iteration based on continuous
@@ -124,11 +118,23 @@ asking how customers currently measured growth in the CRM, where the
 greatest friction in their quote-to-cash process was, who felt that
 friction most acutely, and where the process broke down.
 
+<Figure
+  src="/work/crm-accounting-integration/interviews.png"
+  alt="Research interview session with a business owner discussing the quote-to-cash process"
+  caption="One of 15 interviews across the quote-to-cash chain — business owners, accountants, and sales reps."
+/>
+
 While interviews were running, I built an iterative diagram mapping the
 invoice lifecycle — plotting touchpoints and handoffs between sales reps,
 customers, and finance teams. This diagram became a working artifact that
 evolved throughout the project, serving as both a sense-making tool for me
 and an alignment artifact for the team.
+
+<Figure
+  src="/work/crm-accounting-integration/discovery-diagram.png"
+  alt="Diagram mapping the invoice lifecycle across sales, customer, and finance touchpoints"
+  caption="The invoice lifecycle diagram, evolving throughout the project as a sense-making and alignment tool."
+/>
 
 Synthesis laid customer quotes against our research questions, identified
 themes, and plotted friction points against the lifecycle diagram. The core
@@ -137,6 +143,12 @@ zero visibility on invoice status without bothering finance, finance
 wanting to help reps but not trusting them in accounting tools,
 time-consuming redundant data entry, and no way to track completion from
 closed deal to paid invoice.
+
+<Figure
+  src="/work/crm-accounting-integration/synthesis.jpg"
+  alt="Synthesis board plotting customer quotes and friction points against the invoice lifecycle"
+  caption="Synthesis: quotes and friction points plotted against the lifecycle diagram to surface the core problems."
+/>
 
 I facilitated collaborative workshops with the full team: summarize
 research findings, align on the problems we'd solve, review the primary
@@ -148,12 +160,31 @@ products between systems, send invoices to the external tool, monitor
 invoice status from a deal record, and create automated workflows based on
 invoice data.
 
+<Figure
+  src="/work/crm-accounting-integration/workshops.jpg"
+  alt="Team workshop session plotting solution ideas on an effort-versus-impact matrix"
+  caption="Workshops with the full team: align on problems, review the persona, plot ideas for prioritization."
+/>
+
 I broke down the categories of information that flow through an invoice —
 customer details, product details, payment details — which informed the
 data-matching requirements between HubSpot and QuickBooks, then diagrammed
 user flows for invoice creation, including matching logic for products and
 customers, matching HubSpot quotes to invoice drafts, and the various
 creation paths between systems.
+
+<ImageGrid>
+  <Figure
+    src="/work/crm-accounting-integration/information-architecture.png"
+    alt="Diagram breaking down customer, product, and payment details that flow through an invoice"
+    caption="The information architecture: customer, product, and payment details that had to match across systems."
+  />
+  <Figure
+    src="/work/crm-accounting-integration/user-flows.png"
+    alt="User flow diagram for invoice creation, including customer and product matching logic"
+    caption="User flows for invoice creation, including matching logic and the various creation paths."
+  />
+</ImageGrid>
 
 Solution design moved through multiple rounds of sketching, wireframing,
 and high-fidelity work — but it didn't follow a clean handoff from design
@@ -166,6 +197,25 @@ invoices, enabling invoice creation directly from quote data, adding
 contact and invoice syncing, and building features for a QuickBooks Online
 Advanced premium partnership.
 
+<ImageGrid>
+  <Figure
+    src="/work/crm-accounting-integration/wireframes.png"
+    alt="Wireframes for the invoice creation flow across multiple rounds of iteration"
+    caption="Wireframes moving through multiple rounds of iteration before high-fidelity design."
+  />
+  <Figure
+    src="/work/crm-accounting-integration/continuous-feedback.jpg"
+    alt="Screenshot of continuous customer feedback collected during development"
+    caption="Continuous feedback from the customer advisory group, collected throughout development."
+  />
+</ImageGrid>
+
+<Figure
+  src="/work/crm-accounting-integration/iterative-improvements.png"
+  alt="List of iterative improvements made to the invoice creation flow during development"
+  caption="Iterative changes the feedback loop produced: full-screen rework, import, pre-fill, syncing, and more."
+/>
+
 Several problems resisted clean solutions. Tax code selection for non-US
 customers was complex because tax structures vary dramatically across
 jurisdictions and accounting tools handle them differently. Currency
@@ -177,6 +227,18 @@ design that acknowledged the wait rather than hiding it. These weren't
 edge cases — they were the daily reality for businesses operating across
 borders or with complex product catalogs, and the design had to handle
 them without overwhelming users who had simpler setups.
+
+<Carousel caption="Mockups exploring tax code selection, currency conversion, and quote-to-invoice matching logic.">
+  <img src="/work/crm-accounting-integration/challenge-mockup-1.jpg" alt="Challenge mockup: currency conversion on an invoice, annotated with review notes" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-2.jpg" alt="Challenge mockup 2: tax code and currency handling exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-3.jpg" alt="Challenge mockup 3: tax code and currency handling exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-4.jpg" alt="Challenge mockup 4: tax code and currency handling exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-5.jpg" alt="Challenge mockup 5: tax code and currency handling exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-6.jpg" alt="Challenge mockup 6: tax code and currency handling exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-7.jpg" alt="Challenge mockup 7: product and customer matching logic exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-8.jpg" alt="Challenge mockup 8: product and customer matching logic exploration" />
+  <img src="/work/crm-accounting-integration/challenge-mockup-9.jpg" alt="Challenge mockup 9: loading-state design for slow accounting-tool imports" />
+</Carousel>
 
 ## Key decisions
 
@@ -197,6 +259,20 @@ task feel like a quick edit when it was actually a structured workflow.
 **What it cost:** Breaking the pattern of side-panel actions on deal
 records, which required alignment with other design teams across HubSpot.
 
+<Carousel caption="The side-panel invoice creation flow this decision replaced.">
+  <img src="/work/crm-accounting-integration/side-panel-mockup-1.jpg" alt="Side panel mockup 1: create draft invoice in QuickBooks Online" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-2.jpg" alt="Side panel mockup 2: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-3.jpg" alt="Side panel mockup 3: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-4.jpg" alt="Side panel mockup 4: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-5.jpg" alt="Side panel mockup 5: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-6.jpg" alt="Side panel mockup 6: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-7.jpg" alt="Side panel mockup 7: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-8.jpg" alt="Side panel mockup 8: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-9.jpg" alt="Side panel mockup 9: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-10.jpg" alt="Side panel mockup 10: invoice creation step" />
+  <img src="/work/crm-accounting-integration/side-panel-mockup-11.jpg" alt="Side panel mockup 11: invoice creation step" />
+</Carousel>
+
 ### 2. Quote-to-invoice pre-fill
 
 **What was decided:** Let invoice drafts pre-fill from existing HubSpot
@@ -213,6 +289,18 @@ an invoice was the exact redundancy customers complained about most.
 **What it cost:** A new dependency between the quoting and invoicing
 systems that needs ongoing maintenance as both evolve — but the user value
 was immediate and addressed the top complaint from research directly.
+
+<Carousel caption="Quote-to-invoice matching: syncing HubSpot deal data to a QuickBooks Online draft.">
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-1.png" alt="Quote-to-invoice mockup 1: choosing a QuickBooks Online account to create an invoice for" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-2.png" alt="Quote-to-invoice mockup 2: invoice creation step" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-3.png" alt="Quote-to-invoice mockup 3: product step in the invoice creation flow" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-4.png" alt="Quote-to-invoice mockup 4: product matching step" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-5.png" alt="Quote-to-invoice mockup 5: payment terms step" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-6.png" alt="Quote-to-invoice mockup 6: review step" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-7.png" alt="Quote-to-invoice mockup 7: invoice draft summary" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-8.png" alt="Quote-to-invoice mockup 8: pre-filled invoice from quote data" />
+  <img src="/work/crm-accounting-integration/quote-to-invoice-mockup-9.png" alt="Quote-to-invoice mockup 9: confirmation of invoice sent to QuickBooks Online" />
+</Carousel>
 
 ### 3. Framework-first design discipline
 
@@ -232,26 +320,25 @@ QBO-specific polish along the way.
 
 ## The solution
 
+<Carousel caption="The shipped full-screen invoice creation and status experience.">
+  <img src="/work/crm-accounting-integration/full-screen-mockup-1.jpg" alt="Full-screen solution mockup 1: matching deal information to QuickBooks Online" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-2.jpg" alt="Full-screen solution mockup 2: customer step" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-3.jpg" alt="Full-screen solution mockup 3: product step" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-4.jpg" alt="Full-screen solution mockup 4: payment step" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-5.jpg" alt="Full-screen solution mockup 5: review step" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-6.jpg" alt="Full-screen solution mockup 6: invoice sent confirmation" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-7.jpg" alt="Full-screen solution mockup 7: invoice status on a deal record" />
+  <img src="/work/crm-accounting-integration/full-screen-mockup-8.jpg" alt="Full-screen solution mockup 8: invoice status on a deal record" />
+</Carousel>
+
 The accounting extension gives sales reps the ability to create, monitor,
 and manage invoices directly from HubSpot deal records, with data synced to
 connected accounting tools.
-
-<Figure
-  src="/work/crm-accounting-integration/solution-1.svg"
-  alt="Placeholder image of the invoice creation flow"
-  caption="Full-screen invoice creation, pre-filled from a deal record, with product matching visible (placeholder)."
-/>
 
 Invoice creation is a full-screen experience accessible from deal records,
 pre-filling customer and product data from HubSpot and from quotes when
 available, and handling customer/product matching between systems with the
 ability to create new records in either system when matches don't exist.
-
-<Figure
-  src="/work/crm-accounting-integration/solution-2.svg"
-  alt="Placeholder image of invoice status on a deal record"
-  caption="Invoice status — draft, sent, paid — visible directly on the deal record (placeholder)."
-/>
 
 Invoice status is visible directly on deal records, giving reps visibility
 on the payment lifecycle without leaving HubSpot or asking finance.
@@ -264,14 +351,50 @@ Nubox — to build equivalent integrations.
 
 ## Outcomes
 
-550+ QuickBooks Online installs, 10,000+ total installs across all tools
-built on the accounting API, 19,000 invoices created or imported to
-HubSpot, and $17M in total revenue on invoices in the platform. These are
-adoption metrics, not improvement metrics — we had no baseline to measure
-against, a known limitation from the start. They demonstrate that the
-product found real usage, but they don't directly measure whether the
-quote-to-cash process got faster or whether reps spend less time on
-invoice administration.
+As of July 2026: 14,765 QuickBooks Online installs, up from 7,629 in
+January 2025 — 93% growth over 19 months. Across all seven accounting
+integrations built on the API (QBO, Xero, NetSuite, Zoho Books, Wave,
+FreshBooks, and Sage Business Cloud Accounting), there are 25,127 total
+installed portals. QBO commands the category at roughly 2.4× the installs
+of the next-largest tool, Xero, at 6,075 — consistent with being the
+native integration that set the template for everything that followed.
+
+<ImageGrid>
+  <Figure
+    src="/work/crm-accounting-integration/install-trends-graph.png"
+    alt="Line graph of install trends across all seven accounting-API integrations"
+    caption="Install trends across all seven accounting-API integrations."
+  />
+  <Figure
+    src="/work/crm-accounting-integration/install-trends-table.png"
+    alt="Table of end-of-month installs across all seven accounting-API integrations"
+    caption="End-of-month installs by tool, QBO leading the category."
+  />
+</ImageGrid>
+
+Monthly active usage for QBO sits at 7,227 (48.9% MAU/EOM); across all
+seven tools, MAU/EOM ranges from 19–49%, meaning roughly a third to half of
+installed portals actively use the integration in a given month — expected
+for a periodic invoicing workflow rather than a daily-use surface.
+
+<ImageGrid>
+  <Figure
+    src="/work/crm-accounting-integration/mau-graph.png"
+    alt="Line graph of monthly active usage trends across all seven accounting-API integrations"
+    caption="Monthly active usage trends, January 2025 through July 2026."
+  />
+  <Figure
+    src="/work/crm-accounting-integration/mau-table.png"
+    alt="Table of monthly active usage and MAU/EOM ratio by accounting-API integration"
+    caption="Monthly active usage and MAU/EOM ratio by tool."
+  />
+</ImageGrid>
+
+These are adoption metrics, not improvement metrics — we had no baseline to
+measure against, a known limitation from the start. But the sustained
+growth across all seven tools reflects years of continuous iteration that
+extended well beyond my tenure on this specific team, and signals durable
+product-market fit rather than just a launch-day spike.
 
 <PullQuote attribution="NPS respondent, business development coach">
 I rarely endorse any CRM because I stay vendor-neutral with my clients, but
@@ -279,7 +402,7 @@ this integration is perfect for my small business clients.
 </PullQuote>
 
 The integration was featured at HubSpot's annual INBOUND product showcase.
-The accounting API enabled external tools to build integrations
+The accounting API enabled 6 external tools to build integrations
 replicating the native experience, validating the framework approach. The
 customer advisory group stayed engaged throughout the year-and-a-half
 development process, providing consistent signal that kept the design

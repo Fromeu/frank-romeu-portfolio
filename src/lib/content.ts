@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { withBasePath } from "@/lib/base-path";
 
 const WORK_DIR = path.join(process.cwd(), "content", "work");
 
@@ -68,7 +69,12 @@ function loadCaseStudy(dirName: string): CaseStudy | null {
     );
   }
 
-  return { ...fm, ogImage: fm.ogImage || fm.heroImage, body: content };
+  return {
+    ...fm,
+    heroImage: withBasePath(fm.heroImage),
+    ogImage: withBasePath(fm.ogImage || fm.heroImage),
+    body: content,
+  };
 }
 
 /** All published case studies, sorted by `order`. */

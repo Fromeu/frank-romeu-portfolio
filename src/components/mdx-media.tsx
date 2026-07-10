@@ -4,6 +4,7 @@ import { Children, isValidElement, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, m, useReducedMotion } from "framer-motion";
+import { withBasePath } from "@/lib/base-path";
 
 /** Shared enlarged-image overlay used by both Figure and Carousel lightboxes.
  * Portaled to document.body: fullBleed/Carousel wrappers apply a CSS transform
@@ -107,6 +108,7 @@ type FigureProps = {
 
 export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
   const [open, setOpen] = useState(false);
+  const resolvedSrc = withBasePath(src);
   return (
     <figure
       className={
@@ -123,7 +125,7 @@ export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
       >
         {/* Plain <img>: static export has no image optimizer; srcset variants come in Phase 4 */}
         <img
-          src={src}
+          src={resolvedSrc}
           alt={alt}
           loading="lazy"
           className={`w-full border border-ink/10 ${fullBleed ? "" : "rounded-2xl"}`}
@@ -140,7 +142,7 @@ export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
       )}
       <AnimatePresence>
         {open && (
-          <LightboxOverlay src={src} alt={alt} onClose={() => setOpen(false)} />
+          <LightboxOverlay src={resolvedSrc} alt={alt} onClose={() => setOpen(false)} />
         )}
       </AnimatePresence>
     </figure>
@@ -163,7 +165,7 @@ export function Carousel({ children, caption }: { children: ReactNode; caption?:
     .filter(isValidElement)
     .map((el) => {
       const props = el.props as { src?: string; alt?: string };
-      return { src: props.src ?? "", alt: props.alt ?? "" };
+      return { src: withBasePath(props.src ?? ""), alt: props.alt ?? "" };
     });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
