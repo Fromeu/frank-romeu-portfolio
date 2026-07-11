@@ -12,8 +12,13 @@ export const metadata: Metadata = {
 
 const HEADLINE = "I design the human side of complex systems.";
 
+// Computed at build time from a fixed start year, so the stat advances on
+// its own with each redeploy rather than needing a manual yearly edit.
+const UX_FIELD_START_YEAR = 2017;
+const yearsInUxField = new Date().getFullYear() - UX_FIELD_START_YEAR;
+
 const STATS = [
-  { value: "7", label: "Years at HubSpot" },
+  { value: String(yearsInUxField), label: "Years in UX field" },
   { value: "2×", label: "Promoted" },
 ] as const;
 
