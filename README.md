@@ -128,7 +128,7 @@ everywhere (nav, footer, contact page, metadata, canonical URLs, OG tags).
 ## Deploying
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with
-`GITHUB_PAGES=true` (so `next.config.ts` sets the correct GitHub Pages
-`basePath`) and deploys `out/` to GitHub Pages. To deploy elsewhere (Vercel,
-Netlify, Cloudflare Pages), just run `npm run build` and serve `out/` — no
-server required, no platform-specific dependencies.
+`NEXT_PUBLIC_GITHUB_PAGES=true` (so `next.config.ts` sets the correct GitHub
+Pages `basePath`) and deploys `out/` to GitHub Pages. To deploy elsewhere
+(Vercel, Netlify, Cloudflare Pages), just run `npm run build` and serve
+`out/` — no server required, no platform-specific dependencies.

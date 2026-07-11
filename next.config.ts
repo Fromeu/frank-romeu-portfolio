@@ -2,7 +2,10 @@ import type { NextConfig } from "next";
 
 // GitHub Pages serves project repos from /<repo-name>/, so the export needs
 // to know its own base path. Empty when running locally (npm run dev/build).
-const basePath = process.env.GITHUB_PAGES === "true" ? "/frank-romeu-portfolio" : "";
+// NEXT_PUBLIC_-prefixed so the same value is readable from client components
+// (see src/lib/base-path.ts) — a plain GITHUB_PAGES var isn't inlined into
+// the browser bundle and would silently break client-side navigation.
+const basePath = process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/frank-romeu-portfolio" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
