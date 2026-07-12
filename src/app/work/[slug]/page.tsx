@@ -5,10 +5,22 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import HeroParallax from "@/components/HeroParallax";
-import { mdxComponents } from "@/components/mdx";
+import { mdxComponents, Stat } from "@/components/mdx";
 import CaseStudyToc from "@/components/CaseStudyToc";
 import { extractToc, estimateReadMinutes } from "@/lib/reading";
 import { getAllCaseStudies, getCaseStudyBySlug } from "@/lib/content";
+
+/** Column count is pinned to the metric count (rather than stepping through
+ * breakpoints) so a row is never left with a lopsided orphan — 3 metrics
+ * always sit 3-across, never 2-then-1. Cards shrink instead of wrapping to a
+ * new row; Tailwind needs the full class name statically present, hence the
+ * lookup instead of a template string. */
+const headerMetricsColsClass: Record<number, string> = {
+  1: "grid-cols-1",
+  2: "grid-cols-2",
+  3: "grid-cols-3",
+  4: "grid-cols-4",
+};
 
 export function generateStaticParams() {
   return getAllCaseStudies().map((cs) => ({ slug: cs.slug }));
@@ -103,14 +115,13 @@ export default async function CaseStudyPage({
           </dl>
 
           {cs.metrics && cs.metrics.length > 0 ? (
-            <dl className="mt-6 flex flex-wrap gap-4">
+            <dl
+              className={`mt-6 grid gap-4 ${
+                headerMetricsColsClass[cs.metrics.length] ?? "grid-cols-2"
+              }`}
+            >
               {cs.metrics.map((m) => (
-                <div key={m.label} className="rounded-2xl bg-paper-dim px-5 py-4">
-                  <dd className="font-display font-display-wonk text-[length:var(--step-hero)] font-semibold leading-none tracking-tight text-orange">
-                    {m.value}
-                  </dd>
-                  <dt className="mt-2 text-sm text-ink-soft">{m.label}</dt>
-                </div>
+                <Stat key={m.label} value={m.value} label={m.label} />
               ))}
             </dl>
           ) : cs.status === "in-progress" ? (

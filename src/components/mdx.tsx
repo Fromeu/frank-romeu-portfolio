@@ -60,16 +60,39 @@ export function Callout({ title, children }: { title?: string; children: ReactNo
   );
 }
 
-/** Reuses the case-study header's metric-pill styling (see
- * src/app/work/[slug]/page.tsx) so a number pulled out of body prose reads
- * as the same "headline number" treatment a reader has already seen. */
-export function StatGrid({ children }: { children: ReactNode }) {
-  return <dl className="my-8 flex flex-wrap gap-4">{children}</dl>;
+/** `Stat` is also reused directly by the case-study header (see
+ * src/app/work/[slug]/page.tsx) for its lede metrics, so a number pulled out
+ * of body prose reads as the same "headline number" treatment a reader has
+ * already seen.
+ *
+ * `wideCols` sets the widest-breakpoint column count so a grid never lands
+ * on a lopsided last row — e.g. 6 stats want a 3-column ceiling (3+3), not 4
+ * (4+2). It's a string, not a number: this Next/MDX version doesn't
+ * evaluate numeric `{3}` JSX expressions passed to custom components, only
+ * string attributes. Tailwind also needs the full class name statically
+ * present, hence the lookup instead of a template string. */
+const wideColsClass: Record<"3" | "4", string> = {
+  "3": "lg:grid-cols-3",
+  "4": "lg:grid-cols-4",
+};
+
+export function StatGrid({
+  children,
+  wideCols = "4",
+}: {
+  children: ReactNode;
+  wideCols?: "3" | "4";
+}) {
+  return (
+    <dl className={`my-8 grid grid-cols-2 gap-4 ${wideColsClass[wideCols]}`}>
+      {children}
+    </dl>
+  );
 }
 
 export function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl bg-paper-dim px-5 py-4">
+    <div className="flex flex-col rounded-2xl bg-paper-dim px-5 py-4">
       <dd className="font-display font-display-wonk text-[length:var(--step-h2)] font-semibold leading-none tracking-tight text-orange">
         {value}
       </dd>
