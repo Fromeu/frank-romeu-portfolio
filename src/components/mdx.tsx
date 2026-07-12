@@ -60,12 +60,32 @@ export function Callout({ title, children }: { title?: string; children: ReactNo
   );
 }
 
+/** Reuses the case-study header's metric-pill styling (see
+ * src/app/work/[slug]/page.tsx) so a number pulled out of body prose reads
+ * as the same "headline number" treatment a reader has already seen. */
+export function StatGrid({ children }: { children: ReactNode }) {
+  return <dl className="my-8 flex flex-wrap gap-4">{children}</dl>;
+}
+
+export function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="rounded-2xl bg-paper-dim px-5 py-4">
+      <dd className="font-display font-display-wonk text-[length:var(--step-h2)] font-semibold leading-none tracking-tight text-orange">
+        {value}
+      </dd>
+      <dt className="mt-2 text-sm text-ink-soft">{label}</dt>
+    </div>
+  );
+}
+
 export const mdxComponents: MDXRemoteProps["components"] = {
   Figure,
   ImageGrid,
   Carousel,
   PullQuote,
   Callout,
+  StatGrid,
+  Stat,
   h2: (props) => (
     <h2
       id={slugify(textContent(props.children))}

@@ -1,15 +1,15 @@
 ---
 title: "One Builder, Not Seven"
-subtitle: "Consolidated seven fragmented settings panels into a single builder for HubSpot's highest-traffic page — now the platform other teams build on."
+subtitle: "Consolidated seven fragmented settings panels into a single builder for HubSpot's most viewed surface."
 slug: "crm-page-editor"
 company: "HubSpot"
 role: "Lead Product Designer"
-year: "2023–2024"
-duration: "20 months"
+year: "2022–2024"
+duration: "~2 years"
 domain: "CRM Platform / Enterprise SaaS"
 order: 3
-heroImage: "/work/crm-page-editor/hero.svg"
-heroAlt: "Placeholder cover art for the CRM Page Editor case study"
+heroImage: "/work/crm-page-editor/hero.jpg"
+heroAlt: "Grid of CRM Page Editor builder screens showing card management, tab configuration, and settings views"
 metrics:
   - label: "Unique customizations per month, post-GA"
     value: "+400%"
@@ -20,351 +20,664 @@ metrics:
 draft: false
 ---
 
-HubSpot's CRM record page is the product's most-viewed surface — over 1.5 million
-monthly active users land on it for a 360-degree view of their contacts, companies,
-deals, and tickets. Admins who wanted to customize that experience had to navigate up
-to thirty discrete settings scattered across the interface, one section at a time,
-with no way to see the full picture. The tooling had been built around how the
-product was architected — left sidebar, middle column, right sidebar, each section
-its own silo — on the assumption that admins thought about customization the same
-way engineers had built it. Research proved that assumption wrong. Admins think
-content-first, not structure-first. That finding reshaped a new product, and
-eventually became HubSpot's customization platform.
+The CRM record page is HubSpot's most-viewed surface. Over 1.5 million monthly
+active users land on it to get a 360-degree view of their contacts, companies,
+deals, and tickets. Admins who wanted to customize that experience had to
+navigate up to thirty discrete settings scattered across the interface, one
+section at a time, with no way to see the full picture.
+
+For years, the product architecture (consisting of separate silos for the
+left sidebar, middle column, and right sidebar) directly dictated how our
+tooling was constructed. The assumption baked into every settings page was
+that admins thought about customization the same way engineers had built it:
+one section at a time. Research proved that assumption wrong. Admins think
+content-first, not structure-first. That finding became the design principle
+that reshaped a new product and eventually became HubSpot's customization
+platform.
 
 ## My role
 
-I was lead product designer on the CRM Page Editor team, within the CRM UI
-Framework group, and owned the end-to-end UX — from the initial admin vision
-proposal through research, design, and delivery to GA. I led the problem
-definition when leadership handed us very little in terms of long-term roadmap,
-facilitated the workshops that aligned the team's goals, ran the research that
-validated (and invalidated) our early hypotheses, and designed every major
+Lead Product Designer on the CRM Page Editor team, within the CRM UI
+Framework group. I owned the end-to-end user experience design — from
+initiating the admin vision proposal through research, design, and delivery
+to General Availability (GA).
+
+I had newly transitioned into the CRM group and leadership gave me very
+little in terms of a long-term roadmap. I led the problem definition,
+facilitated the workshops that aligned the team's goals, ran the research
+that validated (and invalidated) our hypotheses, and designed every major
 interaction in the builder tool.
 
-I also drove the architectural thinking — the record abstraction framework, the
-card builder system, the programmatic page editor vision — that turned a single
-product into a reusable platform other HubSpot teams could build on.
+I also drove the architectural thinking (e.g. a record abstraction framework,
+the card builder system, the programmatic page editor vision) that turned a
+single product into a reusable platform for other HubSpot teams.
 
-The team was small and newly formed specifically to execute on the vision I'd
-helped shape: a PM, two tech leads, and a content designer, reporting up through
-my design manager. Leadership stood the team up after I'd built the case and
-secured buy-in.
+**Team:** 1 Product Manager, 2 Tech Leads (FE and BE). The team was newly
+formed specifically to execute on the vision I'd helped shape. Product group
+leadership created it after I'd built the case and secured buy-in.
 
 ## The problem
 
 ### User problem
 
-HubSpot admins are the gatekeepers of their organization's CRM. They configure
-record pages so sales reps, service agents, and marketers see the right
-information at the right time — but the tools we gave them made that job
-unnecessarily hard.
+HubSpot admins are the gatekeepers of their organization's CRM. They're
+responsible for configuring record pages so their sales reps, service
+agents, and marketers see the right information at the right time. But the
+tools we gave them made that job unnecessarily hard.
 
 Record customization settings were fragmented across seven different entry
-points per object type. An admin configuring a contact record page had to
-separately customize the left sidebar, the right sidebar, the overview tab, the
-custom tab, data highlights, association tables, and contact association cards
-— each through its own settings panel, each with its own interaction patterns.
+points per object type. An admin who wanted to configure a contact record
+page had to separately customize the left sidebar, the right sidebar, the
+overview tab, the custom tab, data highlights, association tables, and
+contact association cards — each through its own settings panel, each with
+its own interaction patterns.
 
-CSAT feedback surfaced three consistent themes: clutter (seventeen percent of
-feedback cited difficulty finding what's customizable), confusion (admins found
-the right settings, then struggled to use them), and inflexibility (the tools
-didn't go far enough).
+From CSAT feedback, three themes dominated. First, clutter: "I'm constantly
+hopping between pages," "it's like looking for a needle in a haystack."
+Seventeen percent of feedback cited difficulty finding what's customizable.
+
+Second, confusion: "It's not intuitive," "nothing is common sense," "there's
+a learning curve." Once admins found the right settings, they struggled to
+use them.
+
+Third, inflexibility: "It's too limited," "much more control is needed," "I
+should be able to customize my whole screen."
 
 <PullQuote attribution="CSAT feedback">
 It's like looking for a needle in a haystack.
 </PullQuote>
 
-The section-by-section approach also made it impossible for admins to see the
-bigger picture of what they were building — they'd configure the left sidebar
-for one team, then cross-reference it against the middle column for a
-different view, losing context every time they switched.
+<Carousel caption="CSAT feedback across the three themes: clutter, confusion, and inflexibility.">
+  <img src="/work/crm-page-editor/many-settings-feedback.png" alt="Customer feedback quotes about clunky, scattered settings requiring too many steps to customize" />
+  <img src="/work/crm-page-editor/confusion-feedback.png" alt="Customer feedback quotes describing confusion navigating between customization pages" />
+  <img src="/work/crm-page-editor/inflexibility-feedback.png" alt="Customer feedback quotes requesting more control and flexibility over screen customization" />
+</Carousel>
+
+The section-by-section approach also made it impossible for admins to see
+the bigger picture of what they were building. They'd configure the left
+sidebar for one team, then cross-reference it against the middle column for
+a different view, losing context every time they switched.
 
 ### Business problem
 
 HubSpot was pushing upmarket. Customers with 200+ employees made up nearly a
-quarter of the company's revenue, and these larger organizations needed their
-CRM to mirror their business processes — different views for SDRs versus
-account executives, different record layouts for sales versus service. If
-HubSpot couldn't deliver that level of customization, deals walked.
+quarter of the company's revenue. These larger organizations needed their
+CRM to mirror their business processes. SDRs needed different views from
+account executives; different record layouts for sales versus service. If
+HubSpot couldn't deliver that level of customization, deals were lost.
 
-The data was clear: customers who enabled four or more UI customizations had
-13 points higher customer success rates, 14 points higher revenue retention,
-and 2.5x higher median MRR than customers who hadn't customized at all. This
-wasn't a nice-to-have — it was tied directly to retention and expansion
-revenue.
+The strategic bet on customization was well-founded. Standard tracking
+flagged roughly 9% of active paying portals as customized. Post-launch
+analysis with more robust signals put the real number at 60% of portals with
+customized views.
 
-But there was a tension. The business wanted to unlock customization to win
-upmarket deals. Admins wanted those tools to be easy. Reps — the end users of
-whatever admins built — just wanted record pages that showed them what
-mattered without making them think about it. Serving all three meant the tool
-couldn't just be powerful; it had to be opinionated enough to prevent admins
-from creating worse experiences for their reps.
+The customization tooling was directly tied to retention and revenue
+expansion.
+
+There was a secondary signal worth noting: customization appeared to happen
+early, often before monetization. This suggests it wasn't just a retention
+driver but a potential conversion lever. Customers who customize during
+trial or free tiers were likely converting at higher rates.
+
+But there was a tension to consider. The business wanted to unlock
+customization to win upmarket deals. Admins wanted those tools to be easy.
+And reps (the end users of whatever admins built) just wanted record pages
+that showed them what mattered without making them think about it.
+
+Serving all three meant the tool couldn't just be powerful. It had to be
+opinionated enough to prevent admins from creating worse experiences for
+their reps.
+
+<Figure
+  src="/work/crm-page-editor/feedback-themes.png"
+  alt="Summary slide of the three CSAT feedback themes: clutter, confusion, and inflexibility"
+  caption="The three themes that defined the problem space, side by side."
+/>
 
 ## Context and constraints
 
-The record page had a fixed three-column layout — left sidebar, middle column,
-right sidebar — and each section had been built and maintained by different
-teams with different technical approaches. There was no shared infrastructure
-for treating a record page as a single configurable unit.
+The record page had a fixed three-column layout composed of a left sidebar,
+a middle column, and a right sidebar. Each section had been built and
+maintained by different teams with different technical approaches. There
+was no shared infrastructure for treating a record page as a single
+configurable unit.
 
-Each section's settings had shipped incrementally over time. That got features
-out the door, but it created the fragmentation: six settings per object type
-across five standard objects meant thirty distinct places an admin might need
-to visit — technical debt inherited from years of individual teams solving
-their own piece of the puzzle.
+Each section's customization settings had been shipped incrementally over
+time. Features made it to customers, but it created the fragmentation
+problem: six settings per object type across five standard objects meant
+thirty distinct places an admin might need to visit. This was technical
+debt inherited from years of individual teams solving for their space
+without a unifying vision.
 
-A separate platform team was building a generic editor framework we hoped to
-build on top of. In theory, yes. In practice, it wasn't ready yet, and we
-didn't know how much would come for free versus what we'd need to build
-ourselves.
-
-Timeline pressure was real — leadership wanted something shippable within the
-year, with an alpha by end of Q1 and GA by Q4, on a small, newly formed team.
-And the record page touched multiple teams' domains: moving cards between
-sections or introducing new layout options all required buy-in from teams with
-their own roadmaps. A meaningful part of the job was building the alignment to
-ship it, not just designing the product.
+There was also legitimate pressure on our timelines. Leadership wanted
+something shippable within 2023, with an alpha by end of Q1 and GA by Q4.
+The team was small and newly formed, so we had to scope aggressively. This
+meant making hard calls about what to include and what to defer, knowing
+that every deferral was a customer who'd have to wait.
 
 ## Process
 
-The work started with a series of workshops across the teams responsible for
-the record page's different sections, working through existing problems
-sourced from prior research, CSAT data, and the group's collective experience
-with admin customers. Through structured ideation and voting, we converged on
-five candidate ideas — a visual drag-and-drop editor, a sandbox preview, page
-templates, a card library, simplified terminology — and a visual editor won the
-prioritization: high complexity, but clearly what customers were asking for.
+### Vision framing (Q3 2022)
 
-I synthesized this into a vision proposal: move away from customizing
-individual sections in isolation, toward a centralized builder where admins
-configure an entire record page as one unit — layout, cards, and views as three
-dimensions of a single object. I was explicit that the designs were
-placeholders and the direction needed validation, but it gave the team a
+Upon newly joining the CRM group, I facilitated a series of workshops with
+our team leads across the Records Foundation and Records Sidebars teams. We
+explored existing problems sourced from previous research, CSAT data, and
+our collective experience working with admin customers.
+
+Through structured ideation and voting, the team converged numerous ideas.
+The winning solution was a drag-and-drop visual editor. It was high value
+and high complexity, but clearly the thing customers were asking for.
+
+<Carousel caption="Vision-framing workshops: structured ideation and voting across the teams responsible for the record page.">
+  <img src="/work/crm-page-editor/vision-workshop-mockup-1.jpg" alt="Vision framing workshop session 1: ideation and voting on candidate solutions" />
+  <img src="/work/crm-page-editor/vision-workshop-mockup-2.jpg" alt="Vision framing workshop session 2: ideation and voting on candidate solutions" />
+  <img src="/work/crm-page-editor/vision-workshop-mockup-3.jpg" alt="Vision framing workshop session 3: ideation and voting on candidate solutions" />
+</Carousel>
+
+I synthesized all of this into a tentative vision proposal. The core thesis:
+move away from customizing individual sections in isolation and toward a
+centralized builder where admins configure an entire record page as a
+single unit. The page becomes the main unit of customization, with three
+dimensions:
+
+- Layout (how it's structured)
+- Cards (what content appears)
+- Views (who sees it)
+
+<Carousel caption="The tentative vision proposal: a centralized builder with layout, cards, and views as three dimensions of one object.">
+  <img src="/work/crm-page-editor/vision-proposal-mockup-1.jpg" alt="Vision proposal slide 1: centralized builder concept" />
+  <img src="/work/crm-page-editor/vision-proposal-mockup-2.jpg" alt="Vision proposal slide 2: layout, cards, and views as three dimensions" />
+  <img src="/work/crm-page-editor/vision-proposal-mockup-3.jpg" alt="Vision proposal slide 3: centralized builder concept" />
+  <img src="/work/crm-page-editor/vision-proposal-mockup-4.jpg" alt="Vision proposal slide 4: centralized builder concept" />
+  <img src="/work/crm-page-editor/vision-proposal-mockup-5.jpg" alt="Vision proposal slide 5: centralized builder concept" />
+</Carousel>
+
+This wasn't a polished pitch. I was explicit that the designs were
+placeholders and the direction needed validation. But it gave the team a
 shared artifact to react to and a strategy for breaking the work into
-milestones.
+incremental milestones.
 
-With the vision on paper, the next question was whether admins actually wanted
-this, and more importantly, how they thought about customizing a record page
-in the first place. I co-led a research study with eight admin participants
-across organizations from 11 to 1,000 employees — introductory questions, a
-collaborative Figma exercise where each participant built their ideal record
-page from a blank canvas, and concept validation of our builder prototype.
+### Research — breaking the mental model (Fall 2022)
 
-Three findings reshaped the direction. Admins consistently started by
-identifying the highest-priority content, not by thinking section-by-section —
-which directly invalidated our existing section-first architecture. There was
-no consistent spatial preference across companies, industries, or roles; the
-one constant was that people organized content by relevance to the person
-using the record, not by any inherent property of the section. And the
-reception was strong: seven of eight participants expressed real desire to use
-the tool.
+With the tentative vision on paper, the next question was whether admins
+actually wanted this. More importantly, how did they think about
+customizing a record page? Our settings were built section-first. Did
+admins think that way?
+
+I co-led a research study with our UX research team. Eight admin
+participants, each with super admin permissions, responsible for
+configuring their organization's HubSpot accounts. Organizations ranged
+from 11 to 1,000 employees; covering a good spread across our target
+segments.
+
+The method had three phases. Introductory questions about their context and
+customization habits. A collaborative exercise in Figma where participants
+built their ideal record page from scratch (blank canvas, card components
+to choose from, total freedom in placement). And then concept validation of
+our builder prototype.
+
+<ImageGrid>
+  <Figure
+    src="/work/crm-page-editor/research-session-1.png"
+    alt="Research session: admin participant building their ideal record page from a blank canvas in Figma"
+    caption="The blank-canvas exercise: admins built their ideal record page with no pre-set structure."
+  />
+  <Figure
+    src="/work/crm-page-editor/research-session-2.png"
+    alt="Research session: reviewing a participant's record page layout and card placement"
+    caption="Eight admin participants across organizations from 11 to 1,000 employees."
+  />
+</ImageGrid>
+
+Three findings reshaped our direction.
+
+**Finding 1: Content-first, not sections-first.** Admins consistently
+started by identifying the highest-priority content — "What's the most
+important thing I need to see?" — and then placed it wherever it felt
+right. They didn't think in terms of "I'll configure the left sidebar, then
+the middle, then the right."
+
+This directly invalidated our existing architecture, which drove
+customization through individual section settings. If we'd built the
+unified tool with a sections-first mental model, we'd have recreated the
+same fragmentation in a fancier wrapper.
+
+**Finding 2: No consistent spatial preferences.** I'd hoped to find
+patterns around how admins think of content spatially on the record. For
+example, maybe the left sidebar was always for static info, the middle for
+action, the right for reference. What we found was that it depends entirely
+on the company, the industry, the role, and the object type.
+
+The one consistent theme was relevance: every admin organized content by
+how relevant it was to the person using the record, not by any inherent
+property of the section itself. This meant we couldn't prescribe section
+purposes. We had to let admins decide.
+
+**Finding 3: They want it now.** After walking through the concept
+prototype, seven of eight participants expressed a strong desire to use
+this tool. One customer's response became our shorthand: "Yeah, no, I want
+it, I want it now." The lone exception said he wouldn't use it unless his
+team asked for it. It communicated to us that discovery and awareness would
+be critical to adoption.
 
 <PullQuote attribution="Research participant">
 Yeah, no, I want it, I want it now.
 </PullQuote>
 
-Before high-fidelity design, I codified how the record page actually worked as
-a system — a record abstraction that broke the page into nested containers: a
-page container, section containers, tab containers, card containers, and
-component containers, each with its own version that could change based on
-conditions like team assignment or pipeline stage. This gave engineering a
-shared data model and gave me a framework for deciding which levels of the
-hierarchy needed to support conditionality.
+<Figure
+  src="/work/crm-page-editor/vision-validation.png"
+  alt="Concept validation session walking a research participant through the builder prototype"
+  caption="Concept validation: walking admins through the builder prototype to test the direction."
+/>
 
-It also surfaced a real design tension: whether views should be tab-first or
-view-first. After working through the tradeoffs with engineering, I chose to
-keep the existing view-first model for the MVP — consistent with existing
-patterns and simpler for customers to learn, at the cost of not scaling as
-well to accounts with many tabs.
+The content-first insight forced a genuine rethinking of the builder's
+information architecture. Instead of organizing around sections, we needed
+to make it easy to find and add content first, then let admins place it
+freely.
 
-Design happened across parallel workstreams from there: a redesigned settings
-page collapsing seven entry points into three; a three-layer builder UI
-(navigation, options, content) showing a low-fidelity record page admins could
-add cards to, move between tabs, and manage team assignments on, without
-leaving the tool; a tab management pattern that went through several
-iterations before landing on click-to-reveal editing with drag handles for
-reordering; and, for beta, a move from full-screen card editors to contextual
-side panels built from composable editing modules other teams could reuse.
+### Architecture and abstraction (Q4 2022 – Q1 2023)
+
+Before jumping to high-fidelity designs, I needed to codify how the record
+page actually works as a system. Too many conversations were getting
+tangled because we didn't have shared language for the components involved.
+
+I created the record abstraction; a framework that broke the page into
+nested container types. At the top level, a page container (subtype: deal,
+contact, etc.). Within that, section containers (left sidebar, middle
+column, right sidebar). Within sections, tab containers. Within tabs, card
+containers. And within cards, component containers that housed the
+individual UI elements like property fields or data wells.
+
+This exercise served two purposes: it gave engineering a conceptual model
+for the data structure, and it gave me a framework for thinking about which
+levels of the hierarchy should support conditionality.
+
+<Carousel caption="The record abstraction: nested containers from page down to individual components, each independently conditional.">
+  <img src="/work/crm-page-editor/record-abstraction-mockup-1.jpg" alt="Record abstraction diagram: full page overview showing nested container types" />
+  <img src="/work/crm-page-editor/record-abstraction-mockup-2.jpg" alt="Record abstraction diagram: left sidebar container detail" />
+  <img src="/work/crm-page-editor/record-abstraction-mockup-3.jpg" alt="Record abstraction diagram: middle column container detail" />
+</Carousel>
+
+### Design and iteration (Q1 – Q3 2023)
+
+Design happened across several parallel workstreams.
+
+**Settings page redesign.** The immediate goal was reducing seven entry
+points to three (left sidebar, middle column, right sidebar), with a path
+to eventually consolidating into one. I redesigned the manager's panel to
+use a unified table view where all configurations (default + team views)
+lived in a single list with metadata like last updated and assigned teams.
+This started training customers on the pattern they'd eventually see at the
+full page level.
+
+<Figure
+  src="/work/crm-page-editor/settings-redesign.jpg"
+  alt="Redesigned settings page: unified table view of record customization configurations with metadata"
+  caption="The settings redesign: one table replacing seven separate entry points."
+/>
+
+**The builder UI.** This was the centerpiece. The builder showed a
+low-fidelity representation of the record page with its three sections, and
+admins could add cards, move them between tabs, and manage team assignments
+without leaving the tool.
+
+A deliberate choice: I used abstract card representations rather than live
+renders. Showing actual card content would have been technically expensive
+and would have distracted from the configuration task. Instead, each card
+showed its name, type, drag handles, and action buttons. For beta, I
+expanded this to include collapsible previews to help admins get a sense of
+what they were adding with real data.
+
+<Figure
+  src="/work/crm-page-editor/unified-builder.png"
+  alt="The unified builder UI: three-column low-fidelity record page with card representations and add-card panels"
+  caption="The builder: a low-fidelity record page, card representations, and the add-card panel across all three sections."
+/>
+
+**Tab management.** This went through several iterations. The initial
+approach used hover states on tabs to reveal edit and delete actions. After
+design feedback sessions, I moved to a click-to-reveal dropdown pattern.
+
+The show/hide model for tabs was a deliberate alternative to delete. Hiding
+preserved the tab's state so it could be restored, reduced the stakes of
+experimentation, and avoided the complexity of managing a separate "saved
+tabs" library. It also sidestepped the problem of conveying that tabs don't
+persist across views — a concept we weren't ready to support and didn't
+want to accidentally imply.
+
+<Carousel caption="Tab management iterations: from hover-reveal actions to a click-to-reveal dropdown with show/hide.">
+  <img src="/work/crm-page-editor/tab-management-mockup-1.jpg" alt="Tab management iteration 1: hover states revealing edit and delete actions" />
+  <img src="/work/crm-page-editor/tab-management-mockup-2.jpg" alt="Tab management iteration 2: click-to-reveal dropdown pattern" />
+  <img src="/work/crm-page-editor/tab-management-mockup-3.jpg" alt="Tab management iteration 3: show/hide tabs with drag handles for reordering" />
+</Carousel>
+
+**Card editing.** Before Page Editor, card management stayed simple — drag
+handles and remove buttons. For our purposes, I introduced side panel card
+editors within the builder. This kept admins in context while editing card
+details and created a modular framework: each card type's settings lived in
+composable "editing modules" (property selection, filtering, sorting) that
+could be reused across card types. This modularity was an intentional
+investment — it meant other teams building new card types could get editing
+UI nearly out of the box.
+
+<Carousel caption="Card builder sketches: the create, edit, and preview flow for a new card, built from composable editing modules.">
+  <img src="/work/crm-page-editor/card-builder-mockup-1.jpg" alt="Card builder sketch: initial state for creating a new card, no object type chosen" />
+  <img src="/work/crm-page-editor/card-builder-mockup-2.jpg" alt="Card builder sketch: card type selection panel" />
+  <img src="/work/crm-page-editor/card-builder-mockup-3.jpg" alt="Card builder sketch: edit card details and preview panel" />
+  <img src="/work/crm-page-editor/card-builder-mockup-4.jpg" alt="Card builder sketch: property selection for an associations table card" />
+  <img src="/work/crm-page-editor/card-builder-mockup-5.jpg" alt="Card builder sketch: save states and success messaging" />
+  <img src="/work/crm-page-editor/card-builder-mockup-6.jpg" alt="Card builder sketch: card creation flow variant" />
+  <img src="/work/crm-page-editor/card-builder-mockup-7.jpg" alt="Card builder sketch: card creation flow variant" />
+  <img src="/work/crm-page-editor/card-builder-mockup-8.jpg" alt="Card builder sketch: card creation flow variant" />
+  <img src="/work/crm-page-editor/card-builder-mockup-9.jpg" alt="Card builder sketch: card creation flow variant" />
+</Carousel>
+
+### Beta, GA, and expanding the surface (Q3 2023 – Spring 2024)
+
+Middle column customization launched at Inbound 2023 as a public beta, with
+GA following shortly after in the fall. That release covered the core of
+what we'd set out to build with tab management, card configuration, and
+team views all within the middle column.
+
+But the middle column was always designed as the first move. The settings
+architecture, the full record abstraction, the card builder framework — all
+of it was built to scale horizontally across the record page.
+
+**Preview Sidebar Customization (Q1 2024).** The first expansion: applying
+the same framework to the preview sidebar that appears when you peek into
+any record from any data table in the CRM. We built a preview sidebar
+editor with its own settings tab in object settings, team-based views, and
+updated user-level customization. Because we'd built the card builder as
+composable modules and the manager's panel as a reusable pattern, the
+preview sidebar editor reused the same infrastructure without reinventing
+the interaction model.
+
+<Figure
+  src="/work/crm-page-editor/preview-panel-editor.png"
+  alt="Preview sidebar editor: builder interface for configuring the record preview panel shown when peeking into a data table row"
+  caption="The preview sidebar editor, reusing the card builder's composable infrastructure for a new surface."
+/>
+
+This was also where the platform story proved itself externally. In
+parallel, we supported Help Desk's migration to the Cards SDK and their
+implementation of the preview sidebar editor. This enabled a low-touch
+integration path so other teams could implement customization for their
+surfaces without heavy lift from our team.
+
+Help Desk got customization shipped in weeks instead of months. We also
+delivered a CRM Preview extension point so developer-built React extensions
+(which had launched for the record page in 2023) could display on the
+preview sidebar — continuing to open HubSpot as a flexible platform.
+
+<ImageGrid>
+  <Figure
+    src="/work/crm-page-editor/help-desk-integration-1.png"
+    alt="Help Desk's implementation of the preview sidebar editor for their workspace"
+    caption="Help Desk's preview sidebar editor, built on the same Cards SDK infrastructure."
+  />
+  <Figure
+    src="/work/crm-page-editor/help-desk-integration-2.png"
+    alt="Help Desk's implementation of the preview sidebar editor, add-cards panel"
+    caption="Weeks instead of months: a low-touch integration path for other teams."
+  />
+</ImageGrid>
+
+**Left and Right Sidebar Integration (Q1 2024).** The final swing to create
+a single point of entry for record customization: migrating left and right
+sidebar settings into the page editor. This collapsed the remaining
+separate settings panels into the unified builder.
+
+What once started with seven entry points per object, then reduced to
+three, were now consolidated into one. Admins could see and configure the
+full record in a single session, which was the promise from the original
+vision.
+
+<Carousel caption="Left and right sidebar integration: migrating existing customizations into the unified builder.">
+  <img src="/work/crm-page-editor/sidebar-integration-mockup-1.jpg" alt="Left sidebar card migration details: mapping existing customized views into the new builder" />
+  <img src="/work/crm-page-editor/sidebar-integration-mockup-2.jpg" alt="Edit card flows for migrated left sidebar cards" />
+  <img src="/work/crm-page-editor/sidebar-integration-mockup-3.jpg" alt="Create card flow for left sidebar customization within the unified builder" />
+</Carousel>
+
+We also designed a Card Library — a standalone repository where admins
+could manage all cards (HubSpot-built, developer-built, and custom)
+independent of view creation, with the ability to create, edit, or delete
+cards outside the context of any specific view.
+
+<Figure
+  src="/work/crm-page-editor/card-library.png"
+  alt="Card Library: standalone repository for managing all HubSpot-built, developer-built, and custom cards"
+  caption="The Card Library, decoupling card management from any specific view."
+/>
+
+**Platform Expansion (Q2–Q3 2024).** The architecture we'd built started
+scaling beyond the record. We began supporting user-level configuration for
+the Prospecting Workspace and established design patterns built in a
+platform way so other teams could adopt them.
+
+Beyond that, we scoped a universal workspace page editor: once a workspace
+was powered by the CRM platform, it could get admin-level and user-level
+customization (layout, cards, tabs, expand/collapse) essentially out of the
+box. Help Desk was the hero use case, but the design was workspace-agnostic.
+
+<Carousel caption="Platform expansion: the same builder pattern applied beyond the record page, toward a universal workspace editor.">
+  <img src="/work/crm-page-editor/platform-expansion-mockup-1.jpg" alt="Platform expansion mockup 1: workspace-agnostic page editor pattern" />
+  <img src="/work/crm-page-editor/platform-expansion-mockup-2.jpg" alt="Platform expansion mockup 2: workspace-agnostic page editor pattern" />
+  <img src="/work/crm-page-editor/platform-expansion-mockup-3.jpg" alt="Platform expansion mockup 3: workspace-agnostic page editor pattern" />
+</Carousel>
 
 ## Key decisions
 
 ### 1. Focus on the middle column first
 
-**What was decided:** Scope the initial release to middle column
-customization only — tabs, cards, and team views — while leaving left and
-right sidebar customization in their existing settings.
+**What was decided:** Scope the 2023 MVP to middle column customization
+only (tabs, cards, and team views) while leaving left and right sidebar
+customization in their existing settings.
 
-**Alternatives considered:** Full record customization from day one. Starting
-with the left sidebar instead, since it had the most CSAT complaints.
+**Alternatives considered:** Full record customization from day one (all
+three sections in the builder). Also considered starting with the left
+sidebar, since it had the most CSAT complaints.
 
-**Why this direction:** The middle column had the most complexity and the
-most demand. Building it first meant getting the core interaction patterns and
-the data model right before scaling horizontally, rather than shipping a
-mediocre version of all three sections at once.
+**Why this direction:** The middle column had the most complexity (tabs,
+multiple card types, the activity feed debate) and the most demand.
+Building it first allowed us to create the foundation of the builder and
+get it right before scaling horizontally.
 
-**What it cost:** Admins kept using the old settings for sidebars through the
-first year. The "single point of entry" promise was deferred, and some of the
-most frustrated customers didn't see relief until the following year.
+**What it cost:** Admins still had to use the old settings for sidebars
+throughout 2023. The "single point of entry" promise was deferred. Some
+customers who were most frustrated with sidebar customization didn't see
+relief until 2024.
 
 ### 2. Adopt a content-first architecture
 
 **What was decided:** Design the builder so admins start by finding and
-adding content, then place it into sections — rather than picking a section
-first and customizing it in isolation.
+adding content (cards), then place it into sections (as opposed to
+selecting a section first and customizing it in isolation).
 
-**Alternatives considered:** Keep the sections-first approach already in
-place. A hybrid where sections stayed visible but content was searchable
-across all of them.
+**Alternatives considered:** The sections-first approach we'd already been
+using, where each section had its own editor.
 
-**Why this direction:** Research was unambiguous — every admin in the study
+**Why this direction:** Research was unambiguous. Every admin in our study
 started with "what's the most important thing?" not "which section am I
-configuring?" A sections-first builder would have recreated the fragmentation
-problem inside a new coat of paint.
+configuring?" Building sections-first would have recreated the fragmentation
+problem inside a new UI. The content-first approach also nudged us toward
+the "cards as the atomic unit" mental model, which had long-term platform
+implications.
 
-**What it cost:** More engineering complexity. A content-first model meant
-knowing which cards were compatible with which sections, managing placement
-rules, and handling edge cases when cards moved between sections with
-different constraints.
+**What it cost:** Engineering complexity increased. A content-first model
+required knowing which cards were compatible with which sections and
+managing placement rules. It was architecturally harder than isolated
+section editors.
 
 ### 3. Show/hide tabs instead of delete
 
-**What was decided:** Removing a tab hides it rather than deleting it.
-Hidden tabs retain their configuration and can be restored.
+**What was decided:** When an admin removes a tab from a view, it's hidden
+rather than deleted. Hidden tabs retain their card configuration and can be
+restored.
 
-**Alternatives considered:** True deletion with recreate-from-scratch. A
-"managed tabs" library model where admins check or uncheck which tabs appear.
+**Alternatives considered:** True deletion with the option to recreate from
+scratch. Also a "managed tabs" model where all tabs exist in a library and
+admins check/uncheck which ones appear.
 
 **Why this direction:** We weren't supporting saved tabs across views yet,
-and delete-then-recreate would have been destructive. Show/hide let admins
-experiment freely, knowing they could undo.
+and a delete-then-recreate flow would have been destructive and
+frustrating. Show/hide reduced the stakes by letting admins experiment
+freely knowing they could undo if needed. It also subtly reinforced that
+tab configuration is deliberate work worth preserving, which aligns with
+the admin persona (they plan, collaborate, and iterate on configurations).
 
-**What it cost:** The hidden-tabs pattern introduced its own interaction — a
-collapsed dropdown for hidden tabs — that added cognitive overhead. Admins
-with many tabs sometimes found the line between "hidden" and "not created yet"
-unclear.
-
-### 4. Side panel card editing over full-screen builders
-
-**What was decided:** For beta, card editing moved from full-screen
-dedicated builders into side panels within the page editor, using composable
-editing modules.
-
-**Alternatives considered:** Keep the existing full-screen card editors, just
-launched from the builder. Inline editing directly on the card representations.
-
-**Why this direction:** Full-screen editors broke context — admins lost sight
-of the page they were building every time they edited a card. Composable
-modules (property selection, filtering, sorting as standalone components)
-also created a framework other teams could adopt, which is where the product
-started becoming a platform.
-
-**What it cost:** Side panels have less room than full-screen editors.
-Complex card types with many settings felt cramped, and we had to be
-disciplined about which modules to include.
+**What it cost:** The hidden-tabs UI introduced a new interaction pattern
+(a collapsed dropdown for hidden tabs) that added cognitive overhead.
 
 ## The solution
 
-The CRM Page Editor is a unified builder that consolidates record page
-customization into a single experience. An admin navigates to record
-customization settings and sees a single table of configurations per object
-type — replacing the previous seven-link maze — and opens the builder to edit
-one.
+The CRM Page Editor is a unified builder tool that consolidates all record
+page customization into a single experience.
 
-<Figure
-  src="/work/crm-page-editor/solution-1.svg"
-  alt="Placeholder image of the builder UI"
-  caption="The builder: a low-fidelity record page, card representations, tab management, and the add-card panel (placeholder)."
-/>
+<Carousel caption="The shipped builder: adding cards, editing card details, and previewing the full record page.">
+  <img src="/work/crm-page-editor/builder-solution-mockup-1.jpg" alt="CRM Page Editor builder: full three-column record page with cards, tabs, and add-card panels" />
+  <img src="/work/crm-page-editor/builder-solution-mockup-2.jpg" alt="CRM Page Editor builder: adding cards from the searchable card library" />
+  <img src="/work/crm-page-editor/builder-solution-mockup-3.jpg" alt="CRM Page Editor builder: creating a new card from the library" />
+  <img src="/work/crm-page-editor/builder-solution-mockup-4.jpg" alt="CRM Page Editor builder: card preview panel with real data" />
+  <img src="/work/crm-page-editor/builder-solution-mockup-5.jpg" alt="CRM Page Editor builder: previewing the configured record page" />
+</Carousel>
+
+**What shipped:**
+
+An admin navigates to record customization settings and sees a single table
+of page configurations per object type. They click to create or edit a
+configuration, and the builder opens.
 
 The builder shows a low-fidelity representation of the full record page.
-Admins add cards from a searchable library with multi-select, drag and drop to
-reorder, and move cards between compatible sections. They manage tabs —
-create, rename, reorder, show or hide — directly in the builder, assign team
-views to control who sees each configuration, and save.
+Admins could add cards from a searchable library, then use drag and drop
+for reordering and moving cards between compatible sections.
 
-<ImageGrid>
-  <Figure
-    src="/work/crm-page-editor/solution-2.svg"
-    alt="Placeholder image of the side panel card editor"
-    caption="Side panel card editing with composable modules (placeholder)."
-  />
-  <Figure
-    src="/work/crm-page-editor/solution-3.svg"
-    alt="Placeholder image of the settings page before and after"
-    caption="Record customization settings: seven links collapsed to three (placeholder)."
-  />
-</ImageGrid>
+Custom tabs were managed directly in the builder along with assigned teams
+for each view.
 
-Card editing happens in contextual side panels without leaving the builder.
-Each card type surfaces composable editing modules — property selection,
-column configuration, filtering — that keep a consistent interaction pattern
-regardless of the card.
+Card editing occurs in contextual side panels without leaving the builder.
+Each card type surfaces composable editing modules like property selection,
+report selection, filtering, etc. This maintained a consistent interaction
+pattern and scalable system for card growth.
 
-What we cut: live card rendering in the builder (abstract representations
-instead), layouts beyond three columns, template sharing between admins, and
-activity feed relocation, which needed cross-team coordination that couldn't
-be scoped into the first year despite being one of the most-requested changes
-in research.
+**Platform evolution:**
 
-What started as a record page tool expanded well beyond it. The card builder
-framework — the composable editing modules, the card SDK, the schema-driven
-settings architecture — became a platform other teams adopted: a preview
-sidebar editor reused the same infrastructure for a hover-preview surface,
-another team integrated the framework to ship their own customization in
-weeks instead of months, and the CRM Index page team, which I later led,
-adopted the same patterns for its own settings. I developed the vision for a
-programmatic page editor that would let any team at HubSpot create its own
-page editor location on shared infrastructure, ending a long pattern of every
-team building bespoke customization tools from scratch.
+What started as a record page tool expanded into something bigger. The card
+builder framework (e.g. the composable editing modules, the card SDK, the
+schema-driven settings architecture) became a platform that other teams
+adopted.
+
+Help Desk integrated the preview sidebar editor to get workspace
+customization shipped in weeks instead of months. The CRM Index page team
+used the same patterns for their customization settings. I developed the
+vision for a Programmatic Page Editor that would let any team in HubSpot
+create its own page editor location programmatically, ending the pattern of
+every team building bespoke customization tools.
+
+Before this work, every page editor location at HubSpot worked differently.
+That was painful to support and created inconsistency for customers. The
+Programmatic Page Editor vision put an end to that trajectory. It created a
+system where teams get standardized editor infrastructure while retaining
+flexibility for their specific needs. Unfortunately, that work was
+deprioritized as I transitioned onto a new team mission and priorities
+evolved.
+
+<Carousel caption="Help Desk's workspace customization, built on the same Page Editor infrastructure.">
+  <img src="/work/crm-page-editor/help-desk-solution-mockup-1.jpg" alt="Help Desk workspace editor: summary tab configuration built on Page Editor infrastructure" />
+  <img src="/work/crm-page-editor/help-desk-solution-mockup-2.jpg" alt="Help Desk workspace editor: summary tab with team availability and ticket cards" />
+  <img src="/work/crm-page-editor/help-desk-solution-mockup-3.jpg" alt="Help Desk workspace editor: shipped summary tab experience" />
+</Carousel>
 
 ## Outcomes
 
-Unique customizations per month increased 400% after GA — the only change to
-the customization workflow during that period. Customers with four or more UI
-customizations saw 13 points higher customer success scores, 14 points higher
-revenue retention, and 2.5x higher median MRR than customers who hadn't
-customized at all. That attribution is correlational, not causal — customers
-who customize more are likely more engaged overall — but it validated the
-strategic bet that customization tooling is tied to business outcomes.
+**Quantitative:**
 
-Reception during research was strong, and the framework's adoption by other
-teams afterward was the strongest validation of the work: other product teams
-built their own customization surfaces on top of the same infrastructure with
-minimal oversight from ours, which wouldn't have happened if the underlying
-patterns hadn't held up.
+400% increase in unique customizations per month after GA. This was direct
+attribution as the Page Editor was the only change to the customization
+workflow during this period. 60% of portals were actually customizing their
+record pages. 327K accounts have created custom cards (648K total custom
+cards). However, 98% have 5 or fewer. The dominant pattern is seemingly
+light-touch customization, but this could also be due to a larger share of
+our customers being on Free/Starter tiers — smaller businesses with less
+sophisticated customization needs.
 
-What's still unknown: the long-term impact on deal win rates where
-customization gaps had previously been cited as a loss reason, and how far the
-programmatic page editor vision — still early when my focus shifted to CRM
-Index work — will ultimately extend across the product.
+<StatGrid>
+  <Stat value="+400%" label="Unique customizations per month, post-GA" />
+  <Stat value="60%" label="Portals actually customizing their record pages" />
+  <Stat value="327K" label="Accounts with custom cards" />
+  <Stat value="648K" label="Total custom cards created" />
+</StatGrid>
+
+The correlation between customization and business outcomes was also clear.
+Customers who enabled four or more UI customizations had 13 points higher
+customer success rates, 14 points higher revenue retention, and 2.5x higher
+median MRR than customers who hadn't customized at all.
+
+Broader analysis across all customization types showed customized portals
+averaging 3x higher MRR ($1,437 vs. $484), 10x higher median MRR ($500 vs.
+$50), and a 1.7x lower cancellation rate (11.9% vs. 20.4%).
+
+<StatGrid>
+  <Stat value="13 pts" label="Higher customer success (4+ customizations)" />
+  <Stat value="14 pts" label="Higher revenue retention (4+ customizations)" />
+  <Stat value="2.5×" label="Higher median MRR (4+ customizations)" />
+  <Stat value="3×" label="Higher MRR, all customized portals" />
+  <Stat value="10×" label="Higher median MRR, all customized portals" />
+  <Stat value="1.7×" label="Lower cancellation rate, customized portals" />
+</StatGrid>
+
+**Attribution note**: the MRR and retention metrics are correlational, not
+causal. Customers who customize more are likely more engaged overall. But
+the effect size is large enough that it clearly reflects something real
+about product depth and commitment, not just selection bias.
+
+**Qualitative:**
+
+Customer reception during research was strong. "I want it, I want it now"
+became the team's internal shorthand for the demand signal. Post-launch,
+the framework's adoption by other teams was the strongest qualitative
+validation: Help Desk, Record Preview, and the Index page team all adopted
+Page Editor infrastructure, which wouldn't have happened if the patterns
+didn't hold up.
+
+Engineering leadership endorsed the platform value explicitly. One external
+team built their card settings with minimum oversight using the card
+builder framework, and several more card settings were planned. New cards
+are built by teams almost every month.
+
+The framework saved, and continued to save, significant design, product,
+and engineering time across the organization.
 
 ## Reflection
 
-The content-first finding was the most consequential moment in this project.
-If we'd skipped the research, or run it as a validation exercise instead of
-genuine exploration, we'd have shipped a prettier version of the same
-fragmented experience. The collaborative exercise — admins building their
-ideal record page from a blank canvas — was the method that surfaced the
-insight. Standard interview questions wouldn't have caught it, because admins
-would have described their process using our existing vocabulary of sidebars,
-tabs, and sections. A blank canvas forced them to reveal how they actually
-think.
+The content-first finding was the most consequential moment in this
+project. If we'd skipped the research or ran it as a validation exercise
+instead of genuine exploration, we'd have built a prettier version of the
+same fragmented experience.
 
-Constraining to the middle column first was the right call, even though it
-frustrated customers who needed sidebar improvements sooner. It let us build
-the foundation properly and get real feedback before scaling horizontally.
+The collaborative Figma exercise, where admins built their ideal record
+page from scratch, was the method that surfaced the insight. Standard
+interview questions wouldn't have caught it because admins would have
+described their process using our existing vocabulary (sidebars, tabs,
+sections). Giving them a blank canvas forced them to reveal how they
+actually think.
 
-If I had it to do again, I'd fight harder to include activity feed relocation
-in the first release. Research and CSAT data both supported it, and it stayed
-one of the most visible limitations of the shipped product. I deferred it for
-cross-team complexity; in hindsight, the coordination cost was worth paying
-earlier, before the organizational context shifted and it became harder to
-prioritize.
+The decision to constrain to the middle column first was right, even though
+it frustrated customers who needed sidebar improvements. It allowed us to
+build the foundation properly and get real feedback before scaling. If we'd
+tried to do everything at once, we would have shipped a mediocre version of
+all three sections instead of a solid version of one.
 
-The platform outcome — the card builder framework, the programmatic editor
-vision, adoption by other teams — wasn't the original mandate. I made
-deliberate architectural choices knowing they'd have reuse value, but the
-platform story emerged from those choices rather than being planned top-down
-from the start. That's the lesson I carry forward: design for the immediate
-problem, but make structural decisions that don't foreclose on the bigger
-picture.
+Where I'd push harder with a clean slate: I'd fight to include activity
+feed relocation in the MVP. Five of eight research participants wanted it,
+CSAT data supported it, and it was one of the most visible limitations of
+the shipped product. I deferred it because of cross-team complexity, but in
+hindsight, the coordination cost was worth paying early.
+
+The evolution into a platform wasn't accidental, but it also wasn't the
+original mandate. I made deliberate architectural choices (composable
+modules, schema-driven settings, the card SDK) knowing they'd have reusable
+value. The platform story emerged from those choices rather than being
+planned top-down.
+
+That's a lesson I'll continue to carry: design for the immediate problem,
+but make structural decisions that don't foreclose on the bigger picture.
