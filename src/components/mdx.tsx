@@ -47,6 +47,42 @@ export function PullQuote({
   );
 }
 
+/** Compact companion to `PullQuote` for a cluster of short quotes that need
+ * equal visual weight (e.g. 2 pieces of customer-voice feedback side by
+ * side) rather than one dominant editorial blockquote. `Quote` also stands
+ * alone outside a grid — same compact card, full paragraph width. */
+export function QuoteGrid({ children }: { children: ReactNode }) {
+  return (
+    <div className="my-8 grid gap-4 sm:grid-cols-2 [&>blockquote]:my-0">
+      {children}
+    </div>
+  );
+}
+
+export function Quote({
+  children,
+  attribution,
+}: {
+  children: ReactNode;
+  attribution?: string;
+}) {
+  return (
+    <blockquote className="my-8 flex flex-col rounded-2xl bg-paper-dim px-6 py-6">
+      <span aria-hidden="true" className="font-display text-5xl leading-none text-green">
+        &ldquo;
+      </span>
+      <div className="-mt-3 flex-1 font-display text-lg leading-relaxed tracking-tight text-ink">
+        {children}
+      </div>
+      {attribution && (
+        <cite className="mt-3 block font-mono text-xs uppercase not-italic tracking-wider text-ink-soft">
+          — {attribution}
+        </cite>
+      )}
+    </blockquote>
+  );
+}
+
 export function Callout({ title, children }: { title?: string; children: ReactNode }) {
   return (
     <aside className="my-10 rounded-xl border border-ink/15 border-l-2 border-l-green p-5">
@@ -106,6 +142,8 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   ImageGrid,
   Carousel,
   PullQuote,
+  QuoteGrid,
+  Quote,
   Callout,
   StatGrid,
   Stat,

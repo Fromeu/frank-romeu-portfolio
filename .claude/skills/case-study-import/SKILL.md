@@ -14,6 +14,15 @@ Ports a case study's real content and images from external source material into 
 - A "Visual Assets" folder: some flat single images, and possibly nested subfolders of sequentially-numbered mockups (e.g. `Mockups-<Name>/`). Nested folders with 3+ images are carousel candidates.
 - The target `content/work/<slug>/index.mdx` — usually already has well-written placeholder-illustrated prose from an earlier drafting pass; the prose itself may only need number/fact corrections, not a full rewrite.
 
+## Prose mode: reconcile vs. verbatim replace
+
+There are two distinct ways a body-copy port can go, and they produce different results — determine which one the user wants before touching prose. If it's not stated explicitly, ask.
+
+- **Reconcile (default)**: keep the placeholder MDX's existing wording and voice. Only fix word-for-word factual mismatches against the new source (role title, dates, team composition, outcome numbers) — a light edit, not a rewrite. This is what Step 5's "reconcile prose" instruction below assumes.
+- **Verbatim replace**: the user wants the source MD/PDF's actual sentences ported as the new source of truth for body copy — no paraphrasing, no merging with the placeholder's existing wording, no inventing or augmenting sentences beyond what the source says. Only *structural* presentation (heading levels vs. bold run-in labels, where images sit) is adapted to match this site's MDX conventions; the words themselves come only from the source doc. Signals this mode is wanted: the user says things like "keep all prose the same as the source," "don't augment the prose," or "replace the body copy with what's in the MD/PDF."
+
+In verbatim-replace mode, watch for source-doc authoring artifacts that shouldn't be published as-is — e.g. bracketed `[PLACEHOLDER: ...]` TODO notes a doc author left for themselves. Don't silently port these onto the live page and don't silently drop them either — flag them to the user and ask how to handle that section (common resolutions: omit the bracketed note and keep the surrounding real sentences, or keep the existing placeholder MDX's already-finished prose for just that section since the source is genuinely unfinished there).
+
 ## Step 1: Read the MD without blowing up your context
 
 These exports embed images as inline base64, making the file multi-megabyte with some individual lines running to hundreds of KB. Never `Read` it directly. Instead:
@@ -64,7 +73,8 @@ Schema (`CaseStudyFrontmatter` in `src/lib/content.ts`): `title, subtitle, slug,
 
 - Insert `Figure`/`ImageGrid`/`Carousel` blocks at the landmarks identified in Step 2, using real `alt` text (describe what's actually in the image) and a `caption` in the site's established editorial-caption voice (short, declarative, often starts with what the image demonstrates — see existing captions in `book-talent-search/index.mdx` or `crm-accounting-integration/index.mdx` for tone).
 - `Carousel` children are plain `<img src alt />` tags, NOT a `slides` array prop — `next-mdx-remote/rsc`'s `compileMDX` silently drops array/object literal JSX prop values, so this isn't optional.
-- Reconcile prose with the new source material's facts (role description, team composition, dates, outcome numbers) — fix word-for-word factual mismatches (e.g. "sole" vs "lead" product designer) even if they seem minor, since they're usually resolved/clarified by the newer source.
+- In **reconcile** mode: fix word-for-word factual mismatches with the new source material (role description, team composition, dates, outcome numbers — e.g. "sole" vs "lead" product designer) even if they seem minor, but otherwise keep the placeholder's existing wording.
+- In **verbatim-replace** mode: replace the body copy outright with the source doc's actual sentences (see "Prose mode" above) — don't blend it with the placeholder's wording.
 - Frontmatter's `heroImage` is rendered by the page template itself (`src/app/work/[slug]/page.tsx`) — do not also add a duplicate `<Figure>` for it in the body.
 
 ## Step 6: Clean up

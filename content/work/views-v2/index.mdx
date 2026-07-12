@@ -8,346 +8,333 @@ year: "2024–2026"
 duration: "Ongoing"
 domain: "CRM Platform / Enterprise SaaS"
 order: 2
-heroImage: "/work/views-v2/hero.svg"
-heroAlt: "Placeholder cover art for the Views v2 case study"
+heroImage: "/work/views-v2/hero.jpg"
+heroAlt: "Composite of three CRM Index screens showing the redesigned Manage Sharing modal, role-based access, and the Contacts index view"
 status: "in-progress"
 draft: false
 ---
 
-HubSpot's CRM Index is the highest-traffic page in the product, and for years
-its save behavior worked in ways nobody could reliably predict — not admins,
-not reps, not the team that built it. Changes sometimes persisted. Sometimes
-they didn't. Nobody could explain why. So users did the rational thing: they
-stopped trusting shared views and started cloning everything. The result was
-portals bloated with hundreds of duplicate views, admins unable to maintain
-any source of truth, and reps working off stale data they didn't know was
-stale. We'd been reading that cloning behavior as a preference for personal
-workspaces. It wasn't — it was a coping mechanism. This project started with
-that realization, and spent the better part of a year building the shared
-language to actually ship the fix.
+HubSpot's CRM Index is the highest-traffic page in the product, and for years its "save" behavior worked in ways nobody could reliably predict. Not admins, not reps, not even us. Changes sometimes persisted. Sometimes they didn't. Nobody could explain why. So users did the rational thing: they stopped trusting shared views and started cloning everything.
+
+The result was portals bloated with hundreds of duplicate views, admins unable to maintain any source of truth, and reps working off stale data they didn't know was stale.
+
+We'd initially learned that cloning behavior was a user preference for personal workspaces. It wasn't. It was a coping mechanism. Views v2 started with that realization and then spent the better part of a year building the shared language to actually ship the fix.
 
 ## My role
 
-I own the CRM Index page end-to-end — records, views, and all six
-visualization types: table, board, calendar, map, gantt, and report. On this
-project I drove the end-to-end UX from problem framing through the solution
-framework, cross-team alignment, and front-end design spec: the conceptual
-model and internal framework docs, the sharing redesign, the three-tier roles
-system, the base layer / working layer interaction model, and the
-deviated-state indicator that surfaces divergence across the UI.
+I'm the lead product designer for the CRM Index page. My responsibilities encompassed leading the page's information architecture across CRM objects and overseeing the CRM views infrastructure, alongside owning three of our six visualization formats: table, calendar, and map. To establish design cohesion across the platform, I spearheaded alignment and consistency efforts alongside three fellow designers who were responsible for the board, gantt, and report visualizations.
 
-This was a cross-functional effort with contributions from an adjacent
-pipelines team on early feature-audit scaffolding, and required alignment with
-the board, calendar, gantt, and other visualization teams whose settings plug
-into the views system.
+On Views v2, I drove the end-to-end UX from problem framing through solution framework, cross-team alignment, and FE design spec. This included:
+
+- The conceptual model and internal framework docs
+- The Manage Sharing redesign
+- The three-tier roles system
+- The base layer / working layer interaction model
+- The "dirty state" indicator (blue dot) that surfaces deviations across the UI.
+
+This was a cross-functional effort with meaningful contributions from the Pipelines team and required alignment with the Board, Calendar, Gantt, and other visualization teams whose settings plug into the views system.
 
 ## The problem
 
 ### User problem
 
-The core failure was unpredictability. Users couldn't reliably answer the
-question: if I change something on this view, what happens? Sometimes changes
-saved. Sometimes they reverted on refresh. Sometimes they affected everyone on
-the view, sometimes just the person making the change. The rules were
-different for default views, shared custom views, and private views, and
-nothing in the UI communicated those distinctions.
+The core failure was unpredictability. Users couldn't reliably answer the question: *if I change something on this view, what happens?*
 
-The downstream effects were extensive and well documented across NPS, CSAT,
-our public ideas forum, and research. Admins reported their teams constantly
-asking why views were reverting or behaving differently. Users described
-other people's filters bleeding into views that weren't theirs. Teams lost
-the ability to maintain a shared source of truth because only the original
-creator could save — so everyone cloned their own copy instead.
+Sometimes changes were saved. Sometimes they reverted upon a page refresh. Sometimes they affected everyone on the view. Sometimes just you. The rules were different for HubSpot default views, shared custom views, and private views — and nothing in the UI communicated those distinctions.
 
-<PullQuote attribution="CSAT feedback">
-Views seem to change on themselves — filters from other users apply to your
-views even though they can't or don't save them. It's just a mess.
-</PullQuote>
+The downstream effects were extensive and well-documented across NPS, CSAT, the Ideas Forum, and research:
 
-The permission model compounded everything. It was binary — you created a
-view, or you watched it — with no middle ground to say "this person can
-adjust filters for their own workflow, but can't change what everyone else
-sees." That gap forced the only workaround available: clone and diverge.
+<QuoteGrid>
+  <Quote attribution="CSAT feedback, admin">
+    My users always forget to save when they make changes. And then I get an email about why their views keep changing back.
+  </Quote>
+  <Quote attribution="CSAT feedback, user">
+    Views seem to change on themselves — filters from other users apply to your views even though they can't or don't save them. It's just a mess.
+  </Quote>
+</QuoteGrid>
+
+Teams lost the ability to maintain shared source-of-truth views because only the original creator could save, so everyone cloned their own copy instead.
+
+The permission model compounded everything. It was binary: you created a view, or you watched it. There was no middle ground. No way to say "this person can adjust filters for their workflow, but can't change what everyone else sees."
+
+<Quote attribution="Ideas Forum submission">
+  Our team frequently faces the challenge that only the original creator of a contact list view can edit and save it. Other team members must create new copies, resulting in confusion and an unnecessarily large number of duplicate views.
+</Quote>
+
+That gap forced the only workaround available: clone and diverge.
 
 ### Business problem
 
-Views are one of the most consistent drivers of negative NPS and CSAT on the
-Index. A company-wide quality initiative and a renewed focus on
-smaller-customer CRM usage made this impossible to keep deferring. More
-urgently, views aren't a CRM-only problem — the same architecture powers
-workspaces, asset listing pages, and every other listing experience across
-the product. Fixing it only for CRM and leaving the rest inconsistent would
-have solved the symptom in one place while the underlying system stayed
-broken everywhere else.
+Views are one of the most consistent drivers of negative NPS and CSAT on the Index. More urgently: views aren't a CRM-only problem. That system architecture powers workspaces, asset listing pages, and every other listing experience across HubSpot. If we fixed it only for CRM and left the rest inconsistent, we'd be solving the symptom in one place while the underlying system stayed broken everywhere else.
 
-There was also a compounding org risk: admins who built views for their teams
-could lose them entirely if the creator left the organization, since nobody
-else had access to maintain them.
+There was also a compounding org risk: admins who built views for their teams could lose them entirely if the creator left the organization. Nobody else had the access to maintain them which could result in greater customer frustration and churn.
+
+<Figure
+  src="/work/views-v2/user-problem-quotes.jpg"
+  alt="Collage of customer feedback documenting the views save problem — CSAT comments, Ideas Forum submissions, and a LinkedIn post about lost view settings"
+  caption="A sample of the customer feedback that validated the problem: Ideas Forum submissions, CSAT comments, and social posts, all describing the same save-behavior confusion."
+/>
 
 ## Context and constraints
 
-The highest-traffic page in the product cannot have surprises in a release.
-That shaped every decision. Change aversion at scale — across customers
-ranging from solo users to enterprise portals with thousands of views — meant
-the solution had to preserve what people were already doing while making the
-correct behavior the default.
+The highest-traffic page in HubSpot can't have surprises in a release. That shaped every decision I made. Change aversion at scale meant the solution had to preserve what people were already doing while making the correct behavior the default (from solo-user customers to enterprise portals with thousands of views).
 
-We also inherited years of technical inconsistency: different save behaviors
-for different view types, some of which customers had built workflows on top
-of. Any new model had to degrade gracefully for those users rather than
-breaking them.
+We also inherited years of technical inconsistency. The existing system had different save behaviors for different view types, some of which had been in place long enough that customers had built workflows on top of the bugs. Any model we introduced had to degrade gracefully for those users rather than breaking them.
 
-The cross-team surface area created its own friction. Several visualization
-teams each own their own settings, and getting them into a shared system
-meant convincing those teams the framework was worth adopting — which meant
-the framework had to be simple enough to implement without requiring anyone
-to rebuild their entire settings architecture from scratch.
+The cross-team surface area created its own friction. Board, calendar, gantt, and report each owned their respective visualization settings. Getting them onto a shared system required convincing those teams that the framework was worth adopting.
+
+Lastly, there was additional timeline pressure. Our team was simultaneously releasing a broader redesign of the CRM Index Page and I strongly advocated to include the Views v2 overhaul with that release. Our customers are sensitive to large changes, and we risked inducing "change fatigue" by asking them to adjust their mental models twice: first to a new UI, and later to a fundamentally different saving and permission logic.
+
+Though bundling these two massive initiatives created immediate timeline pressure, it ensured that the Index redesign wasn't merely a cosmetic upgrade masking a broken system, but a holistic solution that addressed the root causes of unpredictability and view proliferation.
 
 ## Process
 
-Before any solution work, I needed to understand what we were actually
-dealing with. I started with a competitive deep-dive across several adjacent
-productivity tools, specifically looking at how they handled the tension
-between admin control and end-user flexibility. What I found was consistent
-across all of them: a cascading permission model, a clear distinction between
-view structure and working data, and some form of personal state persistence.
-We had none of this. The more interesting finding was how our own model
-compared to CRM peers, which were just as binary as we were — the gap between
-what we offered and what the wider category expected had widened without
-anyone noticing.
+**Framing the Problem Space.** Before any solution work, I needed to understand what we were actually dealing with. I started with a competitive deep-dive across adjacent platforms like Airtable, Notion, Monday, and Asana. The goal was to specifically look at how those products handled the tension between admin control and end-user flexibility.
 
-This sounds like it should have been obvious, but before we could design a
-new system, we needed internal alignment on something we'd never formally
-codified: what makes a view a view? What settings belong to its identity, and
-which ones are just someone's working preferences? I ran a full audit of
-every customizable setting across all six visualization types and categorized
-each one along three axes — can an owner set it and save it to the view, can
-a non-owner override it, and if they override it, does that change persist or
-reset on refresh. The exercise produced dozens of line items and four clear
-patterns: definitive view parameters that make up a view's identity (name,
-permissions, visualization type, columns); flexible parameters owners set but
-users can temporarily override (filters, sorting, pipeline); view preferences
-that are personal and persist per view (filter bar visibility, collapsed
-lanes); and global preferences that persist across every view (row height,
-pagination).
+What I found was consistent across all of them:
 
-The insight that came out of the exercise: save behavior wasn't confusing
-because the rules were wrong. It was confusing because the rules differed
-across these four categories, there was no UI signal about which category a
-setting belonged to, and we'd never told anyone what the rules were.
+- They had a cascading permission model
+- They conveyed clear distinction between view structure and working data
+- Most had some form of personal state persistence.
 
-With that taxonomy in hand, I worked through several iterations of a
-conceptual framework to give the team shared vocabulary: view controls (what
-can change), view roles (who can change it), and view layers (how changes
-stack and interact). The layers model was the most important piece — a
-template layer that instantiates new views and then disappears, a base layer
-that's the single source of truth published by owners, and a working layer
-that holds each user's personal deviations, auto-saved in perpetuity and
-always resettable. The working layer was the core unlock: right now, filters
-and sorting changes vanish on refresh, which is the source of most lost-work
-complaints. Persisting it means you leave, you come back, and your work is
-exactly where you left it — and when an owner publishes changes to the base
-layer, users see a nudge that new changes are available, without losing their
-current context.
+We had none of this.
 
-Once the model was stable enough to share, I recorded a walkthrough
-presenting the framework across every team consuming the views architecture,
-laying out what we were building for CRM, the shared system we wanted
-everyone to eventually adopt, and what it would take for their team to plug
-in. This phase moved slower than the design work — teams had their own
-roadmaps, and some had already made implementation decisions that needed
-revisiting to fit the model. The framework docs existed specifically to make
-those conversations tractable, giving everyone the same vocabulary before
-getting into implementation details.
+The more interesting finding was how our current model compared to Salesforce and Dynamics (our CRM peers). They were just as binary as us on permissions.
 
-With the model aligned, I moved into detailed front-end design: the sharing
-modal redesigned for granular role assignment and team-based access, role
-state treatments across all six visualization types, the footer interaction
-model for reset, clone, and publish actions visible to different roles in
-different states, and the deviated-state indicator. That indicator was its
-own design problem — early versions put a dot on filters, sorting, settings,
-and the view tab, which created a page permanently speckled with indicators
-since everyone is always in some deviated state. I pulled it back to a single
-indicator on the view settings button, which groups all the deviated-state
-actions in one place.
+But the modern productivity tools (Airtable especially) had already solved this at scale with autosave multiplayer views and locked view states. The gap between what HubSpot offered and what the category expected had widened without us noticing.
+
+<Carousel caption="A competitive audit across Airtable, Notion, Monday, Asana, and HubSpot's own current model, synthesized into a shared framework of permission granularity and where it applies.">
+  <img src="/work/views-v2/competitive-audit-1.jpg" alt="Diagram of Airtable's base/table/view/record hierarchy alongside its owner/creator/editor/commenter/read-only permission structure" />
+  <img src="/work/views-v2/competitive-audit-2.jpg" alt="Summary of Airtable's workspace roles and autosaved, multiplayer collaborative/personal/locked view types" />
+  <img src="/work/views-v2/competitive-audit-3.jpg" alt="Diagram of Notion's page/database/view hierarchy and page-level sharing permissions" />
+  <img src="/work/views-v2/competitive-audit-4.jpg" alt="Summary of Notion's workspace and page permission levels, including manual save-for-everyone and locked-view filter behavior" />
+  <img src="/work/views-v2/competitive-audit-5.jpg" alt="Diagram of Monday.com's workspace/board/group/record hierarchy and board-level permission sets" />
+  <img src="/work/views-v2/competitive-audit-6.jpg" alt="Summary of Monday.com's board roles, board types, and content-editing permission tiers" />
+  <img src="/work/views-v2/competitive-audit-7.jpg" alt="Diagram of Asana's account/workspace/project/view hierarchy and project-level roles and visibility" />
+  <img src="/work/views-v2/competitive-audit-8.jpg" alt="Summary of Asana's organization and project permission levels, including manual save behavior for admins and editors" />
+  <img src="/work/views-v2/competitive-audit-9.jpg" alt="Diagram of HubSpot's current CRM Index permission model and view hierarchy" />
+  <img src="/work/views-v2/competitive-audit-10.jpg" alt="Summary of HubSpot's current View Access model — Private, My team, and Everyone — with manual save restricted to owners and admins" />
+  <img src="/work/views-v2/competitive-audit-11.jpg" alt="Synthesis diagram mapping permission granularity and where it's applied across all five audited products" />
+</Carousel>
+
+**Defining What a View Actually Is.** This sounds like it should've been obvious. It wasn't.
+
+Before we could design a new system, we needed internal alignment on something we'd never formally codified: what makes a view "a view"?
+
+What settings belong to its identity, and which ones are just someone's working preferences?
+
+I ran a full audit of every customizable setting on the Index page across all six visualization types and categorized each one along three axes:
+
+- Can an owner set it and save it to the view?
+- Can a non-owner override it?
+- If they override it, does that change persist or reset on refresh?
+
+The exercise produced about 50+ line items and four clear patterns:
+
+- **Contract Settings** (owner sets, users can't touch): view name, permissions, visualization type. These make up the view's identity.
+- **Flex Settings** (owner sets and saves to a view, users can override and persist for themselves): filters, sorting, pipeline. These help admins establish defaults while letting reps adapt for their tasks.
+- **View preferences** (user-controlled, persists per view): things like showing/hiding the filter bar, collapsing board lanes. Personal working style, stored per user per view. Defined by defaults vs. explicit admin action.
+- **Global preferences** (user-controlled, persists across all views): zebra stripes, row height, pagination. Set once, applied everywhere.
+
+<ImageGrid>
+  <Figure
+    src="/work/views-v2/feature-audit.jpg"
+    alt="Spreadsheet auditing every customizable CRM Index setting by category, feature, and role — Owner, Collaborator, Member — across editable and save-to states"
+    caption="The full settings audit: every customizable feature, categorized by role and save behavior."
+  />
+  <Figure
+    src="/work/views-v2/settings-patterns.jpg"
+    alt="Diagram grouping view settings into Contract, Flexible, View preference, and Global preference categories"
+    caption="The four patterns that fell out of the audit: Contract, Flexible, View preference, and Global preference settings."
+  />
+</ImageGrid>
+
+The insight that came out of this exercise: the reason save behavior was so confusing wasn't that the rules were wrong. It was that the rules were different across these four categories and there were no UI cues to convey this distinction.
+
+**Building the Conceptual Model.** With the feature taxonomy in hand, I worked through several iterations of a conceptual framework to give the team a shared vocabulary for how the system should work. This became the 3D model:
+
+- View Controls (what can be changed)
+- View Roles (who can change it)
+- View Layers (how changes stack and interact)
+
+The View Layers model was the most important piece. It introduced three layers:
+
+- **Template Layer (Layer 0)** — Under the hood. HubSpot-built defaults that instantiate new views, then immediately untether from the template. Users never see this.
+- **Base Layer (Layer 1)** — The single source of truth for a view, published by owners. What everyone sees when they first land on a view.
+- **Working Layer (Layer 2)** — Each user's personal context, auto-saved in perpetuity. Deviations from the Base Layer that persist across sessions and can always be reset.
+
+The working layer was core to the broader solution. Right now, when reps add filters or change sorting to do their work, those changes vanish on page refresh. That's the source of most of the lost work complaints.
+
+Persisting the working layer meant: you leave, you come back, your work is exactly where you left it. And when an admin publishes changes to the base layer, users see a nudge that new changes are available. They can choose to reset and accept them at their own convenience.
+
+The View Roles model introduced three roles to replace the existing binary:
+
+- **Owner** — full control, can publish to the base layer
+- **Collaborator** — can flex settings for their own working purposes, can't change the contract
+- **Member** — most restricted. Sorting and basic view preferences only, intentionally restricted for enterprise use cases.
+
+I went through multiple rounds of iteration on the roles. Earlier versions had four roles (with "Visitor" for read-only external access), which I eventually de-scoped to simplify the initial release.
+
+<ImageGrid>
+  <Figure
+    src="/work/views-v2/view-layers.jpg"
+    alt="Early sketch of the View Layers model — Template, Base, and Working layers — as overlapping ellipses"
+    caption="An early pass at the View Layers model, before it was formalized into the 3-layer stack."
+  />
+  <Figure
+    src="/work/views-v2/view-roles.jpg"
+    alt="Early sketch of the View Roles model — Owner, Collaborator, and Member — mapped against layer access"
+    caption="An early pass at the View Roles model, mapping each role's access to the working and base layers."
+  />
+</ImageGrid>
+
+**Cross-Team Alignment.** Once the model was stable enough to share, I recorded a full Loom presenting the framework across all teams consuming the views architecture (workspaces, CS Workspace, Helpdesk, asset listing pages).
+
+The message was: this is what we're building for CRM, this is the shared system we want everyone to eventually adopt, and here's what it would take for your team to plug in.
+
+This phase was slower than the design work. Teams had their own roadmaps. The framework docs existed specifically to make those conversations tangible and to give everyone the same vocabulary before we got into implementation decisions.
+
+<Carousel caption="The Loom walkthrough deck presented to every team consuming the views architecture — problems, framework, and what's still in progress.">
+  <img src="/work/views-v2/cross-team-1.jpg" alt="Title slide for the CRM Views v2 walkthrough deck, outlining Problems, Solution Framework, and In Practice sections" />
+  <img src="/work/views-v2/cross-team-2.jpg" alt="Slide detailing the confusing save behavior problem, with an example of two views with different save button states" />
+  <img src="/work/views-v2/cross-team-3.jpg" alt="Slide detailing rigid permissions, including a mockup of the Manage Sharing modal" />
+  <img src="/work/views-v2/cross-team-4.jpg" alt="Slide detailing view proliferation, showing a cluttered tab bar with dozens of near-duplicate views" />
+  <img src="/work/views-v2/cross-team-5.jpg" alt="Slide validating the problem with real customer feedback: NPS comments, ideas forum submissions, and a LinkedIn post" />
+  <img src="/work/views-v2/cross-team-6.jpg" alt="Slide introducing the Solution Framework and the scale of the problem space — traffic, customer segment, and role diversity" />
+  <img src="/work/views-v2/cross-team-7.jpg" alt="Slide covering non-Index views — Help Desk, CS workspace, asset listing pages, and mobile — still pending design" />
+  <img src="/work/views-v2/cross-team-8.jpg" alt="Closing resources slide with links to the PRD, feedback notebook, and permissions breakdown, plus a Slack channel for questions" />
+</Carousel>
+
+**FE Design and Spec.** With the model aligned, I moved into detailed FE design:
+
+- The Manage Sharing modal – redesigned to support granular role assignment, team-based access, and suggested invitees
+- The role state treatments across all six visualization types – disabled states, tooltips, what members can and can't touch in each viz
+- The footer interaction model – (reset, clone, publish – visible to different roles in different states)
+- The blue dot indicator system – communicating deviated state.
+
+<Carousel caption="FE design spec for the Manage Sharing modal, role state treatments, footer interaction model, and blue dot indicator system.">
+  <img src="/work/views-v2/fe-design-1.jpg" alt="Five-step flow of the Manage Sharing modal moving a view from private to shared, ending in a confirmation toast" />
+  <img src="/work/views-v2/fe-design-2.jpg" alt="Deals table with the view settings context menu, mini toolbar, and view settings panel shown fully enabled for the Owner role" />
+  <img src="/work/views-v2/fe-design-3.jpg" alt="The same view for the Collaborator role, with Publish changes disabled across the context menu, toolbar, and settings panel" />
+  <img src="/work/views-v2/fe-design-4.jpg" alt="Tooltips explaining that only a view's owner can rename, publish, or delete it, shown on the disabled controls for non-owner roles" />
+  <img src="/work/views-v2/fe-design-5.jpg" alt="Spec table of footer button states — Reset, Clone, Publish — across Owner, Collaborator, and Member roles, plus the updates-available badge" />
+  <img src="/work/views-v2/fe-design-6.jpg" alt="Full interaction spec for the blue dot indicator — anatomy, toolbar placement, tab context-menu variants per role, and footer states" />
+</Carousel>
 
 ## Key decisions
 
 ### 1. Private-first defaults for all new views
 
-**What was decided:** All newly created views default to private, regardless
-of how they're created — sharing is an intentional act.
+**What was decided:** All newly created views default to private, regardless of how they're created. Sharing is an intentional act.
 
-**Alternatives considered:** Keep the existing behavior, where a new view
-inherits the visibility of the last view you created.
+**Alternatives considered:** Continue the existing behavior where the new view inherits the visibility setting of the last view created. This meant if your last view was public, your next one was too by default.
 
-**Why this direction:** The existing default created accidental public views
-constantly. Private-first matches the mental model of most modern
-collaboration tools — start with yours, share when ready — and simplifies the
-layer model, since private views don't need a distinction between base and
-working layers.
+**Why this direction:** The existing default created accidental public views constantly. Private-first matches the mental model of Google Docs and most modern collaboration tools: start with yours, share when ready. It also means the working layer model is simpler for private views as there's no distinction between base and working when only one person can see it.
 
-**What it cost:** Some behavior change for power users who habitually created
-shared views by default. Manageable through communication, not a blocker.
+**What it cost:** Some behavior change for power users who habitually create shared views. Manageable through communication; not a blocker.
 
 ### 2. One primary visualization per view, table always available as secondary
 
-**What was decided:** Each view is anchored to a single primary
-visualization plus a table. Users can toggle between the two; free-switching
-across all visualization types is gone.
+**What was decided:** Each view is anchored to a single primary visualization (board, calendar, map, gantt, or report) plus a table. Users can toggle between the primary and the table. Free-switching across all visualization types is gone.
 
-**Alternatives considered:** Keep the existing behavior, where users can
-switch freely among any visualization at any time.
+**Alternatives considered:** Keep prior behavior where users can switch freely among any visualization at any time.
 
-**Why this direction:** Data showed the large majority of visualization
-switching was between one visualization and the table, not across
-visualization types — board-to-gantt or calendar-to-map switches were rare,
-and became clone cases instead. Removing free-switching also eliminated a
-category of technical complexity where a view could be in an ambiguous state
-across multiple visualizations at once.
+**Why this direction:** Data showed that the large majority of visualization switching was between one viz and the table, not across viz types. Switches from Calendar-to-map or board-to-gantt, for example, were rare.
 
-**What it cost:** Users who relied on multi-visualization flexibility within
-a single view now need to clone — a reasonable workflow for a genuinely
-different working context, but a real change to existing behavior.
+These became clone cases instead. Removing free-switching also eliminated a category of technical complexity where a view could be in an ambiguous state across multiple visualizations simultaneously, and it gave us a cleaner model for the working layer.
+
+**What it cost:** Users who relied on multi-viz flexibility within a single view. The answer is cloning, which is a reasonable workflow for a genuinely different working context. However, it's still a real change to existing behavior.
 
 ### 3. Working layer persists in perpetuity
 
-**What was decided:** Every user's working layer — their deviations from the
-base layer — auto-saves and persists across sessions. Refreshing the page no
-longer wipes filters or sorting.
+**What was decided:** Every user's working layer (their deviations from the base layer) is auto-saved and persists across sessions. Refreshing the page no longer wipes your filters or sorting.
 
-**Alternatives considered:** Keep temporary state that wipes on refresh.
-Introduce a manual save specifically for the working layer.
+**Alternatives considered:** Keep temporary state (wipes on refresh), or introduce manual save for the working layer.
 
-**Why this direction:** Temporary state was the primary driver of lost-work
-complaints and directly responsible for defensive cloning. A manual save for
-the working layer would have introduced a third save concept on top of
-base-layer publish and working-layer reset — too much cognitive overhead.
+**Why this direction:** Temporary state was the primary driver of lost work complaints and was directly responsible for the cloning behavior. Users cloned because they couldn't trust shared views to hold their working context. Persistent autosave removes the reason to clone defensively.
 
-**What it cost:** Persistence requires backend storage per user per view,
-real engineering investment, and new edge cases — like what happens when
-someone returns to a view a year later with a stale working context.
-Addressed with a reset nudge whenever new base-layer changes have been
-published.
+**What it cost:** Working layer persistence requires backend storage per user per view. Engineering investment. It also creates edge cases around what happens when a user who hasn't touched a view in a year comes back to stale working context. Addressed via the reset nudge when new base layer changes have been published.
 
 ### 4. Three roles, not two
 
-**What was decided:** Owner, Collaborator, Member — replacing the existing
-binary of creator-can-save versus everyone-else-can't.
+**What was decided:** Owner, Collaborator, Member — replacing the existing binary of creator-can-save vs. everyone-else-can't.
 
-**Alternatives considered:** An even simpler two-role model closer to
-today's. A more granular model with field-level permissions. An earlier draft
-with four roles, including a read-only "Visitor" role.
+**Alternatives considered:** Earlier drafts explored four roles (including Visitor for read-only access), two roles (editor/viewer, closer to today), and a more granular model with field-level permissions.
 
-**Why this direction:** Two roles don't cover the real spread of use cases.
-Admins need to give trusted teammates editing access without making them full
-owners, and need to put less experienced users on a tighter leash without
-full read-only. Three roles maps to three real archetypes: the person who
-owns the view, the trusted power user who needs to work flexibly within it,
-and the rep who should stay focused on records.
+**Why this direction:** Two roles didn't cover the real spread of use cases. Admins need the ability to give trusted team members editing access without making them full owners. They also need the ability to put less experienced users on a tighter leash without full read-only.
 
-**What it cost:** More surface area for disabled states and tooltips across
-every visualization type, and a permissions matrix that runs long. There are
-still open edge cases, particularly around the Member role and filters.
+Three roles mapped to three real archetypes:
+
+- The person who controls the view
+- The trusted power user who needs to work flexibly within it
+- The rep who should stay focused on records.
+
+**What it cost:** More surface area for the disabled states and tooltips across every visualization type. The permissions feature breakdown doc runs long.
 
 ## The solution
 
-This work ships a redesigned system across three interconnected pieces. A
-layer model, where every shared view has a base layer (the source of truth,
-published by owners) and a working layer (each user's personal context,
-auto-saved and persisted) — private views collapse the two into one, and users
-can always reset back to the base layer.
+Views v2 ships a redesigned system across three interconnected dimensions:
 
-<ImageGrid>
-  <Figure
-    src="/work/views-v2/solution-1.svg"
-    alt="Placeholder image of the redesigned sharing modal"
-    caption="Redesigned sharing modal with granular role assignment (placeholder)."
-  />
-  <Figure
-    src="/work/views-v2/solution-2.svg"
-    alt="Placeholder image of footer states across roles"
-    caption="Footer states across Owner, Collaborator, and Member roles (placeholder)."
-  />
-</ImageGrid>
+**The layer model:**
 
-A roles model — Owner, Collaborator, Member — with a clear breakdown of what
-each can and can't do across all six visualization types. And a sharing
-model where every new view defaults to private, with granular, intentional
-invites by user, team, and role.
+Every public view has a Base Layer (the source of truth, published by owners) and a Working Layer (each user's personal context, auto-saved and persisted).
 
-<ImageGrid>
-  <Figure
-    src="/work/views-v2/solution-3.svg"
-    alt="Placeholder image of the deviated-state indicator"
-    caption="The deviated-state indicator, shown for each role (placeholder)."
-  />
-  <Figure
-    src="/work/views-v2/solution-4.svg"
-    alt="Placeholder image of the view settings accordion"
-    caption="View settings accordion, primary visualization open (placeholder)."
-  />
-</ImageGrid>
+Private views collapse these into one. Users can always reset their working layer back to the base layer. When owners publish new changes to the base layer, users with active working layers see a notification nudge.
 
 <Figure
-  src="/work/views-v2/solution-5.svg"
-  alt="Placeholder image of the new-changes-available nudge"
-  caption="The nudge shown when an owner publishes changes to the base layer (placeholder)."
+  src="/work/views-v2/layer-model.jpg"
+  alt="Solution Framework slide illustrating the three-layer model — Working, Base, and Template — as a stacked diagram"
+  caption="The finished layer model: Working layer on top, Base layer as source of truth, Template layer underneath."
 />
 
-A single deviated-state indicator appears on the view settings button when a
-user's current state has diverged from the base layer — no dot on every
-individual filter or sorting control, one indicator, one place to act.
+**The roles model:**
+
+Three roles – Owner, Collaborator, Member – with a clear breakdown of what each role can and can't do across all six visualization types.
+
+- Owners have full control including the ability to publish changes to the base layer.
+- Collaborators can flex settings for their own working context but can't change the view's contract.
+- Members have limited flexibility and stay focused on records.
+
+<Figure
+  src="/work/views-v2/roles-model.jpg"
+  alt="Solution Framework slide showing the three roles — Owners, Collaborators, Members — and what each can customize"
+  caption="The finished roles model: Owners, Collaborators, and Members, each with a defined slice of the working and base layers."
+/>
+
+**The sharing and visibility model:** All new views default to private. Sharing is intentional and granular. View creators can invite specific users and teams, assign roles per invitee, control whether "anyone with the link" has access and at what role. The Manage Sharing modal was redesigned to support this.
+
+<Figure
+  src="/work/views-v2/sharing-model.jpg"
+  alt="The redesigned Manage Sharing modal, showing per-person role assignment and a default access level for anyone with the link"
+  caption="The redesigned Manage Sharing modal, with per-person roles and a default link-access level."
+/>
+
+**The deviated state indicator:**
+
+A blue dot appears on the view settings button and on related actions (reset, clone, publish) when a user's current state has deviated from the base layer.
+
+Clicking into view settings reveals deeper granularity on the settings that changed. Intentionally avoiding an abundance of blue dots on the primary working surface of the Index page.
+
+<Figure
+  src="/work/views-v2/deviated-indicator.jpg"
+  alt="A blue dot indicator on the view settings button of a Contacts index view, signaling a deviated working state"
+  caption="The deviated-state indicator: a single blue dot on the view settings button, not scattered across every control."
+/>
 
 ## Outcomes
 
-This work hasn't shipped to production yet, so there's no post-launch data to
-report — CSAT and NPS movement, view-proliferation rate, working-layer
-adoption, and reset-button usage are the metrics I plan to track once it
-does.
+This work hasn't shipped to production yet, so there's no post-launch data to report — CSAT and NPS movement, view-proliferation rate, working-layer adoption, and reset-button usage are the metrics I plan to track once it does.
 
-What's already validated: research reception was strong going in, and the
-underlying settings taxonomy and layer model have held up through review with
-every team consuming the views architecture, which was the real test of
-whether the framework was sound before writing a line of production code.
+What's already validated: research reception was strong going in, and the underlying settings taxonomy and layer model have held up through review with every team consuming the views architecture, which was the real test of whether the framework was sound before writing a line of production code.
 
-What's still unknown: how the working-layer persistence model behaves at
-scale — stale working contexts for infrequent users, cross-team effects when
-someone's working layer diverges significantly from a heavily updated base
-layer — and how many teams beyond CRM adopt the shared framework once it
-ships, which will be the real test of whether the system scales the way it
-was designed to.
+What's still unknown: how the working-layer persistence model behaves at scale — stale working contexts for infrequent users, cross-team effects when someone's working layer diverges significantly from a heavily updated base layer — and how many teams beyond CRM adopt the shared framework once it ships, which will be the real test of whether the system scales the way it was designed to.
 
 ## Reflection
 
-The thing I kept telling people throughout this project — in nearly every
-walkthrough I recorded — was that the solution isn't that different from the
-world we have today. I meant it as reassurance, so people wouldn't feel
-overwhelmed by the framework. But it was a little disingenuous, because what
-I actually built was less a new product experience and more a shared
-conceptual system that had never existed before.
+The thing I kept telling people throughout this project — in nearly every walkthrough I recorded — was that the solution isn't that different from the world we have today. I meant it as reassurance, so people wouldn't feel overwhelmed by the framework. But it was a little disingenuous, because what I actually built was less a new product experience and more a shared conceptual system that had never existed before.
 
-The settings taxonomy and the layer model aren't visible to customers. All of
-it was internal scaffolding to get a large cross-functional group to agree on
-what a view is before trying to redesign one. That work took longer than the
-design work itself, and at times it felt like I was writing documentation for
-a product that didn't exist yet instead of shipping something. In
-retrospect, that was the right call — every time we tried to skip it and jump
-to design, we hit alignment problems downstream that sent us back to
-definitions.
+The settings taxonomy and the layer model aren't visible to customers. All of it was internal scaffolding to get a large cross-functional group to agree on what a view is before trying to redesign one. That work took longer than the design work itself, and at times it felt like I was writing documentation for a product that didn't exist yet instead of shipping something. In retrospect, that was the right call — every time we tried to skip it and jump to design, we hit alignment problems downstream that sent us back to definitions.
 
-What I'd do differently: I'd have pushed for a clearer scope gate earlier.
-The version of this problem that spans every listing surface across the
-product is a multi-year problem. The version that's just the CRM Index is a
-much shorter one. We spent real time in the overlap between those two scope
-levels before I made a firm call to keep the first phase CRM-only and let the
-framework docs handle cross-team adoption separately. Making that call a
-couple of months earlier would have focused the design work significantly.
+What I'd do differently: I'd have pushed for a clearer scope gate earlier. The version of this problem that spans every listing surface across the product is a multi-year problem. The version that's just the CRM Index is a much shorter one. We spent real time in the overlap between those two scope levels before I made a firm call to keep the first phase CRM-only and let the framework docs handle cross-team adoption separately. Making that call a couple of months earlier would have focused the design work significantly.
 
-The insight about cloning as a coping mechanism, not a preference, came
-relatively late — after the competitive audit and the feature audit were both
-complete. I wish I'd had that framing earlier; it would have sharpened the
-problem statement from the start and made the case for working-layer
-persistence easier to make to engineering. Instead we arrived at it through
-the back door of a feature-level audit, which felt more like discovery than
-design.
+The insight about cloning as a coping mechanism, not a preference, came relatively late — after the competitive audit and the feature audit were both complete. I wish I'd had that framing earlier; it would have sharpened the problem statement from the start and made the case for working-layer persistence easier to make to engineering. Instead we arrived at it through the back door of a feature-level audit, which felt more like discovery than design.
