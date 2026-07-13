@@ -150,14 +150,14 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   h2: (props) => (
     <h2
       id={slugify(textContent(props.children))}
-      className="mt-14 text-[length:var(--step-h2)] font-display font-semibold tracking-tight"
+      className="clear-both mt-14 text-[length:var(--step-h2)] font-display font-semibold tracking-tight"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
       id={slugify(textContent(props.children))}
-      className="mt-10 text-[length:var(--step-h3)] font-display font-semibold tracking-tight"
+      className="clear-both mt-10 text-[length:var(--step-h3)] font-display font-semibold tracking-tight"
       {...props}
     />
   ),

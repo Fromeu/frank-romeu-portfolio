@@ -104,17 +104,30 @@ type FigureProps = {
   caption?: string;
   /** Full-bleed singles break out of the text column to the viewport edge. */
   fullBleed?: boolean;
+  /** Shrinks the image and floats it so surrounding paragraphs wrap beside it on
+   *  sm+ viewports; stacks full-width above the text on mobile. Mutually
+   *  exclusive with fullBleed. Headings clear floats (see mdx.tsx h2/h3), so a
+   *  float never bleeds past the section it illustrates. */
+  float?: "left" | "right";
 };
 
-export function Figure({ src, alt, caption, fullBleed }: FigureProps) {
+export function Figure({ src, alt, caption, fullBleed, float }: FigureProps) {
   const [open, setOpen] = useState(false);
   const resolvedSrc = withBasePath(src);
+  const floatClass =
+    float === "left"
+      ? "sm:float-left sm:mr-6 sm:w-72 lg:w-80"
+      : float === "right"
+        ? "sm:float-right sm:ml-6 sm:w-72 lg:w-80"
+        : "";
   return (
     <figure
       className={
-        fullBleed
-          ? "relative left-1/2 my-12 w-screen max-w-none -translate-x-1/2 lg:static lg:left-auto lg:w-full lg:max-w-full lg:translate-x-0"
-          : "my-10"
+        float
+          ? `mb-6 w-full ${floatClass}`
+          : fullBleed
+            ? "relative left-1/2 my-12 w-screen max-w-none -translate-x-1/2 lg:static lg:left-auto lg:w-full lg:max-w-full lg:translate-x-0"
+            : "my-10"
       }
     >
       <button
@@ -385,7 +398,11 @@ export function Carousel({ children, caption }: { children: ReactNode; caption?:
             pointerDownRef.current = true;
             restoreSnap();
           }}
-          className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:px-[max(1.5rem,calc((100vw-52rem)/2))] lg:px-0"
+          onWheel={() => {
+            lastInteractionAtRef.current = Date.now();
+            restoreSnap();
+          }}
+          className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-4 pb-2 sm:px-[max(1.5rem,calc((100vw-52rem)/2))] lg:px-0"
         >
           {slides.map((slide, i) => (
             <button
