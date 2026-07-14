@@ -11,12 +11,12 @@ order: 1
 heroImage: "/work/crm-index-redesign/hero.jpg"
 heroAlt: "Cover art for the Redesigning the CRM Index case study"
 metrics:
-  - label: "Positive research sentiment across 30 customer validation sessions"
-    value: "100%"
-  - label: "HubSpot portals reached in the 2025 Flex Views rollout"
-    value: "50%"
-  - label: "CSAT at Flex Views launch, below target and traced to search placement"
-    value: "43%"
+  - label: "CSAT after the Streamlined CRM Index public beta, up from 43% at Flex Views launch"
+    value: "66%"
+  - label: "Portals and users enrolled in the Streamlined CRM Index public beta"
+    value: "30K+"
+  - label: "Portal opt-out rate during the public beta"
+    value: "1.1%"
 draft: false
 ---
 
@@ -122,6 +122,12 @@ The output was explicitly not a roadmap. It was meant to capture a *feeling* of 
   <img src="/work/crm-index-redesign/kh-prototype-mockup-8.jpg" alt="Kurppa Hosk North Star prototype screen, data table exploration" />
 </Carousel>
 
+<Video
+  src="/work/crm-index-redesign/kh-vision-hype-reel.mp4"
+  variant="ambient"
+  caption="The Kurppa Hosk vision prototype in motion: a short loop from the CRM modernization concept film."
+/>
+
 We named a persona from this work: "Saul the Sales Director." Not a front-line rep, but the revenue operations leader who manages the team, structures the data, builds the views, and monitors performance. Once that user was named clearly, with evidence, every subsequent tradeoff had a sharper answer.
 
 <Figure
@@ -173,6 +179,8 @@ The 2025 redesign shipped under the name "Flex Views." The core concept: a singl
 * Coordinating with product partners in the Reporting group to bring Report visualizations to the Index
 * Designing loading frameworks to improve the technical and perceptual performance for the CRM Index and Record
 
+Though my scope revolved around the above areas of ownership, I was deeply involved in the design and development of core pieces like Board view updates, the new Gantt view, filters updates, Trellis design system changes, etc.
+
 <Carousel caption="Design artifacts and files from the Flex Views specification: tab component specs, current-vs-updated tab comparisons, and early visualization wireframes.">
   <img src="/work/crm-index-redesign/flex-views-design-artifacts-mockup-1.jpg" alt="Individual tabs design guide: Figma component anatomy and states" />
   <img src="/work/crm-index-redesign/flex-views-design-artifacts-mockup-2.jpg" alt="Flex Views design artifact: component states and interaction details" />
@@ -187,8 +195,6 @@ The 2025 redesign shipped under the name "Flex Views." The core concept: a singl
   <img src="/work/crm-index-redesign/flex-views-design-artifacts-mockup-11.jpg" alt="Flex Views design artifact: wireframe exploration" />
   <img src="/work/crm-index-redesign/flex-views-design-artifacts-mockup-12.jpg" alt="Flex Views design artifact: wireframe exploration" />
 </Carousel>
-
-Though my scope revolved around the above areas of ownership, I was deeply involved in the design and development of core pieces like Board view updates, the new Gantt view, filters updates, Trellis design system changes, etc.
 
 To manage the impact of designs, I ran a structured risk assessment with the full triad, scoring 11 feature areas across three dimensions:
 
@@ -220,10 +226,18 @@ Flex Views launched at Inbound 2025 and eventually rolled out to 50% of HubSpot 
   <img src="/work/crm-index-redesign/flex-views-viz-mockup-5.jpg" alt="Report view embedded directly in the CRM Index" />
 </Carousel>
 
-The rollout paused, however, when CSAT came back below targets. I advocated for this difficult decision to:
+See highlights from Inbound 2025 / Fall Spotlight [here](https://www.hubspot.com/spotlight/fall2025).
+
+<Video
+  src="/work/crm-index-redesign/smart-insights-demo.mp4"
+  variant="demo"
+  caption="FS25 product demo: Smart Insights on the redesigned CRM Index."
+/>
+
+However, when CSAT came back below targets, I advocated for the difficult decision of pausing the GA rollout to:
 
 * Make improvements to select interactions based on feedback (tabs, views)
-* Minimize change pain for customers knowing that more significant design changes were underway in 2026
+* Minimize change pain for customers knowing that more significant design changes were underway in 2026 (modernization + downmarket)
 
 ### Phase 5 — CRM Lite and the harder problem (Late 2025 – Early 2026)
 
@@ -233,9 +247,16 @@ That scoping decision made a lot of tradeoffs cleaner. But the business push for
 
 Downmarket customers rarely have dedicated RevOps teams. The person setting up views is often the same person working the records. And many smaller customers on free or starter tiers don't have access to Workspaces. So the CRM index is where reps actually live and complete their work.
 
-The page that had been deliberately tilted toward admins now needed to work just as well for end reps. That was a trickier design challenge than solving for either audience in isolation, because their mental models for the page were meaningfully different.
+The page that had been deliberately tilted toward admins now needed to work just as well for end reps and new customers. That was a trickier design challenge than solving for either audience in isolation, because their mental models for the page were meaningfully different.
 
-We had our initial release of CRM Lite in April 2026 and stayed close to customers to calibrate ourselves around any feedback we received and the iterations that would be needed.
+This pivot forced us to answer the questions of:
+
+* What are the most important functions on this page?
+* What should be deemphasized?
+
+Ultimately, I leaned on a philosophy of "simple by default, complex by choice" to design an experience that was cleaner, simpler and more approachable up front, but with deeper customizations and shortcuts for those so inclined (e.g. keyboard shortcuts for power users, progressive disclosure for more advanced features, etc.).
+
+We had our initial release of CRM Lite to new customers in April 2026 and stayed close to feedback to calibrate ourselves around its reception and the iterations that would be required before rolling out to existing customers.
 
 <Carousel caption="Transitional CRM Lite screens: simplified contacts and deals views built for downmarket customers without dedicated RevOps teams.">
   <img src="/work/crm-index-redesign/crm-lite-mockup-1.jpg" alt="Transitional contacts table, default state, for CRM Lite" />
@@ -258,80 +279,149 @@ Views V2 was a project and architectural overhaul I designed to address the lion
   <img src="/work/crm-index-redesign/views-v2-framework-mockup-3.jpg" alt="Views V2 settings taxonomy mapping contract settings, flex settings, view preferences, and global preferences to each role" />
 </Carousel>
 
-### Phase 7 — Streamlined CRM Index release (Q3 2026)
+### Phase 7 — Streamlined CRM Index release (Q2–Q3 2026)
 
-The Streamlined CRM Index — the name used in the public rollout — became available to customers starting May 27, 2026, as an opt-in through HubSpot's Product Updates section. The opt-in approach was deliberate. The 2025 Flex Views rollout had been a forced migration for the 50% of portals that received it. This time, customers controlled the timing. The full GA rollout followed in Q3.
+The Streamlined CRM Index (the name used in the public rollout) became available to customers starting April 22, 2026, as an opt-in private beta. The opt-in approach was deliberate. The 2025 Flex Views rollout had been a forced migration for the 50% of portals that received it. This time, customers controlled the timing.
 
-Three threads came together in this release.
+This also provided us additional time to give existing customers advanced notice of the changes. One lesson we took away from the Flex Views rollout was that massive change to such a critical surface is incredibly disruptive. The reps who worked out of the index daily would arrive to a completely new experience, and admins would have no time to adequately prepare and train their teams for it.
 
-**The search and filter fix.** The filters-in-popover work from the CRM Lite phase resolved the search placement problem by rethinking the relationship between search and the filter bar. Rather than embedding search into the toolbar next to filters, the filter bar became a collapsible, toggleable layer that lives below the toolbar. Customers can show or hide it instantly; active filters stay applied whether the bar is visible or not. This meant search could return to a natural position in the toolbar without breaking the IA logic we'd built around filter portability. Advanced filters now update data in real time without a separate "Apply" step, which was a secondary friction point that had surfaced in research.
+Before moving to a public beta, I had advocated for a few changes to the CRM Lite designs in response to feedback from our private beta. This included:
 
-**Table enhancements.** The table had been the persistent weak point since the original Flex Views audit. Customers had compared it to Excel and not meant it as a compliment. The Streamlined release addressed several of the most-cited gaps: adding or removing columns directly from the column header with a single click (previously buried in a separate edit columns modal), conditional highlighting for numeric properties so customers can immediately spot patterns in their data, AI-powered column insights through Breeze that surface property-level trends without requiring a separate report, and a bulk action toolbar that appears contextually when records are selected. These weren't individually dramatic changes but collectively moved the table from a liability to something competitive with the tools customers were comparing us against.
+* Shuffling the IA to adjust search bar placement for better matching customer mental models
+* Enhancing our table visualization with quality-of-life improvements (in-line association, real-time data updates, column-level filtering) and easier access to core functions like adding/editing columns
+* Changing the visual design of our view tabs to better align with modernized design system patterns
+* Introducing cross-object filtering to the index (a longstanding customer request that we didn't have the infrastructure to support until now – with an 87% CSAT score)
 
-**Trellis modernization and visual consistency.** One of the quiet problems in the 50% Flex Views rollout was the Canvas incompatibility. A meaningful portion of customers had seen the redesigned page rendered on the old design system, where transparent button variants and component states translated poorly. The Streamlined release resolved that dependency. The experience now runs fully on modernized Trellis components, which closed the gap between what we had tested in design and what customers were actually seeing. The "From Legacy to Flex to Modernized" framing used internally captures this progression: this release is the one where the visual direction matches the design intent across the entire install base.
+<Carousel caption="Five alternatives considered for the search bar placement problem, from doing nothing to a fully consolidated view-controls row — each weighed on its own pros and cons before landing on the shipped solution.">
+  <img src="/work/crm-index-redesign/search-bar-alternatives-mockup-1.jpg" alt="Option 1: do nothing, ride out the feedback further to separate change pain from durable friction" />
+  <img src="/work/crm-index-redesign/search-bar-alternatives-mockup-2.jpg" alt="Option 2: bare-minimum fix, just move the search bar to the left" />
+  <img src="/work/crm-index-redesign/search-bar-alternatives-mockup-3.jpg" alt="Option 3: shuffle the IA to let view items follow a more logical organization" />
+  <img src="/work/crm-index-redesign/search-bar-alternatives-mockup-4.jpg" alt="Option 4: continue the IA reshuffle with an additional new pattern for quick filters" />
+  <img src="/work/crm-index-redesign/search-bar-alternatives-mockup-5.jpg" alt="Option 5: consolidate view controls into a single row with hidden quick filters — the shipped direction" />
+</Carousel>
 
-The release also shipped features that had been scoped for Flex Views but hadn't made it in time: Report view (bringing simple charted insights into the index without leaving to a separate reports tool), pipeline and pipeline stage colors for board view, and Data Agent integration that lets customers create smart properties directly from the index using AI. These aren't the foundational work, but they close loops that had been open since the original Flex Views spec.
+We entered public beta on May 27, 2026.
+
+* 30k+ enrolled, including 15.7k portals and 14.4k users.
+* Opt-out rates remained very low at just 1.1% of portals and 1.3% of users.
+* CSAT raised to 66%
+
+The team PM and I had closely collaborated with Product Marketing to create an online [Customer Resource Center](https://offers.hubspot.com/streamlined-index-views-resource-center?utm_campaign=44896324-Global%20en%20%7C%20Streamlined%20Index%20Rollout&utm_source=linkedin&utm_medium=social) dedicated to these changes. This would empower admins with proper training materials to onboard themselves and their teams to the new CRM Index. The campaign initially translated to the following results:
+
+* **$54,714 in associated deal value** – The Resource Center was the clear last touch before purchase.
+* When asked to opt in, **customers said yes**. 35K total enrolled in the beta, avg. opt out rate was low at 1.1%
+* Strong engagement from **84,650 CRM Admins**
+
+<Figure
+  src="/work/crm-index-redesign/resource-center.jpg"
+  alt="Customer Resource Center landing page: 'HubSpot Smart CRM, reimagined for how teams work today,' with a Ready/Set/Opt-in onboarding guide"
+  caption="The Customer Resource Center: training materials that let admins onboard themselves and their teams ahead of the switch."
+/>
+
+The full GA rollout followed in August 2026.
 
 ## Key decisions
 
-### 1. Scoping Flex Views for the CRM admin, and what that left unresolved
+### 1. Pausing GA rollout rather than pushing through
 
-**What was decided:** For the 2025 Flex Views redesign, I scoped the primary user to CRM admins, RevOps leads, and data analysts: people who manage and analyze data, not reps doing repetitive engagement tasks. The downmarket CRM Lite work later required the design to work for reps too, which introduced a second and harder design challenge.
+**What was decided:** After Flex Views rolled out to 50% of portals and CSAT came back below targets, I recommended holding the rollout there rather than pushing to full GA. This would allow us to:
 
-**Alternatives considered:** Design for both audiences from the start, accepting that neither would be fully optimized. Continue serving the existing user distribution without a committed persona. Design for the "power user" generically without specifying who that actually was.
+* Make improvements to select interactions based on feedback (tabs, views)
+* Minimize change pain for customers knowing that more significant design changes were underway in 2026 (modernization + downmarket)
 
-**Why this direction:** Research from 2024 showed rep engagement tasks were increasingly moving to Workspaces, purpose-built for that workflow. The CRM index is more naturally a data management surface. Strategically, HubSpot was relaunching the CRM to compete against data-forward tools like Airtable and Monday, which don't optimize for reps. Committing to an admin-first persona gave every Flex Views tradeoff a cleaner answer: what the primary CTA is, where Create and Import live, what the most important functions are, what should be deemphasized.
+**Alternatives considered:** Push to full GA and ship additional large-scale layout changes despite the pain felt from customers.
 
-**What it cost:** The Flex Views design deemphasized rep workflows. The Create Record button lost primary real estate. The search bar moved to a position that made sense for admin-style use but created friction for reps who search constantly. When the downmarket focus emerged and the page needed to work for both audiences, the admin-first decisions required revisiting. The CRM Lite work is partly about resolving that tension.
+**Why this direction:** Ultimately, it was the right thing to do for customers. Not only did the Flex Views design have elements to it that needed significant improvement, but we also saw how disruptive such a large-scale redesign could be to customers.
 
-### 2. Flex Views multi-viz to Views V2 single-viz per view
+We knew that more change was coming to the index layout and design and didn't want to subject customers to it multiple times. We could also take our learnings from the Flex Views release and ensure that a final redesign release includes adequate time, notice, and materials for customers to prepare.
 
-**What was decided:** The initial Flex Views architecture allowed users to switch freely between visualization types within a single view. Views V2 reverts this: each view is anchored to one primary visualization.
+**What it cost:**
 
-**Alternatives considered:** Keep the multi-viz architecture and improve its UX. Add guardrails so users can switch between viz types but not accidentally lose their configuration. Keep multi-viz only for certain user tiers.
+* Internally, a high-visibility launch that doesn't complete its rollout creates reputational drag, even if done for the right reasons.
+* Our engineering and product team had to live in a transitional state where we would need to support three versions of the index (Legacy, Flex Views, and the new CRM Lite).
+* This made it more difficult to support platform requests from other product teams due to the variability of index designs in the wild.
 
-**Why this direction:** Usage data from Flex Views showed that most users toggled between one visualization and the table, not across multiple non-table viz types. The multi-viz architecture created real technical complexity: if a view's "state" could be a board, then a calendar, then a map, what does it mean to persist that view? What does the save badge show? The architectural simplicity of single-viz-per-view made persistence tractable and matched actual behavior.
+### 2. Simple by default, complex by choice – designing for multiple personas
 
-**What it cost:** A real affordance that some users valued, frictionless viz switching within one context, was removed. The new model requires cloning to get a different viz, which is more work. This will likely generate some feedback during the V2 rollout.
+**What was decided:** For the 2025 Flex Views redesign, we scoped the primary user to CRM admins, RevOps leads, and data analysts: people who manage and analyze data, not reps doing repetitive engagement tasks.
 
-### 3. The search bar problem: rejecting the obvious fix (CRM Lite phase)
+However as we started work on the downmarket CRM Lite experience, it was critical that the design was just as intuitive for end reps and new users as well (who are oftentimes less tech-savvy than dedicated CRM admins). It forced us to answer the questions of: what are the most important functions, and what should be deemphasized?
 
-**What was decided:** During the CRM Lite work, when the 43% CSAT and persistent rep feedback pointed to the search bar placement as the primary issue, I rejected the obvious fix (move search left) and instead proposed a filters-in-popover architecture that addressed the root cause without breaking the underlying IA logic.
+This introduced a harder design challenge to solve for both, but ultimately I leaned on a philosophy of "simple by default, complex by choice." This meant building an experience that was cleaner, simpler and more approachable up front, but with deeper customizations and shortcuts for those so inclined (e.g. keyboard shortcuts for power users, progressive disclosure for more advanced features).
 
-**Alternatives considered:** Move search to the left side of the toolbar. Shuffle the entire row hierarchy so search and filters appear together on the left. Remove search from the toolbar altogether (keyboard shortcut only). Do nothing and wait for the signal to clarify.
+**Alternatives considered:** Continue prioritizing the admin persona. Abandon the admin persona in favor of rep-driven optimizations.
 
-**Why this direction:** Moving search left without moving filters resolved the mental model issue symptomatically but broke the underlying IA logic: search and filters are semantically related (both narrow down records), and when filters are hidden, search needs somewhere to live. A fix that worked when filters were visible would break when they were hidden. The filters-in-popover approach addressed both the mental model and the structural problem, but it introduced a new risk (double-popover conflicts when filters and sort are open simultaneously) that needed validation before shipping.
+**Why this direction:** Research from 2024 showed rep engagement tasks were increasingly moving to Workspaces, purpose-built for that workflow. The CRM index is more naturally a data management surface. Strategically, HubSpot was relaunching the CRM to compete against data-forward tools like Airtable and Monday, which don't optimize for reps.
 
-**What it cost:** The fix was slower. We didn't ship a patch. We committed to a more architecturally correct solution that required additional research rounds. In the meantime, the rollout stayed at 50%, customers on the redesign continued to experience the friction, and the team had to hold the tension of knowing the product was in an in-between state.
+However, as we pivoted our focus to downmarket customers, it became increasingly clear that end reps and do-it-all business owners were still largely working out of the CRM index (especially since they didn't have access to Workspaces in their lower tiers). Therefore, it was imperative to explore an experience that could delicately optimize for both without alienating the other.
 
-### 4. Views V2: the 3-layer persistence model
+**What it cost:** The Flex Views design deemphasized rep workflows and provided more sophisticated controls up front, creating a busier, more overwhelming screen for reps. The CRM Lite design opted for maximum simplicity to remain approachable to reps and new users, obscuring away core functionality for advanced admin users. The end result (Streamlined CRM Indexes) found a balance to serve both needs through layered IA placements, progressive disclosure, and intentional redundancies.
+
+### 3. Views V2: the 3-layer persistence model
 
 **What was decided:** Rather than patching the existing save logic, I designed a layered persistence model (template layer, base layer, working layer) as the foundational architecture for how views behave across all roles and contexts.
 
-**Alternatives considered:** Manual save for admins only (Notion's model). Fully autosaved with no role differentiation (Monday's model). Preserve the existing model but add a "revert" option. Tackle each of the six problems independently rather than as a connected system.
+**Alternatives considered:** Manual save for admins only (Notion's model). Fully autosaved with no role differentiation (Airtable's model). Tackle each of the six problems independently rather than as a connected system.
 
-**Why this direction:** The six existing problems with views, namely confusing save behavior, rigid permissions, no sharing granularity, view proliferation, broken admin inheritance, and no cleanup tools, all traced back to the absence of a clear mental model for what a view *is* at a system level. Patching any one problem in isolation would have created workarounds that made the others worse. The layered model provides a single coherent answer to every question about persistence and permissions: the base layer is what the admin decided; the working layer is what you personally did with it.
+**Why this direction:** The compounded problems with our existing views (confusing save behavior, rigid permissions, no sharing granularity, view proliferation, broken admin inheritance, no cleanup tools) all traced back to the absence of a clear mental model for what a view *is* at a system level.
 
-**What it cost:** Engineering complexity is high. The model requires backend changes to how views are stored, a new roles API, new UI patterns for publishing and propagation badges, and significant team-side work for every non-CRM surface that adopts it. The scope is the right scope, but it's a multi-quarter investment.
+Patching any one problem in isolation would've created workarounds that made the others worse. The layered model provided a single coherent answer to every question about persistence and permissions:
+
+* The base layer is what the admin/view Owner decided
+* The working layer is what you personally did with it.
+
+**What it cost:** Engineering complexity was high. The model required backend changes to how views were stored, a new roles API, new UI patterns for publishing and propagation badges, and significant team-side work for every non-CRM surface that adopts it. The scope is the right scope, but it was a full-quarter investment.
+
+### 4. Multi-viz (Flex Views) to single-viz per view (Views V2)
+
+**What was decided:** The initial Flex Views architecture allowed users to switch freely between visualization types within a single view. Views V2 reverted this decision. Now, each view is anchored to one primary visualization.
+
+**Alternatives considered:** Keep the multi-viz architecture and improve its UX. Add guardrails so users can switch between viz types but not accidentally lose their configuration. Keep multi-viz only for certain user tiers.
+
+**Why this direction:** Usage data from Flex Views showed that most users toggled between one visualization and the table, not across multiple non-table viz types. The multi-viz architecture created unnecessary technical complexity: if a view's "state" could be a board, then a calendar, then a map, what does it mean to persist that view? What does the view's tab show? The architectural simplicity of single-viz-per-view made persistence tangible and matched actual behavior. And view Owners, the most likely to experiment with different visualizations, could still switch the primary visualization for themselves without publishing that change.
+
+It's also worth noting that the original Legacy experience of the CRM index only had two visualizations (Table and Board). It provided a seamless transition to the 50% of customers who weren't rolled out to Flex Views.
+
+**What it cost:** A real affordance that some users valued, frictionless viz switching within one context, was removed. The new model requires cloning to get a different viz, which is more work, however there were built-in workarounds specifically for view Owners.
 
 ## The solution
 
-The full solution spans three released or in-progress milestones:
+The full solution spanned three released milestones before converging into the final form:
 
-**2025 Flex Views** — Shipped at Inbound 2025 to 50% of HubSpot portals. Included: redesigned 4-level IA, new toolbar layout, view tabs redesign, board (non-pipeline), calendar, map, and Gantt visualization types, a visualization settings panel, and loading state standards. Currently paused at 50% rollout pending CSAT triage.
+* **2025 Flex Views** — Shipped at Inbound 2025 to 50% of HubSpot portals. Included: redesigned 4-level IA, new toolbar layout, view tabs redesign, board (non-pipeline), calendar, map, and Gantt visualization types, a visualization settings panel, and loading state standards. Cohort was eventually merged into the broader GA rollout.
+* **CRM Lite** — Released in March 2026 to net-new customers. Included: simplified IA, improvements to view tabs, consolidated view settings, keyboard shortcuts for power users, and more updates to individual visualizations. Design was rolled into the broader Streamlined CRM Index design.
+* **2026 Streamlined CRM Index (final release)** — GA release August 2026. Included: refined updates from CRM Lite, quality-of-life improvements to Table/Board visualizations, overhaul of CRM Views infrastructure, onboarding and enablement materials.
 
-**2026 Streamlined CRM Index (CRM Lite)** — Released March 2026. Downmarket-optimized version of the redesign with pricing-tier visualization controls, a three-step onboarding tour, and simplified defaults for new and free-tier users.
+<Carousel caption="The three milestones recapped: 2025 Flex Views, CRM Lite (Q1 2026), and the Streamlined CRM Index (Q3 2026).">
+  <img src="/work/crm-index-redesign/solution-flex-views.jpg" alt="2025 Flex Views milestone title card over the redesigned companies table" />
+  <img src="/work/crm-index-redesign/solution-crm-lite.jpg" alt="CRM Lite (Q1 2026) milestone title card over the simplified contacts table" />
+  <img src="/work/crm-index-redesign/solution-streamlined-index.jpg" alt="Streamlined CRM Index Pages (Q3 2026) milestone title card over the final deals view" />
+</Carousel>
 
-**Views V2** — In design/early engineering as of Q2 2026. Three-layer persistence model, three-role permissions framework, settings taxonomy, single-viz-per-view architecture, admin propagation system. Phase 1: CRM Index. Phase 2: cross-product unification.
+<Carousel caption="The Streamlined CRM Index in its final shipped form.">
+  <img src="/work/crm-index-redesign/streamlined-final-mockup-1.jpg" alt="Streamlined CRM Index final form: deals table with redesigned toolbar and stat cards" />
+  <img src="/work/crm-index-redesign/streamlined-final-mockup-2.jpg" alt="Streamlined CRM Index final form, additional view" />
+  <img src="/work/crm-index-redesign/streamlined-final-mockup-3.jpg" alt="Streamlined CRM Index final form, additional view" />
+  <img src="/work/crm-index-redesign/streamlined-final-mockup-4.jpg" alt="Streamlined CRM Index final form, additional view" />
+  <img src="/work/crm-index-redesign/streamlined-final-mockup-5.jpg" alt="Streamlined CRM Index final form, additional view" />
+</Carousel>
 
 ## Outcomes
 
 **Quantitative:**
 
-<StatGrid wideCols="3">
+<StatGrid>
   <Stat value="100%" label="Positive research sentiment across 30 customer sessions, 2024–2025 validation studies" />
   <Stat value="50%" label="HubSpot portals reached in the Flex Views 2025 rollout" />
   <Stat value="43%" label="CSAT at Flex Views launch, below target and traced to search bar placement" />
+  <Stat value="66%" label="CSAT after the Streamlined CRM Index public beta rollout" />
+</StatGrid>
+
+<StatGrid wideCols="3">
+  <Stat value="30K+" label="Portals and users enrolled in the Streamlined CRM Index public beta" />
+  <Stat value="1.1%" label="Portal opt-out rate during the public beta" />
+  <Stat value="84,650" label="CRM Admins who engaged with the Customer Resource Center" />
+  <Stat value="$54,714" label="Associated deal value driven by the Resource Center campaign" />
 </StatGrid>
 
 **Qualitative:**

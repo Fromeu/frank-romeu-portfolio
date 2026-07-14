@@ -162,6 +162,43 @@ export function Figure({ src, alt, caption, fullBleed, float }: FigureProps) {
   );
 }
 
+type VideoProps = {
+  src: string;
+  caption?: string;
+  /** "ambient" autoplays muted and loops silently with no controls, for a
+   *  short looping reel (the GIF-replacement case: same visual effect at a
+   *  fraction of the file size). "demo" shows native controls and doesn't
+   *  autoplay, for a longer walkthrough the reader opts into. */
+  variant?: "ambient" | "demo";
+  poster?: string;
+};
+
+export function Video({ src, caption, variant = "demo", poster }: VideoProps) {
+  const resolvedSrc = withBasePath(src);
+  const resolvedPoster = poster ? withBasePath(poster) : undefined;
+  const isAmbient = variant === "ambient";
+  return (
+    <figure className="my-10">
+      <video
+        src={resolvedSrc}
+        poster={resolvedPoster}
+        className="w-full rounded-2xl border border-ink/10"
+        controls={!isAmbient}
+        autoPlay={isAmbient}
+        muted={isAmbient}
+        loop={isAmbient}
+        playsInline={isAmbient}
+        preload={isAmbient ? "auto" : "none"}
+      />
+      {caption && (
+        <figcaption className="mt-3 font-mono text-[11px] uppercase tracking-wider text-ink-soft">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 type CarouselSlide = {
   src: string;
   alt: string;

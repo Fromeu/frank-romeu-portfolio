@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
 import { slugify } from "@/lib/reading";
-import { Figure, Carousel } from "@/components/mdx-media";
+import { Figure, Carousel, Video } from "@/components/mdx-media";
 
 // Components available inside case study MDX bodies, plus element mappings
 // that give the body its editorial typography.
@@ -139,6 +139,7 @@ export function Stat({ value, label }: { value: string; label: string }) {
 
 export const mdxComponents: MDXRemoteProps["components"] = {
   Figure,
+  Video,
   ImageGrid,
   Carousel,
   PullQuote,
